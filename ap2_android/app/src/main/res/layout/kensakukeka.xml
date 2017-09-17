@@ -99,6 +99,17 @@
             app:layout_constraintLeft_toRightOf="@+id/imageView"
             app:layout_constraintRight_toRightOf="parent"
             tools:layout_editor_absoluteY="79dp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="33dp"
+            android:layout_height="48dp"
+            android:background="@android:color/white"
+            android:text=">"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@android:color/holo_red_light"
+            tools:layout_editor_absoluteX="335dp"
+            tools:layout_editor_absoluteY="53dp" />
     </android.support.constraint.ConstraintLayout>
 
 </LinearLayout>
