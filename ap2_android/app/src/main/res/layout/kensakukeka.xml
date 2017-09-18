@@ -20,7 +20,8 @@
             android:layout_height="match_parent"
             android:background="#D3D3D3"
             android:text="＜戻る"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/holo_red_light" />
 
         <TextView
             android:id="@+id/textView4"
