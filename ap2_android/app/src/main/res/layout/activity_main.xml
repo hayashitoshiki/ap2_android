@@ -29,11 +29,11 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="466dp"
-        android:layout_height="262dp"
+        android:layout_width="475dp"
+        android:layout_height="214dp"
         android:scaleType="fitCenter"
         android:src="@mipmap/keshouhin_home"
-        tools:layout_editor_absoluteX="-41dp"
+        tools:layout_editor_absoluteX="-43dp"
         tools:layout_editor_absoluteY="38dp" />
 
     <EditText
@@ -44,9 +44,25 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        tools:layout_editor_absoluteY="348dp"
-        tools:layout_editor_absoluteX="-57dp" />
+        tools:layout_editor_absoluteY="256dp"
+        tools:layout_editor_absoluteX="0dp" />
 
-    
+    <Button
+        android:id="@+id/button"
+        android:layout_width="385dp"
+        android:layout_height="62dp"
+        android:text="カテゴリから絞り込む
+        化粧品"
+        tools:layout_editor_absoluteY="311dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="385dp"
+        android:layout_height="62dp"
+        android:text="カテゴリから絞り込む
+        家電製品"
+        tools:layout_editor_absoluteY="392dp"
+        tools:layout_editor_absoluteX="0dp" />
 
 </android.support.constraint.ConstraintLayout>
