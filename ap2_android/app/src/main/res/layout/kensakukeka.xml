@@ -15,16 +15,17 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/modoru"
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:background="#D3D3D3"
+            android:onClick="modoru_onClick"
             android:text="＜戻る"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@android:color/holo_red_light" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/kensakugamen"
             android:layout_width="260dp"
             android:layout_height="match_parent"
             android:background="#D3D3D3"
@@ -71,7 +72,7 @@
                 tools:layout_editor_absoluteY="25dp" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/syouhinmei"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -93,7 +94,7 @@
                 tools:layout_constraintRight_creator="1" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/genzaitikara"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -105,14 +106,14 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/imageView"
-                app:layout_constraintRight_toLeftOf="@+id/textView3"
-                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:layout_constraintRight_toLeftOf="@+id/kyori"
+                app:layout_constraintTop_toBottomOf="@+id/syouhinmei"
                 app:layout_constraintVertical_bias="0.38"
                 tools:ignore="MissingConstraints" />
 
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/kyori"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -122,34 +123,35 @@
                 android:text="000"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@android:color/holo_red_light"
-                app:layout_constraintBaseline_toBaselineOf="@+id/textView6"
-                app:layout_constraintRight_toLeftOf="@+id/textView6"
+                app:layout_constraintBaseline_toBaselineOf="@+id/m"
+                app:layout_constraintRight_toLeftOf="@+id/m"
                 tools:layout_constraintBaseline_creator="1" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/m"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="13dp"
                 android:layout_marginRight="13dp"
                 android:text="m"
-                app:layout_constraintBaseline_toBaselineOf="@+id/button"
-                app:layout_constraintRight_toLeftOf="@+id/button"
+                app:layout_constraintBaseline_toBaselineOf="@+id/susumu"
+                app:layout_constraintRight_toLeftOf="@+id/susumu"
                 tools:layout_constraintBaseline_creator="1" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/susumu"
                 android:layout_width="88dp"
                 android:layout_height="48dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="-1dp"
                 android:background="@android:color/white"
+                android:onClick="susumu_onClick"
                 android:text=">"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@android:color/holo_red_light"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintTop_toBottomOf="@+id/syouhinmei" />
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>
 
@@ -161,18 +163,20 @@
         tools:layout_editor_absoluteY="8dp">
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/homebutton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Button" />
+            android:onClick="home_onClick"
+            android:text="home" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/kensakubutton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Button" />
+            android:onClick="kensaku_onClick"
+            android:text="kensaku" />
 
         <Button
             android:id="@+id/button5"
