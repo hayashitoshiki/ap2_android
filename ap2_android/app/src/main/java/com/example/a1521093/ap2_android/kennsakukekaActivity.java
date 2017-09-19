@@ -18,5 +18,21 @@ public class kennsakukekaActivity extends AppCompatActivity{
         Intent i = new Intent(this,to.msn.wings.intentbasic.      .class);
         startActivity(i);
     }
+
+    public void home_onClick(View v){
+        Intent i = new Intent(this,to.msn.wings.intentbasic.      .class);
+        startActivity(i);
+    }
+
+    public void kensaku_onClick(View v){
+        Intent i = new Intent(this,to.msn.wings.intentbasic.      .class);
+        startActivity(i);
+    }
+
+    public void susumu_onClick(View v){
+        Intent i = new Intent(this,to.msn.wings.intentbasic.      .class);
+        startActivity(i);
+    }
+
 }
 
