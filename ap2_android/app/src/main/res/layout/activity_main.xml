@@ -6,14 +6,33 @@
     android:layout_height="match_parent"
     tools:context="com.example.a1521093.ap2_android.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="576dp"
+        android:layout_height="40dp"
+        android:background="#D3D3D3"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteY="-2dp"
+        tools:layout_editor_absoluteX="0dp">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="411dp"
+            android:layout_height="match_parent"
+            android:background="#D3D3D3"
+            android:gravity="center"
+            android:text="Mono-Chika"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:src="@mipmap/keshouhin_home"
+        android:scaleType="fitCenter"
+        android:layout_width="466dp"
+        android:layout_height="262dp"
+        tools:layout_editor_absoluteY="38dp"
+        tools:layout_editor_absoluteX="-41dp" />
+
 
 
 </android.support.constraint.ConstraintLayout>
