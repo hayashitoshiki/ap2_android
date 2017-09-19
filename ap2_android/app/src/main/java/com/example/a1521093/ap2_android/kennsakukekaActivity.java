@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 public class kennsakukekaActivity extends AppCompatActivity{
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,22 +16,22 @@ public class kennsakukekaActivity extends AppCompatActivity{
     }
 
     public void modoru_onClick(View v){
-        Intent i = new Intent(this,to.msn.wings.intentbasic.      .class);
+        Intent i = new Intent(this,MainActivity.class);
         startActivity(i);
     }
 
     public void home_onClick(View v){
-        Intent i = new Intent(this,to.msn.wings.intentbasic.      .class);
+        Intent i = new Intent(this,MainActivity.class);
         startActivity(i);
     }
 
     public void kensaku_onClick(View v){
-        Intent i = new Intent(this,to.msn.wings.intentbasic.      .class);
+        Intent i = new Intent(this,MainActivity.class);
         startActivity(i);
     }
 
     public void susumu_onClick(View v){
-        Intent i = new Intent(this,to.msn.wings.intentbasic.      .class);
+        Intent i = new Intent(this,MapsActivity.class);
         startActivity(i);
     }
 
