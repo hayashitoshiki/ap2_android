@@ -24,6 +24,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".maker">
+
+        </activity>
+
         <activity android:name=".kennsakukekaActivity">
 
         </activity>
@@ -37,10 +42,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <activity android:name=".kategori"/>
-        <activity android:name=".kennsakukekaActivity"></activity>
+        <activity android:name=".kategori" />
 
     </application>
 

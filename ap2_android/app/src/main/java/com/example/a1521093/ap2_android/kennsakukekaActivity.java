@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-public class kennsakukekaActivity extends AppCompatActivity{
+public class kennsakukekaActivity extends AppCompatActivity {
 
     @Override
 
@@ -15,25 +15,26 @@ public class kennsakukekaActivity extends AppCompatActivity{
         setContentView(R.layout.kensakukeka);
     }
 
-    public void modoru_onClick(View v){
-        Intent i = new Intent(this,MainActivity.class);
+    public void modoru_onClick(View v) {
+        Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
 
-    public void home_onClick(View v){
-        Intent i = new Intent(this,MainActivity.class);
+    public void home_onClick(View v) {
+        Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
 
-    public void kensaku_onClick(View v){
-        Intent i = new Intent(this,MainActivity.class);
+    public void kensaku_onClick(View v) {
+        Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
 
-    public void susumu_onClick(View v){
-        Intent i = new Intent(this,MapsActivity.class);
+    public void susumu_onClick(View v) {
+        Intent i = new Intent(this, MapsActivity.class);
         startActivity(i);
     }
+
 
 }
 
