@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.d("", "onCreate()");
 
-        textView = (TextView) findViewById(R.id.textview);
+        textView = (TextView) findViewById(R.id.textvew);
 
         editText = (EditText) findViewById(R.id.edittext);
 

@@ -35,9 +35,9 @@
 
     </LinearLayout>
 
-    <android.support.v7.widget.CardView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="140dp">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -47,20 +47,16 @@
                 android:id="@+id/imageView"
                 android:layout_width="100dp"
                 android:layout_height="85dp"
-                android:layout_marginBottom="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
                 android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:srcCompat="@mipmap/ic_launcher"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@mipmap/ic_launcher" />
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="8dp" />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline"
@@ -84,12 +80,10 @@
                 android:maxLines="1"
                 android:text="商品名"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toRightOf="@+id/imageView"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0"
                 tools:layout_constraintLeft_creator="1"
                 tools:layout_constraintRight_creator="1" />
 
@@ -108,8 +102,9 @@
                 app:layout_constraintLeft_toRightOf="@+id/imageView"
                 app:layout_constraintRight_toLeftOf="@+id/kyori"
                 app:layout_constraintTop_toBottomOf="@+id/syouhinmei"
-                app:layout_constraintVertical_bias="0.38"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintVertical_bias="0.424"
+                tools:ignore="MissingConstraints"
+                app:layout_constraintHorizontal_bias="0.38" />
 
 
             <TextView
@@ -123,37 +118,45 @@
                 android:text="000"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@android:color/holo_red_light"
-                app:layout_constraintBaseline_toBaselineOf="@+id/m"
                 app:layout_constraintRight_toLeftOf="@+id/m"
-                tools:layout_constraintBaseline_creator="1" />
+                tools:layout_constraintBaseline_creator="1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/syouhinmei" />
 
             <TextView
                 android:id="@+id/m"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="13dp"
-                android:layout_marginRight="13dp"
                 android:text="m"
-                app:layout_constraintBaseline_toBaselineOf="@+id/susumu"
-                app:layout_constraintRight_toLeftOf="@+id/susumu"
-                tools:layout_constraintBaseline_creator="1" />
+                tools:layout_constraintBaseline_creator="1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/syouhinmei"
+                tools:layout_editor_absoluteX="290dp" />
 
             <Button
                 android:id="@+id/susumu"
-                android:layout_width="88dp"
-                android:layout_height="48dp"
+                android:layout_width="41dp"
+                android:layout_height="45dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="-1dp"
+                android:layout_marginRight="8dp"
                 android:background="@android:color/white"
                 android:onClick="susumu_onClick"
                 android:text=">"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@android:color/holo_red_light"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/syouhinmei" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="8dp"
+                tools:layout_editor_absoluteX="362dp" />
         </android.support.constraint.ConstraintLayout>
-    </android.support.v7.widget.CardView>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
