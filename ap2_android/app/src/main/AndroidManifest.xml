@@ -41,6 +41,7 @@
 
         <activity android:name=".kategori"/>
         <activity android:name=".kennsakukekaActivity"></activity>
+        <activity android:name=".GPS"/>
 
     </application>
 
