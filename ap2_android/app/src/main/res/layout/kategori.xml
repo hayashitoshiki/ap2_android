@@ -45,9 +45,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:id="@+id/test">
-
-
-
     </LinearLayout>
 
 </LinearLayout>

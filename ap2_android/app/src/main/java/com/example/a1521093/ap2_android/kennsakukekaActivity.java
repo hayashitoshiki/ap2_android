@@ -14,11 +14,10 @@ public class kennsakukekaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kensakukeka);
     }
-
     public void modoru_onClick(View v) {
         Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
-    }
+            startActivity(i);
+        }
 
     public void home_onClick(View v) {
         Intent i = new Intent(this, MainActivity.class);
@@ -34,7 +33,6 @@ public class kennsakukekaActivity extends AppCompatActivity {
         Intent i = new Intent(this, MapsActivity.class);
         startActivity(i);
     }
-
 
 }
 
