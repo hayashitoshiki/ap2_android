@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/aaa"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#D3D3D3"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/modoru"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:background="#D3D3D3"
+            android:onClick="modoru_onClick"
+            android:text="＜戻る"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/holo_red_light" />
+
+        <TextView
+            android:id="@+id/kensakugamen"
+            android:layout_width="260dp"
+            android:layout_height="match_parent"
+            android:background="#D3D3D3"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="メーカー:"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#C0C0C0"
+        android:gravity="center"
+        android:text="検索"
+        android:textSize="15dp"
+
+        />
+
+    <LinearLayout
+        android:id="@+id/test"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+    </LinearLayout>
+
+</LinearLayout>
