@@ -19,9 +19,7 @@ import android.widget.Toast;
 public class GPS extends Activity implements LocationListener {
 
     private LocationManager locationManager;
-    private TextView textView;
     private String text = "start\n";
-    private Button buttonStart, buttonStop;
 
     private static final int MinTime = 1000;
     private static final float MinDistance = 50;

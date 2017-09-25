@@ -34,6 +34,14 @@ public class kategori extends  AppCompatActivity {
 
             }
         });
+        Button go = (Button) findViewById(R.id.susumu);
+        go.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(), kennsakukekaActivity.class);
+                startActivity(intent);
 
+            }
+        });
     }
 }

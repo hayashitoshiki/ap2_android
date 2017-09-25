@@ -6,24 +6,55 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+
 
 public class MainActivity extends AppCompatActivity {
 
     EditText SendValue;
     Button SendEditTextValue;
-    Intent intent;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SendEditTextValue = (Button)findViewById(R.id.button1);
+        SendEditTextValue = (Button)findViewById(R.id.kensaku);
         SendValue = (EditText)findViewById(R.id.edittext);
+
+        Button kesyo=(Button)findViewById(R.id.kesyouhin);
+        kesyo.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View v){
+                Intent intent=new Intent(getApplication(),kategori.class);
+                startActivity(intent);
+
+            }
+        });
+
+        Button sendButton=(Button)findViewById(R.id.kensaku);
+        sendButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View v){
+                Intent intent=new Intent(getApplication(),GPS.class);
+                startActivity(intent);
+
+            }
+        });
+
+
+        Button ken=(Button)findViewById(R.id.kaden);
+        ken.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View v){
+                Intent intent=new Intent(getApplication(),kategori.class);
+                startActivity(intent);
+
+            }
+        });
     }
 
-    public void kensaku_onClick(View v) {
+   /* public void kensaku_onClick(View v) {
         intent = new Intent(getApplicationContext(), GPS.class);
         intent.putExtra("EdiTtEXTvALUE", SendValue.getText().toString());
         startActivity(intent);
@@ -39,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, kategori.class);
         startActivity(i);
     }
-
+*/
 
 
 }
