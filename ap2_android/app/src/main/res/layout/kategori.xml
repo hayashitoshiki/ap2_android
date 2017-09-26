@@ -30,16 +30,27 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     </LinearLayout>
-
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
-        android:text="検索"
-        android:background="#C0C0C0"
-        android:gravity="center"
-
-        />
+        android:orientation="vertical"
+        android:weightSum="1">
+        <EditText
+            android:id="@+id/kensakutext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:hint="検索"
+            android:background="#C0C0C0"
+            android:gravity="center" />
+        <Button
+            android:id="@+id/kensaku"
+            android:layout_width="wrap_content"
+            android:layout_height="33dp"
+            android:layout_gravity="center"
+            android:text="検索"
+            android:textSize="10sp" />
+</LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
