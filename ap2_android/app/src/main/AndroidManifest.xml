@@ -25,15 +25,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".kennsakukekaActivity">
-
-        </activity>
-
-        <activity android:name=".MapsActivity"/>
-        <activity android:name=".kategori"/>
-        <activity android:name="maker"/>
+        <activity android:name=".kennsakukekaActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name=".kategori"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name="maker"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:name=".GPS"/>
-
+        <activity android:name=".MapsActivity"/>
     </application>
 
 </manifest>

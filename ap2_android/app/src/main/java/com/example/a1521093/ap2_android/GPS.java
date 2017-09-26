@@ -178,6 +178,5 @@ public class GPS extends Activity implements LocationListener {
     @Override
     public void onStop() {
         super.onStop();
-
     }
 }

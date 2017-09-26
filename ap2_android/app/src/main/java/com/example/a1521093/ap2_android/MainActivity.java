@@ -13,9 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
 public class MainActivity extends AppCompatActivity {
-
 
     Button SendEditTextValue;
     private final int REQUEST_PERMISSION = 1000;
@@ -30,16 +28,14 @@ public class MainActivity extends AppCompatActivity {
         }
         SendEditTextValue = (Button)findViewById(R.id.kensaku);
 
-
         Button kesyo=(Button)findViewById(R.id.kesyouhin);
         kesyo.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
                 Intent intent=new Intent(getApplication(),kategori.class);
                 dai="カテゴリ：化粧品";
-                intent.putExtra("dai",dai);
+                intent.putExtra("kategori",dai);
                 startActivity(intent);
-
             }
         });
 
@@ -52,10 +48,8 @@ public class MainActivity extends AppCompatActivity {
                 String syohin = SendValue.getText().toString();
                 intent.putExtra("syohin",syohin);
                 startActivity(intent);
-
             }
         });
-
 
         Button ken=(Button)findViewById(R.id.kaden);
         ken.setOnClickListener(new View.OnClickListener(){
@@ -63,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
             public  void onClick(View v){
                 Intent intent=new Intent(getApplication(),kategori.class);
                 dai="カテゴリ：家電製品";
-                intent.putExtra("dai",dai);
+                intent.putExtra("kategori",dai);
                 startActivity(intent);
 
             }
@@ -75,8 +69,6 @@ public class MainActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED){
-
-
         }
         // 拒否していた場合
         else{
@@ -90,13 +82,10 @@ public class MainActivity extends AppCompatActivity {
                 Manifest.permission.ACCESS_FINE_LOCATION)) {
             ActivityCompat.requestPermissions(MainActivity.this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_PERMISSION);
-
         } else {
             Toast toast = Toast.makeText(this, "許可されないとアプリが実行できません", Toast.LENGTH_SHORT);
             toast.show();
-
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,}, REQUEST_PERMISSION);
-
         }
     }
 
@@ -106,9 +95,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == REQUEST_PERMISSION) {
             // 使用が許可された
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
                 return;
-
             } else {
                 // それでも拒否された時の対応
                 Toast toast = Toast.makeText(this, "これ以上なにもできません", Toast.LENGTH_SHORT);
@@ -116,23 +103,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-   /* public void kensaku_onClick(View v) {
-        intent = new Intent(getApplicationContext(), GPS.class);
-        intent.putExtra("EdiTtEXTvALUE", SendValue.getText().toString());
-        startActivity(intent);
-
-    }
-    
-    public void keshouhin_onClick(View v) {
-        Intent i = new Intent(this, kategori.class);
-        startActivity(i);
-    }
-
-    public void kaden_onClick(View v) {
-        Intent i = new Intent(this, kategori.class);
-        startActivity(i);
-    }
-*/
-
 
 }

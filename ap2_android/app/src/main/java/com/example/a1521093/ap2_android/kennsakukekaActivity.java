@@ -14,6 +14,7 @@ public class kennsakukekaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kensakukeka);
+
         TextView kyori = (TextView)findViewById(R.id.kyori);
         Intent intent = getIntent();
         String lon = intent.getStringExtra("lon");
@@ -46,6 +47,8 @@ public class kennsakukekaActivity extends AppCompatActivity {
         i.putExtra("lat",latitude1);
         double longitude1=in.getDoubleExtra("lon",0);
         i.putExtra("lon",longitude1);
+        String syohin = in.getStringExtra("syohin");
+        i.putExtra("syohin",syohin);
         startActivity(i);
     }
 
