@@ -41,6 +41,11 @@ public class kennsakukekaActivity extends AppCompatActivity {
 
     public void susumu_onClick(View v) {
         Intent i = new Intent(this, MapsActivity.class);
+        Intent in = getIntent();
+        double latitude1 = in.getDoubleExtra("lat",0);
+        i.putExtra("lat",latitude1);
+        double longitude1=in.getDoubleExtra("lon",0);
+        i.putExtra("lon",longitude1);
         startActivity(i);
     }
 
