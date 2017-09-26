@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
 public class MainActivity extends AppCompatActivity {
 
 
@@ -122,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
-    
+
     public void keshouhin_onClick(View v) {
         Intent i = new Intent(this, kategori.class);
         startActivity(i);
