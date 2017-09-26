@@ -1,5 +1,6 @@
 package com.example.a1521093.ap2_android;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -37,14 +38,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLng(tokyo));
 
         //現在位置情報
+        Intent in = getIntent();
+        double latitude1 = in.getDoubleExtra("lat",0);
+        double longitude1= in.getDoubleExtra("lon",0);
         //GPS取得　　　　　　　検索結果からGPS情報取得
-        LatLng iti = new LatLng(35.616815, 139.7454031);
+        LatLng iti = new LatLng(latitude1, longitude1);
         miti = mMap.addMarker(new MarkerOptions().position(iti).title("現在地"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(iti));
         miti.setTag(0);
 
         //   中心の設定                                                //検索結果よりGPS情報の取得
-        CameraUpdate cUpdate = CameraUpdateFactory.newLatLngZoom( new LatLng(35.605, 139.735), 14);
+        CameraUpdate cUpdate = CameraUpdateFactory.newLatLngZoom( new LatLng(latitude1, longitude1), 14);
         mMap.moveCamera(cUpdate);
     }
 }
