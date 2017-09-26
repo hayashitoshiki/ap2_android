@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.location.LocationProvider;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
@@ -19,7 +20,9 @@ import android.widget.Toast;
 public class GPS extends Activity implements LocationListener {
 
     private LocationManager locationManager;
+    private TextView textView;
     private String text = "start\n";
+    private Button buttonStart, buttonStop;
 
     private static final int MinTime = 1000;
     private static final float MinDistance = 50;
@@ -28,12 +31,11 @@ public class GPS extends Activity implements LocationListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        // setContentView(R.layout.activity_main);
 
         // LocationManager インスタンス生成
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
-        // GPS測位開始
+ // GPS測位開始
         startGPS();
 
     }
@@ -52,14 +54,19 @@ public class GPS extends Activity implements LocationListener {
             Log.d("LocationActivity", "locationManager.requestLocationUpdates");
             // バックグラウンドから戻ってしまうと例外が発生する場合がある
             try {
-                // minTime = 1000msec, minDistance = 50m
                 if (ActivityCompat.checkSelfPermission(this,
                         Manifest.permission.ACCESS_FINE_LOCATION)!=
                         PackageManager.PERMISSION_GRANTED &&
                         ActivityCompat.checkSelfPermission(this,
                                 Manifest.permission.ACCESS_COARSE_LOCATION)!=
                                 PackageManager.PERMISSION_GRANTED) {
-
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
                     return;
                 }
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
@@ -75,7 +82,6 @@ public class GPS extends Activity implements LocationListener {
                 finish();
             }
         } else {
-
         }
 
         super.onResume();
@@ -93,22 +99,33 @@ public class GPS extends Activity implements LocationListener {
                     ActivityCompat.checkSelfPermission(this,
                             Manifest.permission.ACCESS_COARSE_LOCATION) !=
                             PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
                 return;
             }
             locationManager.removeUpdates(this);
+        } else {
+
         }
+
         super.onPause();
     }
 
     @Override
     public void onLocationChanged(Location location) {
-
         double latitude1 = location.getLatitude();
         double longitude1 =location.getLongitude();
-
         Intent intent=new Intent(getApplication(),kennsakukekaActivity.class);
-        intent.putExtra("Latitude",latitude1);
-        intent.putExtra("Longtitude",longitude1);
+        intent.putExtra("lat",latitude1);
+        intent.putExtra("lon",longitude1);
+        Intent syohin = getIntent();
+        String data = syohin.getStringExtra("syohin");
+        intent.putExtra("syohin",data);
         startActivity(intent);
     }
 
@@ -124,11 +141,43 @@ public class GPS extends Activity implements LocationListener {
 
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
-
+        switch (status) {
+            case LocationProvider.AVAILABLE:
+                break;
+            case LocationProvider.OUT_OF_SERVICE:
+                break;
+            case LocationProvider.TEMPORARILY_UNAVAILABLE:
+                break;
+        }
     }
 
     private void enableLocationSettings() {
         Intent settingsIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
         startActivity(settingsIntent);
+    }
+
+    private void stopGPS(){
+        if (locationManager != null) {
+            Log.d("LocationActivity", "onStop()");
+            // update を止める
+            if (ActivityCompat.checkSelfPermission(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION) !=
+                    PackageManager.PERMISSION_GRANTED &&
+                    ActivityCompat.checkSelfPermission(this,
+                            Manifest.permission.ACCESS_COARSE_LOCATION) !=
+                            PackageManager.PERMISSION_GRANTED) {
+                return;
+            }
+            locationManager.removeUpdates(this);
+        } else {
+
+        }
+    }
+
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
     }
 }

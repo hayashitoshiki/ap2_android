@@ -15,6 +15,11 @@ public class kategori extends  AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kategori);
 
+        TextView dai = (TextView)findViewById(R.id.kensakugamen);
+        Intent intent = getIntent();
+        String data = intent.getStringExtra("dai");
+        dai.setText(data);
+
         LinearLayout layout = (LinearLayout) findViewById(R.id.test);
         for(int i=0;i<8;i++) {
             View view = getLayoutInflater().inflate(R.layout.kategori_sub, null);
