@@ -27,7 +27,17 @@ public class kategori extends  AppCompatActivity {
             TextView text = (TextView) view.findViewById(R.id.sub);
             text.setText( i+1+"こ目のデータ");
 
+            Button btn = (Button)findViewById(R.id.susumu);
+            btn.setId(i);
 
+            btn.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplication(),kennsakukekaActivity.class);
+                    String da="商品名A";
+                    intent.putExtra("syohin",da);
+                    startActivity(intent);
+                }
+            });
         }
 
         Button sendButton=(Button)findViewById(R.id.modoru);
@@ -39,14 +49,6 @@ public class kategori extends  AppCompatActivity {
 
             }
         });
-        Button go = (Button) findViewById(R.id.susumu);
-        go.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplication(), kennsakukekaActivity.class);
-                startActivity(intent);
 
-            }
-        });
     }
 }
