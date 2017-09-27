@@ -26,7 +26,7 @@ public class maker extends AppCompatActivity {
         for(int i=0;i<8;i++) {
             View view = getLayoutInflater().inflate(R.layout.kategori_sub, null);
             layout.addView(view);
-            TextView text = (TextView) view.findViewById(R.id.sub);
+            TextView text = (TextView) view.findViewById(R.id.loop_name);
             final String meka =("商品"+(1+i));
             text.setText(meka);
 

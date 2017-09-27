@@ -25,7 +25,7 @@ public class kategori extends  AppCompatActivity {
         for(int i=0;i<8;i++) {
             View view = getLayoutInflater().inflate(R.layout.kategori_sub, null);
             layout.addView(view);
-            TextView text = (TextView) view.findViewById(R.id.sub);
+            TextView text = (TextView) view.findViewById(R.id.loop_name);
             final String maker_name =("メーカー"+(i+1));
             text.setText(maker_name);
 
@@ -36,9 +36,9 @@ public class kategori extends  AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplication(),maker.class);
                     intent.putExtra("maker",maker_name);
-                    Intent kategori_dai = getIntent();
-                    String kate = kategori_dai.getStringExtra("kategori");
-                    intent.putExtra("kategori",kate);
+                    Intent kate_dai = getIntent();
+                    String kategori = kate_dai.getStringExtra("kategori");
+                    intent.putExtra("kategori",kategori);
                     startActivity(intent);
                 }
             });
@@ -58,9 +58,9 @@ public class kategori extends  AppCompatActivity {
             @Override
             public  void onClick(View v){
                 EditText SendValue = (EditText)findViewById(R.id.kensakutext);
-                String syohin = SendValue.getText().toString();
+                String syohin_name = SendValue.getText().toString();
                 Intent intent=new Intent(getApplication(),GPS.class);
-                intent.putExtra("syohin",syohin);
+                intent.putExtra("syohin",syohin_name);
                 startActivity(intent);
 
             }

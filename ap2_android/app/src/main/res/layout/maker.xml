@@ -63,7 +63,7 @@
         android:orientation="vertical"
         android:weightSum="1">
 
-        <LinearLayout
+       <!-- <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_weight="0.05"
@@ -89,7 +89,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@android:color/holo_red_light" />
 
-        </LinearLayout>
+        </LinearLayout>-->
 
     </LinearLayout>
 

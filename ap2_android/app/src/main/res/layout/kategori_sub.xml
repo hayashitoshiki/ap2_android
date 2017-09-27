@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="40dp"
-    android:background="#D3D3D3"
+    android:layout_height="30dp"
+    android:id="@+id/loop"
     android:orientation="horizontal"
     android:weightSum="1">
 
     <TextView
-        android:id="@+id/sub"
-        android:layout_width="260dp"
+        android:id="@+id/loop_name"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="@string/app_name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:layout_weight="1.03" />
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:text="名前"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <Button
         android:id="@+id/susumu"
-        android:layout_width="73dp"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_weight="1"
         android:background="#FFFFFF"
-        android:onClick="modoru_onClick"
         android:text=">"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@android:color/holo_red_light" />
-
 </LinearLayout>
