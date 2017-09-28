@@ -66,5 +66,13 @@ public class kategori extends  AppCompatActivity {
             }
         });
     }
+    public void home_onClick(View v) {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+    }
 
+    public void kensaku_onClick(View v) {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+    }
 }
