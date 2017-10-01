@@ -122,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
     public void keshouhin_onClick(View v) {
         Intent i = new Intent(this, kategori.class);
         startActivity(i);
