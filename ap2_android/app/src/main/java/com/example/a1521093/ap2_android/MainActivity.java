@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-
     Button SendEditTextValue;
     private final int REQUEST_PERMISSION = 1000;
     String dai;
@@ -30,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         SendEditTextValue = (Button)findViewById(R.id.kensaku);
 
 
+        
         Button kesyo=(Button)findViewById(R.id.kesyouhin);
         kesyo.setOnClickListener(new View.OnClickListener(){
             @Override
