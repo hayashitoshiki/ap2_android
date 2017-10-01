@@ -1,6 +1,5 @@
 package com.example.a1521093.ap2_android;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
