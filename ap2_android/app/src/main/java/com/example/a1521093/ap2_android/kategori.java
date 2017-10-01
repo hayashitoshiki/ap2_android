@@ -16,17 +16,18 @@ public class kategori extends  AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kategori);
 
-        TextView dai = (TextView)findViewById(R.id.kensakugamen);
+        TextView title = (TextView)findViewById(R.id.kensakugamen);
         Intent intent = getIntent();
-        String data = intent.getStringExtra("dai");
-        dai.setText(data);
+        String kategori_name = intent.getStringExtra("kategori");
+        title.setText(kategori_name);
 
-        LinearLayout layout = (LinearLayout) findViewById(R.id.test);
+        LinearLayout layout = (LinearLayout) findViewById(R.id.loop);
         for(int i=0;i<8;i++) {
             View view = getLayoutInflater().inflate(R.layout.kategori_sub, null);
             layout.addView(view);
-            TextView text = (TextView) view.findViewById(R.id.sub);
-            text.setText( i+1+"こ目のメーカー名");
+            TextView text = (TextView) view.findViewById(R.id.loop_name);
+            final String maker_name =("メーカー"+(i+1));
+            text.setText(maker_name);
 
             Button btn = (Button)findViewById(R.id.susumu);
             btn.setId(i);
@@ -34,11 +35,10 @@ public class kategori extends  AppCompatActivity {
             btn.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplication(),maker.class);
-                    String maker_dai="メーカー名";
-                    intent.putExtra("maker",maker_dai);
+                    intent.putExtra("maker",maker_name);
                     Intent kate_dai = getIntent();
-                    String kate = kate_dai.getStringExtra("dai");
-                    intent.putExtra("dai",kate);
+                    String kategori = kate_dai.getStringExtra("kategori");
+                    intent.putExtra("kategori",kategori);
                     startActivity(intent);
                 }
             });
@@ -58,13 +58,21 @@ public class kategori extends  AppCompatActivity {
             @Override
             public  void onClick(View v){
                 EditText SendValue = (EditText)findViewById(R.id.kensakutext);
-                String syohin = SendValue.getText().toString();
+                String syohin_name = SendValue.getText().toString();
                 Intent intent=new Intent(getApplication(),GPS.class);
-                intent.putExtra("syohin",syohin);
+                intent.putExtra("syohin",syohin_name);
                 startActivity(intent);
 
             }
         });
     }
+    public void home_onClick(View v) {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+    }
 
+    public void kensaku_onClick(View v) {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+    }
 }
