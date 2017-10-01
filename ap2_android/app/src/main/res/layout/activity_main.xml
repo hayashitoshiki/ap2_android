@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -42,20 +41,17 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 
-
         <Button
             android:id="@+id/kensaku"
             android:layout_width="87dp"
             android:layout_height="wrap_content"
             android:text="検索" />
 
-
         <Button
             android:id="@+id/kesyouhin"
             android:layout_width="385dp"
             android:layout_height="62dp"
             android:text="カテゴリから絞り込む化粧品" />
-
 
         <Button
             android:id="@+id/kaden"

@@ -22,22 +22,21 @@ public class maker extends AppCompatActivity {
         String data = intent.getStringExtra("maker");
         dai.setText(data);
 
-        LinearLayout layout = (LinearLayout) findViewById(R.id.test);
+        LinearLayout layout = (LinearLayout) findViewById(R.id.loop);
         for(int i=0;i<8;i++) {
             View view = getLayoutInflater().inflate(R.layout.kategori_sub, null);
             layout.addView(view);
-            TextView text = (TextView) view.findViewById(R.id.sub);
-            text.setText( i+1+"こ目の商品名");
+            TextView text = (TextView) view.findViewById(R.id.loop_name);
+            final String meka =("商品"+(1+i));
+            text.setText(meka);
 
             Button btn = (Button)findViewById(R.id.susumu);
-
             btn.setId(i);
-
             btn.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplication(),GPS.class);
-                    String da="商品名A";
-                    intent.putExtra("syohin",da);
+
+                    intent.putExtra("syohin",meka);
                     startActivity(intent);
                 }
             });
@@ -49,8 +48,8 @@ public class maker extends AppCompatActivity {
             public  void onClick(View v){
                 Intent intent=new Intent(getApplication(),kategori.class);
                 Intent kate_dai = getIntent();
-                String kate = kate_dai.getStringExtra("dai");
-                intent.putExtra("dai",kate);
+                String kate = kate_dai.getStringExtra("kategori");
+                intent.putExtra("kategori",kate);
                 startActivity(intent);
 
             }
@@ -67,5 +66,14 @@ public class maker extends AppCompatActivity {
 
             }
         });
+    }
+    public void home_onClick(View v) {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+    }
+
+    public void kensaku_onClick(View v) {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
     }
 }

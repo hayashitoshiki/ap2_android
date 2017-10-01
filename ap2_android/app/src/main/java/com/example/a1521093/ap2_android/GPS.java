@@ -118,11 +118,11 @@ public class GPS extends Activity implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
-        double latitude1 = location.getLatitude();
-        double longitude1 =location.getLongitude();
+        double user_latitude = location.getLatitude();
+        double user_longitude =location.getLongitude();
         Intent intent=new Intent(getApplication(),kennsakukekaActivity.class);
-        intent.putExtra("lat",latitude1);
-        intent.putExtra("lon",longitude1);
+        intent.putExtra("user_lat",user_latitude);
+        intent.putExtra("user_lon",user_longitude);
         Intent syohin = getIntent();
         String data = syohin.getStringExtra("syohin");
         intent.putExtra("syohin",data);
@@ -178,6 +178,5 @@ public class GPS extends Activity implements LocationListener {
     @Override
     public void onStop() {
         super.onStop();
-
     }
 }
