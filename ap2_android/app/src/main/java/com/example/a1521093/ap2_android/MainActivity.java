@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             public  void onClick(View v){
                 Intent intent=new Intent(getApplication(),kategori.class);
                 dai="カテゴリ：化粧品";
-                intent.putExtra("dai",dai);
+                intent.putExtra("kategori",dai);
                 startActivity(intent);
 
             }
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             public  void onClick(View v){
                 Intent intent=new Intent(getApplication(),kategori.class);
                 dai="カテゴリ：家電製品";
-                intent.putExtra("dai",dai);
+                intent.putExtra("kategori",dai);
                 startActivity(intent);
 
             }
