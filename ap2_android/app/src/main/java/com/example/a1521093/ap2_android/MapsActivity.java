@@ -20,6 +20,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private Marker miti;
+    double store_latitude ;
+    double store_longitude;
+    double user_latitude;
+    double user_longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             }
         });
+
+        Button map=(Button)findViewById(R.id.go_map);
+        map.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View v){
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.setClassName("com.google.android.apps.maps","com.google.android.maps.MapsActivity");
+                intent.setData(Uri.parse("http://maps.google.com/maps?saddr="+user_latitude+","+user_longitude+"&daddr="+store_latitude+","+store_longitude));
+                startActivity(intent);
+
+
+            }
+        });
     }
 
     @Override
@@ -54,10 +72,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //位置情報
         Intent in = getIntent();
-        double store_latitude = in.getDoubleExtra("store_lat",0);
-        double store_longitude= in.getDoubleExtra("store_lon",0);
-        double user_latitude = in.getDoubleExtra("user_lat",0);
-        double user_longitude= in.getDoubleExtra("user_lon",0);
+        store_latitude = in.getDoubleExtra("store_lat",0);
+        store_longitude= in.getDoubleExtra("store_lon",0);
+         user_latitude = in.getDoubleExtra("user_lat",0);
+         user_longitude= in.getDoubleExtra("user_lon",0);
 
         LatLng store_iti = new LatLng(store_latitude, store_longitude);       //検索結果から店舗名取得　store_name
         mMap.addMarker(new MarkerOptions().position(store_iti).title("ヤマダ電機 LABI品川大井町店"));
@@ -72,11 +90,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         CameraUpdate cUpdate = CameraUpdateFactory.newLatLngZoom( new LatLng(user_latitude, user_longitude), 14);
         mMap.moveCamera(cUpdate);
 
-        Intent intent = new Intent();
+       /* Intent intent = new Intent();
         intent.setAction(Intent.ACTION_VIEW);
         intent.setClassName("com.google.android.apps.maps","com.google.android.maps.MapsActivity");
         intent.setData(Uri.parse("http://maps.google.com/maps?saddr="+user_latitude+","+user_longitude+"&daddr="+store_latitude+","+store_longitude));
         startActivity(intent);
+*/
+    }
+    public void home_onClick(View v) {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+    }
 
+    public void kensaku_onClick(View v) {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
     }
 }
