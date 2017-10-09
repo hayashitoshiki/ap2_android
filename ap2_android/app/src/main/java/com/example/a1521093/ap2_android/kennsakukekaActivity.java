@@ -1,6 +1,7 @@
 package com.example.a1521093.ap2_android;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,6 +14,8 @@ public class kennsakukekaActivity extends AppCompatActivity {
     double store_lat=(35.605802);
     //データベースlong
     double store_lon=(139.735325);
+    double user_lat;
+    double user_lon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +23,8 @@ public class kennsakukekaActivity extends AppCompatActivity {
         setContentView(R.layout.kensakukeka);
 
         Intent intent = getIntent();
-        double user_lon=intent.getDoubleExtra("user_lon",0);
-        double user_lat = intent.getDoubleExtra("user_lat",0);
+         user_lon=intent.getDoubleExtra("user_lon",0);
+         user_lat = intent.getDoubleExtra("user_lat",0);
         double distance = getDistance(user_lat, user_lon, store_lat, store_lon );
         int kyori_A = (int)distance;
         String kyori_text =(""+kyori_A);
@@ -35,20 +38,18 @@ public class kennsakukekaActivity extends AppCompatActivity {
             text.setText(kyori_text);
             TextView dai = (TextView)view.findViewById(R.id.syouhinmei);
             dai.setText(data);
-            Button btn = (Button) findViewById(R.id.susumu);
-            btn.setId(i);
-            btn.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    Intent i = new Intent(getApplication(), MapsActivity.class);
-                    Intent in = getIntent();
-                    double user_latitude = in.getDoubleExtra("user_lat", 0);
-                    i.putExtra("user_lat", user_latitude);
-                    double user_longitude = in.getDoubleExtra("user_lon", 0);
-                    i.putExtra("user_lon", user_longitude);
-                    i.putExtra("store_lat", store_lat);
-                    i.putExtra("store_lon", store_lon);
-                    i.putExtra("syohin", data);
-                    startActivity(i);
+
+            //mapへ移動
+            Button map=(Button)findViewById(R.id.susumu);
+            map.setId(i);
+            map.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public  void onClick(View v){
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.setClassName("com.google.android.apps.maps","com.google.android.maps.MapsActivity");
+                    intent.setData(Uri.parse("http://maps.google.com/maps?saddr="+user_lat+","+user_lon+"&daddr="+store_lat+","+store_lon));
+                    startActivity(intent);
                 }
             });
         }
@@ -83,20 +84,5 @@ public class kennsakukekaActivity extends AppCompatActivity {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
-
-    public void susumu_onClick(View v) {
-        Intent i = new Intent(this, MapsActivity.class);
-        Intent in = getIntent();
-        double user_latitude = in.getDoubleExtra("user_lat",0);
-        i.putExtra("user_lat",user_latitude);
-        double user_longitude=in.getDoubleExtra("user_lon",0);
-        i.putExtra("user_lon",user_longitude);
-        i.putExtra("store_lat",store_lat);
-        i.putExtra("store_lon",store_lon);
-        String syohin = in.getStringExtra("syohin");
-        i.putExtra("syohin",syohin);
-        startActivity(i);
-    }
-
 }
 
