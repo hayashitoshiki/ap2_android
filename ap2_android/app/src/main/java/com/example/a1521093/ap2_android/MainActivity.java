@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         }
         SendEditTextValue = (Button)findViewById(R.id.kensaku);
 
-
         Button kesyo=(Button)findViewById(R.id.kesyouhin);
         kesyo.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -37,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent=new Intent(getApplication(),kategori.class);
                 dai="カテゴリ：化粧品";
                 intent.putExtra("dai",dai);
+                intent.putExtra("kategori",dai);
                 startActivity(intent);
 
             }
@@ -55,6 +55,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        sendButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View v){
+                Intent intent=new Intent(getApplication(),GPS.class);
+                EditText  SendValue = (EditText)findViewById(R.id.edittext);
+                String syohin = SendValue.getText().toString();
+                intent.putExtra("syohin",syohin);
+                startActivity(intent);
+
+            }
+        });
 
         Button ken=(Button)findViewById(R.id.kaden);
         ken.setOnClickListener(new View.OnClickListener(){
@@ -63,10 +74,38 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent=new Intent(getApplication(),kategori.class);
                 dai="カテゴリ：家電製品";
                 intent.putExtra("dai",dai);
+                intent.putExtra("kategori",dai);
                 startActivity(intent);
 
             }
         });
+
+        Button kesyohinmaker=(Button)findViewById(R.id.kesyohinmaker);
+        ken.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View v){
+                Intent intent=new Intent(getApplication(),kategori.class);
+                dai="カテゴリ：化粧品メイカー";
+                intent.putExtra("dai",dai);
+                intent.putExtra("kategori",dai);
+                startActivity(intent);
+
+            }
+        });
+
+        Button kadenmaker=(Button)findViewById(R.id.kadenmaker);
+        ken.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View v){
+                Intent intent=new Intent(getApplication(),kategori.class);
+                dai="カテゴリ：化粧品メイカー";
+                intent.putExtra("dai",dai);
+                intent.putExtra("kategori",dai);
+                startActivity(intent);
+
+            }
+        });
+
     }
     // 位置情報許可の確認
     public void checkPermission() {
