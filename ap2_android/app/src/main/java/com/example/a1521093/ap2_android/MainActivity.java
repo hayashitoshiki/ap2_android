@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button kenf=(Button)findViewById(R.id.kesyohinmaker);
-        ken.setOnClickListener(new View.OnClickListener(){
+        kenf.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
                 Intent intent=new Intent(getApplication(),maker.class);
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button kadenmaker=(Button)findViewById(R.id.kadenmaker);
-        ken.setOnClickListener(new View.OnClickListener(){
+        kadenmaker.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
                 Intent intent=new Intent(getApplication(),maker.class);
