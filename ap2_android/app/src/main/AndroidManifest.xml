@@ -35,6 +35,8 @@
         <activity android:name=".MapsActivity"/>
         <activity android:name=".SyohinItiran"
             android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name=".KensakuRoot"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
     </application>
 
 </manifest>
