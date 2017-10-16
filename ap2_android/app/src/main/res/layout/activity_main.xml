@@ -21,7 +21,7 @@
             android:gravity="center"
             android:text="Mono-Chika"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-    </>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
