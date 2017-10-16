@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -20,10 +21,10 @@
             android:gravity="center"
             android:text="Mono-Chika"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-    </LinearLayout>
+    </>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:weightSum="1">
@@ -31,7 +32,7 @@
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="214dp"
+            android:layout_height="159dp"
             android:scaleType="fitCenter"
             android:src="@mipmap/keshouhin_home" />
 
@@ -41,12 +42,6 @@
             android:layout_height="wrap_content"
             android:hint="検索"
             android:inputType="text" />
-
-        <Button
-            android:id="@+id/kensaku"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="検索" />
 
         <Button
             android:id="@+id/kensakukekka"
@@ -79,6 +74,30 @@
             android:layout_height="40dp"
             android:text="カテゴリから絞り込むメーカー家電製品" />
 
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="96dp"
+            android:layout_height="24dp"
+            android:layout_alignParentBottom="true" />
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tool_bar"
+            android:layout_width="87dp"
+            android:layout_height="39dp"
+            android:layout_alignParentTop="true"
+            android:minHeight="?attr/actionBarSize" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="185dp"
+            android:layout_height="0dp"
+            android:layout_above="@id/tab_layout"
+            android:layout_below="@id/tool_bar" />
+
 
     </LinearLayout>
+
+
 </LinearLayout>
+
+

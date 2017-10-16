@@ -42,19 +42,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button sendButton=(Button)findViewById(R.id.kensaku);
-        sendButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public  void onClick(View v){
-                Intent intent=new Intent(getApplication(),GPS.class);
-                EditText  SendValue = (EditText)findViewById(R.id.edittext);
-                String syohin = SendValue.getText().toString();
-                intent.putExtra("syohin",syohin);
-                startActivity(intent);
-
-            }
-        });
-
         Button kensakuke =(Button)findViewById(R.id.kensakukekka);
         kensakuke.setOnClickListener(new View.OnClickListener(){
             @Override
