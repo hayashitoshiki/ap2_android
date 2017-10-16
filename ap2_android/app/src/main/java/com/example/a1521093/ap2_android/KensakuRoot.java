@@ -9,36 +9,34 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.LinearLayout;
 
-public class kategori extends  AppCompatActivity {
+public class KensakuRoot extends  AppCompatActivity {
     @Override
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.kategori);
+        setContentView(R.layout.kensakuroot);
 
-        TextView title = (TextView)findViewById(R.id.kensakugamen);
+        TextView title = (TextView)findViewById(R.id.titlebar);
         Intent intent = getIntent();
-        String kategori_daimei = intent.getStringExtra("kategori");
-        title.setText(kategori_daimei+"のカテゴリ");
+        final String title_name = intent.getStringExtra("kensaku");
+        title.setText(title_name);
 
         LinearLayout layout = (LinearLayout) findViewById(R.id.loop);
         for(int i=0;i<8;i++) {
             View view = getLayoutInflater().inflate(R.layout.kategori_sub, null);
             layout.addView(view);
             TextView text = (TextView) view.findViewById(R.id.loop_name);
-            final String kategori_name =("カテゴリ"+(i+1));
-            text.setText(kategori_name);
+            final String product_name =("商品"+(i+1));
+            text.setText(product_name);
 
             Button btn = (Button)findViewById(R.id.susumu);
             btn.setId(i);
 
             btn.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Intent intent = new Intent(getApplication(),maker.class);
-                    intent.putExtra("kategori2",kategori_name);
-                    Intent kate_dai = getIntent();
-                    String kategori = kate_dai.getStringExtra("kategori");
-                    intent.putExtra("kategori",kategori);
+                    Intent intent = new Intent(getApplication(),GPS.class);
+                    intent.putExtra("syohin",product_name);
+                    intent.putExtra("kensaku",title_name);
                     startActivity(intent);
                 }
             });
@@ -50,21 +48,9 @@ public class kategori extends  AppCompatActivity {
             public  void onClick(View v){
                 Intent intent=new Intent(getApplication(),MainActivity.class);
                 startActivity(intent);
-
             }
         });
-        Button ken=(Button)findViewById(R.id.kensaku);
-        ken.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public  void onClick(View v){
-                EditText SendValue = (EditText)findViewById(R.id.kensakutext);
-                String syohin_name = SendValue.getText().toString();
-                Intent intent=new Intent(getApplication(),GPS.class);
-                intent.putExtra("syohin",syohin_name);
-                startActivity(intent);
 
-            }
-        });
     }
     public void home_onClick(View v) {
         Intent i = new Intent(this, MainActivity.class);
