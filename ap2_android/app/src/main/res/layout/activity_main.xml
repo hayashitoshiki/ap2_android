@@ -49,7 +49,6 @@
             android:layout_height="wrap_content"
             android:text="検索結果" />
 
-
         <Button
             android:id="@+id/kesyouhin"
             android:layout_width="385dp"
