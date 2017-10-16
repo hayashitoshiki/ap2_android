@@ -23,7 +23,7 @@
                 android:layout_height="92dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="38dp"
+                android:layout_marginTop="32dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -38,10 +38,10 @@
 
             <TextView
                 android:id="@+id/syouhinmei"
-                android:layout_width="184dp"
-                android:layout_height="24dp"
+                android:layout_width="181dp"
+                android:layout_height="21dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
@@ -49,7 +49,7 @@
                 android:maxLines="1"
                 android:text="商品名"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                app:layout_constraintHorizontal_bias="0.574"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toRightOf="@+id/imageView"
                 app:layout_constraintRight_toLeftOf="@+id/susumu"
                 app:layout_constraintTop_toTopOf="parent"
@@ -126,16 +126,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:text="残り"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toRightOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/genzaitikara"
-                app:layout_constraintVertical_bias="0.476" />
+                app:layout_constraintVertical_bias="0.4" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/kosuu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
@@ -153,7 +153,7 @@
                 app:layout_constraintVertical_bias="0.454" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/ko"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
@@ -163,7 +163,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@android:color/holo_red_light"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/textView2"
+                app:layout_constraintLeft_toRightOf="@+id/kosuu"
                 app:layout_constraintTop_toBottomOf="@+id/m"
                 app:layout_constraintVertical_bias="0.454" />
 
@@ -171,13 +171,14 @@
                 android:id="@+id/checkedTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="40dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="45dp"
                 android:layout_marginTop="16dp"
                 android:text="地図を見る"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:layout_constraintVertical_bias="0.538" />
 
             <TextView
                 android:id="@+id/zyusyo"
@@ -187,7 +188,9 @@
                 android:layout_marginTop="16dp"
                 android:text="東京都杉並区2丁目２－２－２"
                 app:layout_constraintRight_toLeftOf="@+id/susumu"
-                app:layout_constraintTop_toBottomOf="@+id/syouhinmei" />
+                app:layout_constraintTop_toBottomOf="@+id/syouhinmei"
+                app:layout_constraintLeft_toRightOf="@+id/imageView"
+                android:layout_marginLeft="8dp" />
         </android.support.constraint.ConstraintLayout>
     </RelativeLayout>
 
