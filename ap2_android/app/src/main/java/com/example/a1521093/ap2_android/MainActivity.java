@@ -42,11 +42,35 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button sendButton=(Button)findViewById(R.id.kensaku);
+        Button kesyoumaker=(Button)findViewById(R.id.kesyohinmaker);
+        kesyoumaker.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View v){
+                Intent intent=new Intent(getApplication(),maker.class);
+                dai="カテゴリ：化粧品";
+                intent.putExtra("dai",dai);
+                startActivity(intent);
+
+            }
+        });
+
+        Button kadenmaker=(Button)findViewById(R.id.kadenmaker);
+        kadenmaker.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View v){
+                Intent intent=new Intent(getApplication(),maker.class);
+                dai="カテゴリ：化粧品";
+                intent.putExtra("dai",dai);
+                startActivity(intent);
+
+            }
+        });
+
+        Button sendButton=(Button)findViewById(R.id.kensakukekka);
         sendButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
-                Intent intent=new Intent(getApplication(),GPS.class);
+                Intent intent=new Intent(getApplication(),KensakuRoot.class);
                 EditText  SendValue = (EditText)findViewById(R.id.edittext);
                 String syohin = SendValue.getText().toString();
                 intent.putExtra("syohin",syohin);
