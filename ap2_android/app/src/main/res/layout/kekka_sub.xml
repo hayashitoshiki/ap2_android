@@ -171,13 +171,13 @@
                 android:id="@+id/zyusyo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="16dp"
                 android:text="東京都杉並区2丁目２－２－２"
-                app:layout_constraintRight_toLeftOf="@+id/susumu"
-                app:layout_constraintTop_toBottomOf="@+id/syouhinmei"
                 app:layout_constraintLeft_toRightOf="@+id/imageView"
-                android:layout_marginLeft="8dp" />
+                app:layout_constraintRight_toLeftOf="@+id/susumu"
+                app:layout_constraintTop_toBottomOf="@+id/syouhinmei" />
 
             <Button
                 android:id="@+id/tizu"
