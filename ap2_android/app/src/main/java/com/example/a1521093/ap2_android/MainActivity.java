@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-
     Button SendEditTextValue;
     private final int REQUEST_PERMISSION = 1000;
     String dai;
