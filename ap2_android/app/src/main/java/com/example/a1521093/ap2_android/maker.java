@@ -19,24 +19,26 @@ public class maker extends AppCompatActivity {
 
         TextView dai = (TextView)findViewById(R.id.kensakugamen);
         Intent intent = getIntent();
-        String data = intent.getStringExtra("maker");
-        dai.setText(data);
+        final String data = intent.getStringExtra("kategori2");
+        final String daimei = intent.getStringExtra("kategori");
+        dai.setText(data+"のメーカー");
 
         LinearLayout layout = (LinearLayout) findViewById(R.id.loop);
         for(int i=0;i<8;i++) {
             View view = getLayoutInflater().inflate(R.layout.kategori_sub, null);
             layout.addView(view);
             TextView text = (TextView) view.findViewById(R.id.loop_name);
-            final String meka =("商品"+(1+i));
+            final String meka =("メーカー"+(1+i));
             text.setText(meka);
 
             Button btn = (Button)findViewById(R.id.susumu);
             btn.setId(i);
             btn.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Intent intent = new Intent(getApplication(),GPS.class);
-
-                    intent.putExtra("syohin",meka);
+                    Intent intent = new Intent(getApplication(),SyohinItiran.class);
+                    intent.putExtra("kategori2",data);
+                    intent.putExtra("maker",meka);
+                    intent.putExtra("kategori",daimei);
                     startActivity(intent);
                 }
             });

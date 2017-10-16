@@ -9,36 +9,37 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.LinearLayout;
 
-public class kategori extends  AppCompatActivity {
+public class SyohinItiran extends  AppCompatActivity {
     @Override
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.kategori);
+        setContentView(R.layout.syohinnitiran);
 
         TextView title = (TextView)findViewById(R.id.kensakugamen);
         Intent intent = getIntent();
-        String kategori_daimei = intent.getStringExtra("kategori");
-        title.setText(kategori_daimei+"のカテゴリ");
+        String title_name = intent.getStringExtra("maker");
+        String data = intent.getStringExtra("kategori2");
+        title.setText(data+"の"+title_name);
 
         LinearLayout layout = (LinearLayout) findViewById(R.id.loop);
         for(int i=0;i<8;i++) {
             View view = getLayoutInflater().inflate(R.layout.kategori_sub, null);
             layout.addView(view);
             TextView text = (TextView) view.findViewById(R.id.loop_name);
-            final String kategori_name =("カテゴリ"+(i+1));
-            text.setText(kategori_name);
+            final String product_name =("商品"+(i+1));
+            text.setText(product_name);
 
             Button btn = (Button)findViewById(R.id.susumu);
             btn.setId(i);
 
             btn.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Intent intent = new Intent(getApplication(),maker.class);
-                    intent.putExtra("kategori2",kategori_name);
+                    Intent intent = new Intent(getApplication(),GPS.class);
+                    intent.putExtra("syohin",product_name);
                     Intent kate_dai = getIntent();
-                    String kategori = kate_dai.getStringExtra("kategori");
-                    intent.putExtra("kategori",kategori);
+                    String kategori = kate_dai.getStringExtra("maker");
+                    intent.putExtra("maker",kategori);
                     startActivity(intent);
                 }
             });
@@ -48,7 +49,12 @@ public class kategori extends  AppCompatActivity {
         sendButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
-                Intent intent=new Intent(getApplication(),MainActivity.class);
+                Intent intent=new Intent(getApplication(),maker.class);
+                Intent kate_dai = getIntent();
+                String kate = kate_dai.getStringExtra("kategori");
+                intent.putExtra("kategori",kate);
+                String data = kate_dai.getStringExtra("kategori2");
+                intent.putExtra("kategori2",data);
                 startActivity(intent);
 
             }

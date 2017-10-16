@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public  void onClick(View v){
                 Intent intent=new Intent(getApplication(),kategori.class);
-                dai="カテゴリ：化粧品";
+                dai="化粧品";
                 intent.putExtra("kategori",dai);
                 startActivity(intent);
 
@@ -46,10 +46,10 @@ public class MainActivity extends AppCompatActivity {
         sendButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
-                Intent intent=new Intent(getApplication(),GPS.class);
+                Intent intent=new Intent(getApplication(),KensakuRoot.class);
                 EditText  SendValue = (EditText)findViewById(R.id.edittext);
                 String syohin = SendValue.getText().toString();
-                intent.putExtra("syohin",syohin);
+                intent.putExtra("kensaku",syohin);
                 startActivity(intent);
 
             }
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public  void onClick(View v){
                 Intent intent=new Intent(getApplication(),kategori.class);
-                dai="カテゴリ：家電製品";
+                dai="家電製品";
                 intent.putExtra("kategori",dai);
                 startActivity(intent);
 
