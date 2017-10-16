@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button sendButton=(Button)findViewById(R.id.kensaku);
+        Button sendButton=(Button)findViewById(R.id.kensakukekka);
         sendButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
