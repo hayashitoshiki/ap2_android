@@ -19,7 +19,7 @@ public class maker extends AppCompatActivity {
 
         TextView dai = (TextView)findViewById(R.id.kensakugamen);
         Intent intent = getIntent();
-        final String data = intent.getStringExtra("kategori2");
+        final String data = intent.getStringExtra("maker_name");
         final String daimei = intent.getStringExtra("kategori");
         dai.setText(data+"のメーカー");
 
@@ -36,7 +36,7 @@ public class maker extends AppCompatActivity {
             btn.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplication(),SyohinItiran.class);
-                    intent.putExtra("kategori2",data);
+                    intent.putExtra("maker_name",data);
                     intent.putExtra("maker",meka);
                     intent.putExtra("kategori",daimei);
                     startActivity(intent);
@@ -50,8 +50,8 @@ public class maker extends AppCompatActivity {
             public  void onClick(View v){
                 Intent intent=new Intent(getApplication(),kategori.class);
                 Intent kate_dai = getIntent();
-                String kate = kate_dai.getStringExtra("kategori");
-                intent.putExtra("kategori",kate);
+                String kate = kate_dai.getStringExtra("dai");
+                intent.putExtra("dai",kate);
                 startActivity(intent);
 
             }
