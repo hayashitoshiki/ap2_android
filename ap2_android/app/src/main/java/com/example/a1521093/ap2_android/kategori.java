@@ -5,74 +5,125 @@ import android.view.View;
 import android.widget.Button;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.LinearLayout;
+import android.util.Log;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import com.example.a1521093.ap2_android.Product;
+import java.util.ArrayList;
+import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import rx.Subscription;
 
-public class kategori extends  AppCompatActivity {
+public class kategori extends  AppCompatActivity implements AdapterView.OnItemClickListener{
+    private ApiService ApiService;
+    private Subscription subscription;
+    private TopListAdapter topListAdapter;
+    ArrayAdapter<Product> adapter;
+    private Product product;
+    ListView mListView;
+    String kategori_name;
+
+    protected String[] scenes=new String[100];
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kategori);
 
+        //ArrayAdapterオブジェクト生成
+        adapter=new ArrayAdapter<Product>(kategori.this, android.R.layout.simple_list_item_1);
+        topListAdapter = new TopListAdapter(getApplicationContext());
+        mListView = (ListView) findViewById(R.id.listView);
+        ApiService = Provider.provideApiService();
+        getData();
+
+        //サンプルのListViewに独自で造ったListViewの適用
+        mListView.setAdapter(topListAdapter);
+        mListView.setOnItemClickListener(this);
+
         TextView title = (TextView)findViewById(R.id.kensakugamen);
         Intent intent = getIntent();
-        String kategori_daimei = intent.getStringExtra("kategori");
-        title.setText(kategori_daimei+"のカテゴリ");
-
-        LinearLayout layout = (LinearLayout) findViewById(R.id.loop);
-        for(int i=0;i<8;i++) {
-            View view = getLayoutInflater().inflate(R.layout.kategori_sub, null);
-            layout.addView(view);
-            TextView text = (TextView) view.findViewById(R.id.loop_name);
-            final String kategori_name =("カテゴリ"+(i+1));
-            text.setText(kategori_name);
-
-            Button btn = (Button)findViewById(R.id.susumu);
-            btn.setId(i);
-
-            btn.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    Intent intent = new Intent(getApplication(),maker.class);
-                    intent.putExtra("kategori2",kategori_name);
-                    Intent kate_dai = getIntent();
-                    String kategori = kate_dai.getStringExtra("kategori");
-                    intent.putExtra("kategori",kategori);
-                    startActivity(intent);
-                }
-            });
+       kategori_name = intent.getStringExtra("dai");
+        title.setText(kategori_name);
         }
 
-        Button sendButton=(Button)findViewById(R.id.modoru);
-        sendButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public  void onClick(View v){
-                Intent intent=new Intent(getApplication(),MainActivity.class);
-                startActivity(intent);
-
-            }
-        });
-        Button ken=(Button)findViewById(R.id.kensaku);
-        ken.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public  void onClick(View v){
-                EditText SendValue = (EditText)findViewById(R.id.kensakutext);
-                String syohin_name = SendValue.getText().toString();
-                Intent intent=new Intent(getApplication(),GPS.class);
-                intent.putExtra("syohin",syohin_name);
-                startActivity(intent);
-
-            }
-        });
-    }
     public void home_onClick(View v) {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
 
-    public void kensaku_onClick(View v) {
+    public void modoru_onClick(View v) {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+
+        Intent intent = new Intent(this, maker.class);
+        // clickされたpositionのtextとphotoのID
+        String selectedText = scenes[position];
+        // インテントにセット
+        intent.putExtra("maker_name", selectedText);
+        intent.putExtra("dai",kategori_name);
+        // Activity をスイッチする
+        startActivity(intent);
+    }
+
+    private void getData() {
+            //仮でint型で１と置く。月曜marge時に変更。
+        int i=1;
+        final ArrayList<Product> aProductList = new ArrayList<>();
+                                                //クエリを投げる
+        Call<List<Product>> call = ApiService.items("sub_categories.json?main_category_id="+i);
+        try {
+            call.enqueue(new Callback<List<Product>>() {
+                @Override
+                                            //取得成功
+                public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+//                    Log.d("MainActivity", response.body().toString());
+                    Log.d("MainActivity", "call onResponse");
+                    aProductList.addAll(response.body());
+                    Log.d("MainActivity", aProductList.toString());
+                    updateContainer(aProductList);
+                }
+
+                @Override                           //取得失敗
+                public void onFailure(Call<List<Product>> call, Throwable t) {
+                    Log.d("MainActivity", "call onFailure");
+                    Log.d("MainActivity", t.getMessage());
+                    Log.d("MainActivity", aProductList.toString());
+                    updateContainer(aProductList);
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            updateContainer(aProductList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+                            //ListViewに値入れるクラス
+    private void updateContainer(ArrayList<Product> aProductList) {
+
+        int count=0;
+        for (Product product : aProductList) {
+            Log.d("MainActivity", product.getname());
+                    //遷移時に投げる用のテキスト取得と格納
+            scenes[count]=(product.getname());
+            adapter.add(product);
+            count++;
+        }
+                            //指定のListViewに格納
+        topListAdapter.setDatas(aProductList);
+        topListAdapter.notifyDataSetChanged();
+    }
 }
+
