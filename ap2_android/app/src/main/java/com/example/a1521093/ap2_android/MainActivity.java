@@ -5,24 +5,35 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TabHost;
+import android.widget.TabHost.TabSpec;
+import android.widget.TabHost.TabContentFactory;
+import android.widget.TabWidget;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     Button SendEditTextValue;
     private final int REQUEST_PERMISSION = 1000;
+    private TabHost mTabHost;
     String dai;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mTabHost = (TabHost) findViewById(android.R.id.tabhost);
+        mTabHost.setup();
+        
         if(Build.VERSION.SDK_INT >= 23){
             checkPermission();
         }
@@ -41,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button kesyoumaker=(Button)findViewById(R.id.kesyohinmaker);
+       /* Button kesyoumaker=(Button)findViewById(R.id.kesyohinmaker);
         kesyoumaker.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
@@ -64,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        */
 
         Button sendButton=(Button)findViewById(R.id.kensakukekka);
         sendButton.setOnClickListener(new View.OnClickListener(){
@@ -88,6 +100,39 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("dai",dai);
                 startActivity(intent);
 
+            }
+        });
+
+        LinearLayout tab1=(LinearLayout)findViewById(R.id.tab1);
+        tab1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View v){
+                Intent intent=new Intent(getApplication(),kategori.class);
+                dai="検索" ;
+                intent.putExtra("dai",dai);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout tab2=(LinearLayout)findViewById(R.id.tab1);
+        tab2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View v){
+                Intent intent=new Intent(getApplication(),kategori.class);
+                dai="ポイント";
+                intent.putExtra("dai",dai);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout tab3=(LinearLayout)findViewById(R.id.tab1);
+        tab3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View v){
+                Intent intent=new Intent(getApplication(),kategori.class);
+                dai="アカウント";
+                intent.putExtra("dai",dai);
+                startActivity(intent);
             }
         });
     }
@@ -138,14 +183,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-   /* public void kensaku_onClick(View v) {
+    /* public void kensaku_onClick(View v) {
         intent = new Intent(getApplicationContext(), GPS.class);
         intent.putExtra("EdiTtEXTvALUE", SendValue.getText().toString());
         startActivity(intent);
 
     }
-
-
 
     public void keshouhin_onClick(View v) {
         Intent i = new Intent(this, kategori.class);

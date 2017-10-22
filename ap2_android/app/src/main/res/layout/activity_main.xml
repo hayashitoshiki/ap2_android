@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:background="#D3D3D3"
             android:gravity="center"
-            android:text="Mono-Chika"
+            android:text="検索"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
     </LinearLayout>
 
@@ -56,24 +56,61 @@
             android:text="カテゴリから絞り込む化粧品" />
 
         <Button
-            android:id="@+id/kesyohinmaker"
-            android:layout_width="385dp"
-            android:layout_height="40dp"
-            android:text="カテゴリから絞り込むメーカー化粧品" />
-
-        <Button
             android:id="@+id/kaden"
             android:layout_width="385dp"
             android:layout_height="40dp"
             android:text="カテゴリから絞り込む家電製品" />
 
-        <Button
-            android:id="@+id/kadenmaker"
-            android:layout_width="385dp"
-            android:layout_height="40dp"
-            android:text="カテゴリから絞り込むメーカー家電製品" />
+        <TabHost
+            android:id="@android:id/tabhost"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="vertical">
+
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
+                <FrameLayout
+                    android:id="@android:id/tabcontent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/tab1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tab2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tab3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+                </FrameLayout>
+            </LinearLayout>
+        </TabHost>
+
 
     </LinearLayout>
+
 
 
 </LinearLayout>
