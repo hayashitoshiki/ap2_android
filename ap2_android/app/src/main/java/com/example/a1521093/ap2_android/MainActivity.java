@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button SendEditTextValue;
     private final int REQUEST_PERMISSION = 1000;
-    private TabHost mTabHost;
+
     String dai;
     @Override
 
@@ -31,9 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTabHost = (TabHost) findViewById(android.R.id.tabhost);
-        mTabHost.setup();
-        
+
         if(Build.VERSION.SDK_INT >= 23){
             checkPermission();
         }
@@ -103,38 +101,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        LinearLayout tab1=(LinearLayout)findViewById(R.id.tab1);
-        tab1.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public  void onClick(View v){
-                Intent intent=new Intent(getApplication(),kategori.class);
-                dai="検索" ;
-                intent.putExtra("dai",dai);
-                startActivity(intent);
-            }
-        });
-
-        LinearLayout tab2=(LinearLayout)findViewById(R.id.tab1);
-        tab2.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public  void onClick(View v){
-                Intent intent=new Intent(getApplication(),kategori.class);
-                dai="ポイント";
-                intent.putExtra("dai",dai);
-                startActivity(intent);
-            }
-        });
-
-        LinearLayout tab3=(LinearLayout)findViewById(R.id.tab1);
-        tab3.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public  void onClick(View v){
-                Intent intent=new Intent(getApplication(),kategori.class);
-                dai="アカウント";
-                intent.putExtra("dai",dai);
-                startActivity(intent);
-            }
-        });
     }
     // 位置情報許可の確認
     public void checkPermission() {
