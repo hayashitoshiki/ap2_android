@@ -30,9 +30,7 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
     protected int[] product_id = new int[100];
     protected String[] scenes=new String[100];
 
-
     @Override
-
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.syohinnitiran);
@@ -53,15 +51,9 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
         mListView = (ListView) findViewById(R.id.listView);
         ApiService = Provider.provideApiService();
         getData();
-
         //サンプルのListViewに独自で造ったListViewの適用
         mListView.setAdapter(topListAdapter);
         mListView.setOnItemClickListener(this);
-
-
-
-
-
     }
     public void modoru_onClick(View v) {
         Intent intent=new Intent(getApplication(),maker.class);
@@ -98,24 +90,20 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
     }
 
     private void getData() {
-
         final ArrayList<Product> aProductList = new ArrayList<>();
-        //クエリを投げる
-
         Log.d("MainActivity", sub_category_name+"メーカーID="+ maker_id+"サブカテゴリID="+sub_category_id);
+                                                                        //クエリを投げる
         Call<List<Product>> call = ApiService.items("products.json?sub_category_id="+sub_category_id+"&maker_id="+maker_id);
         try {
             call.enqueue(new Callback<List<Product>>() {
                 @Override
                 //取得成功
                 public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-//                    Log.d("MainActivity", response.body().toString());
                     Log.d("MainActivity", "call onResponse");
                     aProductList.addAll(response.body());
                     Log.d("MainActivity", aProductList.toString());
                     updateContainer(aProductList);
                 }
-
                 @Override                           //取得失敗
                 public void onFailure(Call<List<Product>> call, Throwable t) {
                     Log.d("MainActivity", "call onFailure");
@@ -149,5 +137,4 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
         topListAdapter.setDatas(aProductList);
         topListAdapter.notifyDataSetChanged();
     }
-
 }
