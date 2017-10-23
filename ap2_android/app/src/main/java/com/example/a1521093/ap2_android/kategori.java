@@ -2,7 +2,6 @@ package com.example.a1521093.ap2_android;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.widget.TextView;
@@ -16,17 +15,17 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import rx.Subscription;
 
 public class kategori extends  AppCompatActivity implements AdapterView.OnItemClickListener{
     private ApiService ApiService;
-    private Subscription subscription;
     private TopListAdapter topListAdapter;
     ArrayAdapter<Product> adapter;
-    private Product product;
+     Product product;
     ListView mListView;
     String kategori_name;
 
+
+    protected int[] sub_category_id = new int[100];
     protected String[] scenes=new String[100];
 
     @Override
@@ -67,10 +66,12 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
 
         Intent intent = new Intent(this, maker.class);
         // clickされたpositionのtextとphotoのID
-        String selectedText = scenes[position];
+        String Item = scenes[position];
+        int ID = sub_category_id[position];
         // インテントにセット
-        intent.putExtra("maker_name", selectedText);
         intent.putExtra("dai",kategori_name);
+        intent.putExtra("sub_category_name", Item);
+        intent.putExtra("sub_category_id",ID );
         // Activity をスイッチする
         startActivity(intent);
     }
@@ -86,7 +87,6 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
                 @Override
                                             //取得成功
                 public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-//                    Log.d("MainActivity", response.body().toString());
                     Log.d("MainActivity", "call onResponse");
                     aProductList.addAll(response.body());
                     Log.d("MainActivity", aProductList.toString());
@@ -115,9 +115,10 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
 
         int count=0;
         for (Product product : aProductList) {
-            Log.d("MainActivity", product.getname());
+            Log.d("サブカテゴリ", product.getname()+"カウント="+ product.getid());
                     //遷移時に投げる用のテキスト取得と格納
             scenes[count]=(product.getname());
+            sub_category_id[count]=(product.getid());
             adapter.add(product);
             count++;
         }
