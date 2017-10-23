@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
@@ -98,6 +99,42 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("dai",dai);
                 startActivity(intent);
 
+            }
+        });
+
+        ImageButton homes = (ImageButton) findViewById(R.id.homebutton);
+        homes.setOnClickListener(new View.OnClickListener() {
+            /** ボタンをクリックした時に呼ばれる */
+            @Override
+            public void onClick(View v) {
+                // ここに処理を記述する
+                Intent intent=new Intent(getApplication(),kategori.class);
+                intent.putExtra("dai",dai);
+                startActivity(intent);
+            }
+        });
+
+        ImageButton points = (ImageButton) findViewById(R.id.coupon_button);
+        homes.setOnClickListener(new View.OnClickListener() {
+            /** ボタンをクリックした時に呼ばれる */
+            @Override
+            public void onClick(View v) {
+                // ここに処理を記述する
+                Intent intent=new Intent(getApplication(),maker.class);
+                intent.putExtra("dai",dai);
+                startActivity(intent);
+            }
+        });
+
+        ImageButton acounts = (ImageButton) findViewById(R.id.account_button);
+        homes.setOnClickListener(new View.OnClickListener() {
+            /** ボタンをクリックした時に呼ばれる */
+            @Override
+            public void onClick(View v) {
+                // ここに処理を記述する
+                Intent intent=new Intent(getApplication(),kategori.class);
+                intent.putExtra("dai",dai);
+                startActivity(intent);
             }
         });
 
