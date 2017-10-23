@@ -23,6 +23,7 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
      Product product;
     ListView mListView;
     String kategori_name;
+    int main_category_id;
 
 
     protected int[] sub_category_id = new int[100];
@@ -39,16 +40,20 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
         topListAdapter = new TopListAdapter(getApplicationContext());
         mListView = (ListView) findViewById(R.id.listView);
         ApiService = Provider.provideApiService();
+
+        TextView title = (TextView)findViewById(R.id.kensakugamen);
+        Intent intent = getIntent();
+        kategori_name = intent.getStringExtra("dai");
+        main_category_id = intent.getIntExtra("main_category_id",0);
+        title.setText(kategori_name);
+
         getData();
 
         //サンプルのListViewに独自で造ったListViewの適用
         mListView.setAdapter(topListAdapter);
         mListView.setOnItemClickListener(this);
 
-        TextView title = (TextView)findViewById(R.id.kensakugamen);
-        Intent intent = getIntent();
-       kategori_name = intent.getStringExtra("dai");
-        title.setText(kategori_name);
+
         }
 
     public void home_onClick(View v) {
@@ -72,16 +77,17 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
         intent.putExtra("dai",kategori_name);
         intent.putExtra("sub_category_name", Item);
         intent.putExtra("sub_category_id",ID );
+        intent.putExtra("main_category_id",main_category_id );
         // Activity をスイッチする
         startActivity(intent);
     }
 
     private void getData() {
             //仮でint型で１と置く。月曜marge時に変更。
-        int i=1;
+
         final ArrayList<Product> aProductList = new ArrayList<>();
                                                 //クエリを投げる
-        Call<List<Product>> call = ApiService.items("sub_categories.json?main_category_id="+i);
+        Call<List<Product>> call = ApiService.items("sub_categories.json?main_category_id="+main_category_id);
         try {
             call.enqueue(new Callback<List<Product>>() {
                 @Override

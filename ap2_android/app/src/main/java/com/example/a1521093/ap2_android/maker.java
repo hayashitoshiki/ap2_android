@@ -32,6 +32,7 @@ public class maker extends AppCompatActivity implements AdapterView.OnItemClickL
     String sub_category_name;
     int sub_category_id;
     String main_category_name;
+    int main_category_id;
 
     protected int[] maker_id = new int[100];
     protected String[] scenes=new String[100];
@@ -47,6 +48,7 @@ public class maker extends AppCompatActivity implements AdapterView.OnItemClickL
         sub_category_name = intent.getStringExtra("sub_category_name");
         sub_category_id = intent.getIntExtra("sub_category_id",0);
         main_category_name = intent.getStringExtra("dai");
+        main_category_id = intent.getIntExtra("main_category_id",0);
         Log.d("MainActivity", "カテゴリ名==="+main_category_name);
         title.setText(sub_category_name+"のメーカー");
 
@@ -70,6 +72,7 @@ public class maker extends AppCompatActivity implements AdapterView.OnItemClickL
     public void modoru_onClick(View v) {
         Intent intent=new Intent(getApplication(),kategori.class);
         intent.putExtra("dai",main_category_name);
+        intent.putExtra("main_category_id",main_category_id );
         startActivity(intent);
     }
 
@@ -83,6 +86,7 @@ public class maker extends AppCompatActivity implements AdapterView.OnItemClickL
         int ID = maker_id[position];
         // インテントにセット
         intent.putExtra("dai",main_category_name);
+        intent.putExtra("main_category_id",main_category_id );
         intent.putExtra("sub_category_name",sub_category_name);
         intent.putExtra("Sub_category_id",sub_category_id );
         intent.putExtra("maker_name", Item);

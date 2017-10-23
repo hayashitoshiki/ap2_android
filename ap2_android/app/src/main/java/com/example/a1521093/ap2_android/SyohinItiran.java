@@ -67,7 +67,9 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
         Intent intent=new Intent(getApplication(),maker.class);
         Intent kate_dai = getIntent();
         String sub_category_name = kate_dai.getStringExtra("sub_category_name");
+        int main_category_id = kate_dai.getIntExtra("main_category_id",0);
         intent.putExtra("dai",main_category_name);
+        intent.putExtra("main_category_id",main_category_id );
         intent.putExtra("sub_category_name",sub_category_name);
         intent.putExtra("sub_category_id",sub_category_id );
         startActivity(intent);
