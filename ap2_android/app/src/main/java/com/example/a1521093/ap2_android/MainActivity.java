@@ -5,24 +5,34 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TabHost;
+import android.widget.TabHost.TabSpec;
+import android.widget.TabHost.TabContentFactory;
+import android.widget.TabWidget;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     Button SendEditTextValue;
     private final int REQUEST_PERMISSION = 1000;
+
     String dai;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         if(Build.VERSION.SDK_INT >= 23){
             checkPermission();
         }
@@ -41,30 +51,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-<<<<<<<<< Temporary merge branch 1
-        Button kesyoumaker=(Button)findViewById(R.id.kesyohinmaker);
+       /* Button kesyoumaker=(Button)findViewById(R.id.kesyohinmaker);
         kesyoumaker.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
                 Intent intent=new Intent(getApplication(),maker.class);
                 dai="カテゴリ：化粧品";
                 intent.putExtra("dai",dai);
-=========
-        Button sendButton=(Button)findViewById(R.id.kensakukekka);
-        sendButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public  void onClick(View v){
-                Intent intent=new Intent(getApplication(),GPS.class);
-                EditText  SendValue = (EditText)findViewById(R.id.edittext);
-                String syohin = SendValue.getText().toString();
-                intent.putExtra("syohin",syohin);
->>>>>>>>> Temporary merge branch 2
                 startActivity(intent);
 
             }
         });
 
-<<<<<<<<< Temporary merge branch 1
         Button kadenmaker=(Button)findViewById(R.id.kadenmaker);
         kadenmaker.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -76,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        */
 
         Button sendButton=(Button)findViewById(R.id.kensakukekka);
         sendButton.setOnClickListener(new View.OnClickListener(){
@@ -85,21 +84,10 @@ public class MainActivity extends AppCompatActivity {
                 EditText  SendValue = (EditText)findViewById(R.id.edittext);
                 String syohin = SendValue.getText().toString();
                 intent.putExtra("syohin",syohin);
-=========
-
-        Button ken=(Button)findViewById(R.id.kaden);
-        ken.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public  void onClick(View v){
-                Intent intent=new Intent(getApplication(),kategori.class);
-                dai="カテゴリ：家電製品";
-                intent.putExtra("dai",dai);
->>>>>>>>> Temporary merge branch 2
                 startActivity(intent);
 
             }
         });
-<<<<<<<<< Temporary merge branch 1
 
 
         Button ken=(Button)findViewById(R.id.kaden);
@@ -113,8 +101,43 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-=========
->>>>>>>>> Temporary merge branch 2
+
+        ImageButton homes = (ImageButton) findViewById(R.id.homebutton);
+        homes.setOnClickListener(new View.OnClickListener() {
+            /** ボタンをクリックした時に呼ばれる */
+            @Override
+            public void onClick(View v) {
+                // ここに処理を記述する
+                Intent intent=new Intent(getApplication(),kategori.class);
+                intent.putExtra("dai",dai);
+                startActivity(intent);
+            }
+        });
+
+        ImageButton points = (ImageButton) findViewById(R.id.coupon_button);
+        homes.setOnClickListener(new View.OnClickListener() {
+            /** ボタンをクリックした時に呼ばれる */
+            @Override
+            public void onClick(View v) {
+                // ここに処理を記述する
+                Intent intent=new Intent(getApplication(),maker.class);
+                intent.putExtra("dai",dai);
+                startActivity(intent);
+            }
+        });
+
+        ImageButton acounts = (ImageButton) findViewById(R.id.account_button);
+        homes.setOnClickListener(new View.OnClickListener() {
+            /** ボタンをクリックした時に呼ばれる */
+            @Override
+            public void onClick(View v) {
+                // ここに処理を記述する
+                Intent intent=new Intent(getApplication(),kategori.class);
+                intent.putExtra("dai",dai);
+                startActivity(intent);
+            }
+        });
+
     }
     // 位置情報許可の確認
     public void checkPermission() {
@@ -163,14 +186,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-   /* public void kensaku_onClick(View v) {
+    /* public void kensaku_onClick(View v) {
         intent = new Intent(getApplicationContext(), GPS.class);
         intent.putExtra("EdiTtEXTvALUE", SendValue.getText().toString());
         startActivity(intent);
 
     }
-
-
 
     public void keshouhin_onClick(View v) {
         Intent i = new Intent(this, kategori.class);
