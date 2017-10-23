@@ -80,16 +80,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#D3D3D3"
+        android:background="#00000"
         android:orientation="horizontal">
+
+
 
         <ImageButton
             android:id="@+id/homebutton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:srcCompat="?android:attr/actionModeWebSearchDrawable"
-            android:onClick="home_onClick" />
+            app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
 
         <ImageButton
             android:id="@+id/coupon_button"
