@@ -31,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         if(Build.VERSION.SDK_INT >= 23){
             checkPermission();
         }
@@ -46,35 +44,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent=new Intent(getApplication(),kategori.class);
                 dai="カテゴリ：化粧品";
                 intent.putExtra("dai",dai);
+                int id=2;
+                intent.putExtra("main_category_id",id);
                 startActivity(intent);
-
             }
         });
-
-       /* Button kesyoumaker=(Button)findViewById(R.id.kesyohinmaker);
-        kesyoumaker.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public  void onClick(View v){
-                Intent intent=new Intent(getApplication(),maker.class);
-                dai="カテゴリ：化粧品";
-                intent.putExtra("dai",dai);
-                startActivity(intent);
-
-            }
-        });
-
-        Button kadenmaker=(Button)findViewById(R.id.kadenmaker);
-        kadenmaker.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public  void onClick(View v){
-                Intent intent=new Intent(getApplication(),maker.class);
-                dai="カテゴリ：化粧品";
-                intent.putExtra("dai",dai);
-                startActivity(intent);
-
-            }
-        });
-        */
 
         Button sendButton=(Button)findViewById(R.id.kensakukekka);
         sendButton.setOnClickListener(new View.OnClickListener(){
@@ -85,10 +59,8 @@ public class MainActivity extends AppCompatActivity {
                 String syohin = SendValue.getText().toString();
                 intent.putExtra("syohin",syohin);
                 startActivity(intent);
-
             }
         });
-
 
         Button ken=(Button)findViewById(R.id.kaden);
         ken.setOnClickListener(new View.OnClickListener(){
@@ -97,46 +69,47 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent=new Intent(getApplication(),kategori.class);
                 dai="カテゴリ：家電製品";
                 intent.putExtra("dai",dai);
+                int id=1;
+                intent.putExtra("main_category_id",id);
                 startActivity(intent);
-
             }
         });
-
-        ImageButton homes = (ImageButton) findViewById(R.id.homebutton);
-        homes.setOnClickListener(new View.OnClickListener() {
+                 //↓必要なし
+       // ImageButton homes = (ImageButton) findViewById(R.id.homebutton);
+       // homes.setOnClickListener(new View.OnClickListener() {
             /** ボタンをクリックした時に呼ばれる */
-            @Override
-            public void onClick(View v) {
-                // ここに処理を記述する
-                Intent intent=new Intent(getApplication(),kategori.class);
-                intent.putExtra("dai",dai);
-                startActivity(intent);
-            }
-        });
-
-        ImageButton points = (ImageButton) findViewById(R.id.coupon_button);
-        homes.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+         //   public void onClick(View v) {
+          //      // ここに処理を記述する
+           //     Intent intent=new Intent(getApplication(),MainActivity.class);
+            //    intent.putExtra("dai",dai);
+             //   startActivity(intent);
+           // }
+       // });
+                             //今はなし
+        //ImageButton points = (ImageButton) findViewById(R.id.coupon_button);
+        //points.setOnClickListener(new View.OnClickListener() {
             /** ボタンをクリックした時に呼ばれる */
-            @Override
-            public void onClick(View v) {
+          //  @Override
+           // public void onClick(View v) {
                 // ここに処理を記述する
-                Intent intent=new Intent(getApplication(),maker.class);
-                intent.putExtra("dai",dai);
-                startActivity(intent);
-            }
-        });
+           //     Intent intent=new Intent(getApplication(),maker.class);
+           //     intent.putExtra("dai",dai);
+           //     startActivity(intent);
+           // }
+       // });
 
-        ImageButton acounts = (ImageButton) findViewById(R.id.account_button);
-        homes.setOnClickListener(new View.OnClickListener() {
+      //  ImageButton acounts = (ImageButton) findViewById(R.id.account_button);
+       // acounts.setOnClickListener(new View.OnClickListener() {
             /** ボタンをクリックした時に呼ばれる */
-            @Override
-            public void onClick(View v) {
+         //    @Override
+         //   public void onClick(View v) {
                 // ここに処理を記述する
-                Intent intent=new Intent(getApplication(),kategori.class);
-                intent.putExtra("dai",dai);
-                startActivity(intent);
-            }
-        });
+         //       Intent intent=new Intent(getApplication(),kategori.class);
+         //       intent.putExtra("dai",dai);
+         //       startActivity(intent);
+         //   }
+         // });
 
     }
     // 位置情報許可の確認
@@ -145,8 +118,6 @@ public class MainActivity extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED){
-
-
         }
         // 拒否していた場合
         else{
@@ -164,9 +135,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast toast = Toast.makeText(this, "許可されないとアプリが実行できません", Toast.LENGTH_SHORT);
             toast.show();
-
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,}, REQUEST_PERMISSION);
-
         }
     }
 
@@ -176,9 +145,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == REQUEST_PERMISSION) {
             // 使用が許可された
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
                 return;
-
             } else {
                 // それでも拒否された時の対応
                 Toast toast = Toast.makeText(this, "これ以上なにもできません", Toast.LENGTH_SHORT);
@@ -186,23 +153,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-    /* public void kensaku_onClick(View v) {
-        intent = new Intent(getApplicationContext(), GPS.class);
-        intent.putExtra("EdiTtEXTvALUE", SendValue.getText().toString());
-        startActivity(intent);
-
-    }
-
-    public void keshouhin_onClick(View v) {
-        Intent i = new Intent(this, kategori.class);
-        startActivity(i);
-    }
-
-    public void kaden_onClick(View v) {
-        Intent i = new Intent(this, kategori.class);
-        startActivity(i);
-    }
-*/
-
-
 }
