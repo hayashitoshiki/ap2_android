@@ -40,7 +40,7 @@ public class kennsakukekaActivity extends AppCompatActivity {
             dai.setText(data);
 
             //mapへ移動
-            Button map=(Button)findViewById(R.id.susumu);
+            Button map=(Button)findViewById(R.id.tizu);
             map.setId(i);
             map.setOnClickListener(new View.OnClickListener(){
                 @Override
