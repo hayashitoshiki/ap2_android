@@ -2,7 +2,6 @@ package com.example.a1521093.ap2_android;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.widget.TextView;
@@ -16,17 +15,18 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import rx.Subscription;
 
 public class kategori extends  AppCompatActivity implements AdapterView.OnItemClickListener{
     private ApiService ApiService;
-    private Subscription subscription;
     private TopListAdapter topListAdapter;
     ArrayAdapter<Product> adapter;
-    private Product product;
+     Product product;
     ListView mListView;
     String kategori_name;
+    int main_category_id;
 
+
+    protected int[] sub_category_id = new int[100];
     protected String[] scenes=new String[100];
 
     @Override
@@ -40,16 +40,20 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
         topListAdapter = new TopListAdapter(getApplicationContext());
         mListView = (ListView) findViewById(R.id.listView);
         ApiService = Provider.provideApiService();
+
+        TextView title = (TextView)findViewById(R.id.kensakugamen);
+        Intent intent = getIntent();
+        kategori_name = intent.getStringExtra("dai");
+        main_category_id = intent.getIntExtra("main_category_id",0);
+        title.setText(kategori_name);
+
         getData();
 
         //サンプルのListViewに独自で造ったListViewの適用
         mListView.setAdapter(topListAdapter);
         mListView.setOnItemClickListener(this);
 
-        TextView title = (TextView)findViewById(R.id.kensakugamen);
-        Intent intent = getIntent();
-       kategori_name = intent.getStringExtra("dai");
-        title.setText(kategori_name);
+
         }
 
     public void home_onClick(View v) {
@@ -67,26 +71,28 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
 
         Intent intent = new Intent(this, maker.class);
         // clickされたpositionのtextとphotoのID
-        String selectedText = scenes[position];
+        String Item = scenes[position];
+        int ID = sub_category_id[position];
         // インテントにセット
-        intent.putExtra("maker_name", selectedText);
         intent.putExtra("dai",kategori_name);
+        intent.putExtra("sub_category_name", Item);
+        intent.putExtra("sub_category_id",ID );
+        intent.putExtra("main_category_id",main_category_id );
         // Activity をスイッチする
         startActivity(intent);
     }
 
     private void getData() {
             //仮でint型で１と置く。月曜marge時に変更。
-        int i=1;
+
         final ArrayList<Product> aProductList = new ArrayList<>();
                                                 //クエリを投げる
-        Call<List<Product>> call = ApiService.items("sub_categories.json?main_category_id="+i);
+        Call<List<Product>> call = ApiService.items("sub_categories.json?main_category_id="+main_category_id);
         try {
             call.enqueue(new Callback<List<Product>>() {
                 @Override
                                             //取得成功
                 public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
-//                    Log.d("MainActivity", response.body().toString());
                     Log.d("MainActivity", "call onResponse");
                     aProductList.addAll(response.body());
                     Log.d("MainActivity", aProductList.toString());
@@ -115,9 +121,10 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
 
         int count=0;
         for (Product product : aProductList) {
-            Log.d("MainActivity", product.getname());
+            Log.d("サブカテゴリ", product.getname()+"カウント="+ product.getid());
                     //遷移時に投げる用のテキスト取得と格納
             scenes[count]=(product.getname());
+            sub_category_id[count]=(product.getid());
             adapter.add(product);
             count++;
         }
