@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-
     Button SendEditTextValue;
     private final int REQUEST_PERMISSION = 1000;
     String dai;
@@ -42,11 +41,35 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button kesyoumaker=(Button)findViewById(R.id.kesyohinmaker);
+        kesyoumaker.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View v){
+                Intent intent=new Intent(getApplication(),maker.class);
+                dai="カテゴリ：化粧品";
+                intent.putExtra("dai",dai);
+                startActivity(intent);
+
+            }
+        });
+
+        Button kadenmaker=(Button)findViewById(R.id.kadenmaker);
+        kadenmaker.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View v){
+                Intent intent=new Intent(getApplication(),maker.class);
+                dai="カテゴリ：化粧品";
+                intent.putExtra("dai",dai);
+                startActivity(intent);
+
+            }
+        });
+
         Button sendButton=(Button)findViewById(R.id.kensakukekka);
         sendButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
-                Intent intent=new Intent(getApplication(),GPS.class);
+                Intent intent=new Intent(getApplication(),KensakuRoot.class);
                 EditText  SendValue = (EditText)findViewById(R.id.edittext);
                 String syohin = SendValue.getText().toString();
                 intent.putExtra("syohin",syohin);
@@ -121,6 +144,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+
 
     public void keshouhin_onClick(View v) {
         Intent i = new Intent(this, kategori.class);

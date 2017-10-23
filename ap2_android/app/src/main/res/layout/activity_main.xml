@@ -73,27 +73,6 @@
             android:layout_height="40dp"
             android:text="カテゴリから絞り込むメーカー家電製品" />
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tab_layout"
-            android:layout_width="96dp"
-            android:layout_height="24dp"
-            android:layout_alignParentBottom="true" />
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/tool_bar"
-            android:layout_width="87dp"
-            android:layout_height="39dp"
-            android:layout_alignParentTop="true"
-            android:minHeight="?attr/actionBarSize" />
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/view_pager"
-            android:layout_width="185dp"
-            android:layout_height="0dp"
-            android:layout_above="@id/tab_layout"
-            android:layout_below="@id/tool_bar" />
-
-
     </LinearLayout>
 
 
