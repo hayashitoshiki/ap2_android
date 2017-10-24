@@ -64,6 +64,7 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
         intent.putExtra("main_category_id",main_category_id );
         intent.putExtra("sub_category_name",sub_category_name);
         intent.putExtra("sub_category_id",sub_category_id );
+        intent.putExtra("product_id",product_id);
         startActivity(intent);
     }
 
@@ -83,8 +84,9 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
         intent.putExtra("dai",main_category_name);
         intent.putExtra("sub_category_name",sub_category_name);
         intent.putExtra("sub_category_id",sub_category_id );
-        intent.putExtra("maker_name", Item);
-        intent.putExtra("maker_id",ID );
+        intent.putExtra("product_name", Item);
+        intent.putExtra("product_id",ID );
+
         // Activity をスイッチする
         startActivity(intent);
     }
@@ -134,7 +136,7 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
             count++;
         }
         //指定のListViewに格納
-        topListAdapter.setDatas(aProductList);
+        topListAdapter.setDatas(aProductList,1);
         topListAdapter.notifyDataSetChanged();
     }
 }

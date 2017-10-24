@@ -14,10 +14,11 @@ public class Product {
     private String name;
     private double longitude;
     private double latitude;
+    private int count;
 
     public Product(int id, int maker_id, int main_category_id, int sub_category_id, int shop_id,
                    String shop_name, String shop_image, String address
-                     ,String name,double longitude,double latitude) {
+                     ,String name,double longitude,double latitude, int count) {
 
         this.id = id;
         this.maker_id = maker_id;
@@ -30,6 +31,7 @@ public class Product {
         this.longitude = longitude;
         this.latitude = latitude;
         this.name = name;
+        this.count = count;
     }
 
     public int getid(){return id;}
@@ -67,6 +69,8 @@ public class Product {
     public double getlongitude(){return longitude;}
 
     public double getlatitude(){return latitude;}
+
+    public int getcount(){return count;}
 
 
     @Override

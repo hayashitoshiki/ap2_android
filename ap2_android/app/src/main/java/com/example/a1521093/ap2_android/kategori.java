@@ -129,7 +129,7 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
             count++;
         }
                             //指定のListViewに格納
-        topListAdapter.setDatas(aProductList);
+        topListAdapter.setDatas(aProductList,1);
         topListAdapter.notifyDataSetChanged();
     }
 }

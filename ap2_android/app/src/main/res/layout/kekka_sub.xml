@@ -49,6 +49,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:text="商品名"
+                android:textColor="#000000"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toRightOf="@+id/imageView"
@@ -66,6 +67,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="32dp"
                 android:text="現在地から"
+                android:textColor="#000000"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 app:layout_constraintLeft_toRightOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/zyusyo"
@@ -90,18 +92,7 @@
                 app:layout_constraintRight_toLeftOf="@+id/susumu"
                 app:layout_constraintTop_toBottomOf="@+id/zyusyo" />
 
-            <TextView
-                android:id="@+id/m"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="13dp"
-                android:layout_marginLeft="-1dp"
-                android:layout_marginTop="24dp"
-                android:text="ｍ"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@android:color/holo_red_light"
-                app:layout_constraintLeft_toRightOf="@+id/kyori"
-                app:layout_constraintTop_toBottomOf="@+id/zyusyo" />
+
 
             <Button
                 android:id="@+id/susumu"
@@ -128,6 +119,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="20dp"
                 android:text="残り"
+                android:textColor="#000000"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                 app:layout_constraintLeft_toRightOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/genzaitikara" />
@@ -147,17 +139,7 @@
                 app:layout_constraintRight_toLeftOf="@+id/susumu"
                 app:layout_constraintTop_toBottomOf="@+id/kyori" />
 
-            <TextView
-                android:id="@+id/ko"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="-1dp"
-                android:layout_marginTop="16dp"
-                android:text="個"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@android:color/holo_red_light"
-                app:layout_constraintLeft_toRightOf="@+id/kosuu"
-                app:layout_constraintTop_toBottomOf="@+id/m" />
+
 
             <TextView
                 android:id="@+id/zyusyo"
@@ -167,6 +149,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="16dp"
                 android:text="東京都杉並区2丁目２－２－２"
+                android:textColor="#000000"
                 app:layout_constraintLeft_toRightOf="@+id/imageView"
                 app:layout_constraintRight_toLeftOf="@+id/susumu"
                 app:layout_constraintTop_toBottomOf="@+id/syouhinmei" />

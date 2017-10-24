@@ -126,6 +126,11 @@ public class GPS extends Activity implements LocationListener {
         Intent syohin = getIntent();
         String data = syohin.getStringExtra("syohin");
         intent.putExtra("syohin",data);
+        Intent in = getIntent();
+        int product_id = in.getIntExtra("product_id",0);
+        intent.putExtra("product_id",product_id);
+        String product_name = in.getStringExtra("product_name");
+        intent.putExtra("product_name",product_name);
         startActivity(intent);
     }
 

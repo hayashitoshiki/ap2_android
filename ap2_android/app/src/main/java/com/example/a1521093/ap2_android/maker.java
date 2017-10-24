@@ -143,7 +143,7 @@ public class maker extends AppCompatActivity implements AdapterView.OnItemClickL
             count++;
         }
         //指定のListViewに格納
-        topListAdapter.setDatas(aProductList);
+        topListAdapter.setDatas(aProductList,1);
         topListAdapter.notifyDataSetChanged();
     }
 
