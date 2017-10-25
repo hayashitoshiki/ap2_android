@@ -22,8 +22,10 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
     ArrayAdapter<Product> adapter;
     private Product product;
     ListView mListView;
+    int main_category_id;
     String sub_category_name;
     int sub_category_id;
+    String maker_name;
     int maker_id;
     String main_category_name;
 
@@ -37,12 +39,12 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
 
         TextView title = (TextView)findViewById(R.id.kensakugamen);
         Intent intent = getIntent();
-        main_category_name = intent.getStringExtra("dai");
-        Log.d("MainActivity", "カテゴリ名==="+main_category_name);
+        main_category_name = intent.getStringExtra("main_category_name");
+        main_category_id = intent.getIntExtra("main_category_id",0);
         sub_category_name = intent.getStringExtra("sub_category_name");
-        String maker_name = intent.getStringExtra("maker_name");
-        sub_category_id = intent.getIntExtra("Sub_category_id",0);
-        maker_id = intent.getIntExtra("Maker_id",0);
+        maker_name = intent.getStringExtra("maker_name");
+        sub_category_id = intent.getIntExtra("sub_category_id",0);
+        maker_id = intent.getIntExtra("maker_id",0);
         title.setText(maker_name+"の"+sub_category_name);
 
         //ArrayAdapterオブジェクト生成
@@ -59,8 +61,8 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
         Intent intent=new Intent(getApplication(),maker.class);
         Intent kate_dai = getIntent();
         String sub_category_name = kate_dai.getStringExtra("sub_category_name");
-        int main_category_id = kate_dai.getIntExtra("main_category_id",0);
-        intent.putExtra("dai",main_category_name);
+         main_category_id = kate_dai.getIntExtra("main_category_id",0);
+        intent.putExtra("main_category_name",main_category_name);
         intent.putExtra("main_category_id",main_category_id );
         intent.putExtra("sub_category_name",sub_category_name);
         intent.putExtra("sub_category_id",sub_category_id );
@@ -81,11 +83,15 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
         String Item = scenes[position];
         int ID = product_id[position];
         // インテントにセット
-        intent.putExtra("dai",main_category_name);
+        intent.putExtra("main_category_name",main_category_name);
+        intent.putExtra("main_category_id",main_category_id );
         intent.putExtra("sub_category_name",sub_category_name);
         intent.putExtra("sub_category_id",sub_category_id );
+        intent.putExtra("maker_name",maker_name);
+        intent.putExtra("maker_id",maker_id);
         intent.putExtra("product_name", Item);
         intent.putExtra("product_id",ID );
+        intent.putExtra("switch",1);
 
         // Activity をスイッチする
         startActivity(intent);

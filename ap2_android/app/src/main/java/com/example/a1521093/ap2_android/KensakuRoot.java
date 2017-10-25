@@ -37,6 +37,7 @@ public class KensakuRoot extends  AppCompatActivity {
                     Intent intent = new Intent(getApplication(),GPS.class);
                     intent.putExtra("syohin",product_name);
                     intent.putExtra("kensaku",title_name);
+                    intent.putExtra("bunki",2);
                     startActivity(intent);
                 }
             });

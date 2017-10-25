@@ -39,6 +39,7 @@ public class kennsakukekaActivity extends AppCompatActivity {
     int product_id;
     String main_category_name;
     public static int count;
+    int bunki;
 
     protected double[] store_lati = new double[100];
     protected double[] store_lon = new double[100];
@@ -53,6 +54,7 @@ public class kennsakukekaActivity extends AppCompatActivity {
         setContentView(R.layout.kensakukeka);
 
         Intent intent = getIntent();
+        bunki = intent.getIntExtra("switch",0);
         TextView title = (TextView)findViewById(R.id.procutd_name);
        String  product_name = intent.getStringExtra("product_name");
         Log.d("MainActivity", "商品名==="+product_name);
@@ -67,7 +69,7 @@ public class kennsakukekaActivity extends AppCompatActivity {
         final String data = intent.getStringExtra("syohin");
 
 
-        sub_category_id = intent.getIntExtra("Sub_category_id",0);
+        sub_category_id = intent.getIntExtra("sub_category_id",0);
         product_id = intent.getIntExtra("product_id",0);
         Log.d("MainActivity", "メーカーID=aaaaa"+product_id);
         //ArrayAdapterオブジェクト生成
@@ -104,13 +106,39 @@ public class kennsakukekaActivity extends AppCompatActivity {
     }
 
     public void modoru_onClick(View v) {
-        Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
+           Intent intent;
+       if(bunki==1) {
+           intent = new Intent(this, SyohinItiran.class);
+           Intent get = getIntent();
+
+           String main_category_name = get.getStringExtra("main_category_name");
+           int main_category_id = get.getIntExtra("main_category_id",0);
+           String maker_name = get.getStringExtra("maker_name");
+           int maker_id = get.getIntExtra("maker_id",0);
+           String sub_category_name = get.getStringExtra("sub_category_name");
+           int sub_category_id = get.getIntExtra("sub_category_id",0);
+           String product_name = get.getStringExtra("product_name");
+           int product_id = get.getIntExtra("product_id",0);
+           Log.d("店舗", "main"+main_category_name+":"+main_category_id+"：：sub"+sub_category_name+":"+sub_category_id+"：：maker"+maker_name+":"+maker_id);
+
+           intent.putExtra("main_category_name",main_category_name);
+           intent.putExtra("main_category_id",main_category_id );
+           intent.putExtra("maker_name",maker_name);
+           intent.putExtra("maker_id",maker_id );
+           intent.putExtra("sub_category_name",sub_category_name);
+           intent.putExtra("sub_category_id",sub_category_id );
+           intent.putExtra("product_name",product_name);
+           intent.putExtra("product_id",product_id);
+       }else{
+           intent = new Intent(this, KensakuRoot.class);
+        }
+
+        startActivity(intent);
         }
 
     public void home_onClick(View v) {
         Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
+              startActivity(i);
     }
 
     public void kensaku_onClick(View v) {

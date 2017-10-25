@@ -43,7 +43,7 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
 
         TextView title = (TextView)findViewById(R.id.kensakugamen);
         Intent intent = getIntent();
-        kategori_name = intent.getStringExtra("dai");
+        kategori_name = intent.getStringExtra("main_category_name");
         main_category_id = intent.getIntExtra("main_category_id",0);
         title.setText(kategori_name);
 
@@ -74,7 +74,7 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
         String Item = scenes[position];
         int ID = sub_category_id[position];
         // インテントにセット
-        intent.putExtra("dai",kategori_name);
+        intent.putExtra("main_category_name",kategori_name);
         intent.putExtra("sub_category_name", Item);
         intent.putExtra("sub_category_id",ID );
         intent.putExtra("main_category_id",main_category_id );

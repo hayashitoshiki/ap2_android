@@ -121,16 +121,31 @@ public class GPS extends Activity implements LocationListener {
         double user_latitude = location.getLatitude();
         double user_longitude =location.getLongitude();
         Intent intent=new Intent(getApplication(),kennsakukekaActivity.class);
+        Intent get = getIntent();
+
+        String main_category_name = get.getStringExtra("main_category_name");
+        int main_category_id = get.getIntExtra("main_category_id",0);
+        String maker_name = get.getStringExtra("maker_name");
+        int maker_id = get.getIntExtra("maker_id",0);
+        String sub_category_name = get.getStringExtra("sub_category_name");
+        int sub_category_id = get.getIntExtra("sub_category_id",0);
+        String product_name = get.getStringExtra("product_name");
+        int product_id = get.getIntExtra("product_id",0);
+        int bunki = get.getIntExtra("switch",0);
+        Log.d("GPS", "main"+main_category_name+":"+main_category_id+"sub"+sub_category_name+":"+sub_category_id+"maker"+maker_name+":"+maker_id);
+
+        intent.putExtra("main_category_name",main_category_name);
+        intent.putExtra("main_category_id",main_category_id );
+        intent.putExtra("maker_name",maker_name);
+        intent.putExtra("maker_id",maker_id );
+        intent.putExtra("sub_category_name",sub_category_name);
+        intent.putExtra("sub_category_id",sub_category_id );
+        intent.putExtra("product_name",product_name);
+        intent.putExtra("product_id",product_id);
+        intent.putExtra("switch",bunki);
         intent.putExtra("user_lat",user_latitude);
         intent.putExtra("user_lon",user_longitude);
-        Intent syohin = getIntent();
-        String data = syohin.getStringExtra("syohin");
-        intent.putExtra("syohin",data);
-        Intent in = getIntent();
-        int product_id = in.getIntExtra("product_id",0);
-        intent.putExtra("product_id",product_id);
-        String product_name = in.getStringExtra("product_name");
-        intent.putExtra("product_name",product_name);
+
         startActivity(intent);
     }
 
