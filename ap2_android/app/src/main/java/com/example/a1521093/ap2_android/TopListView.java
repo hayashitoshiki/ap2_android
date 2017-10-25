@@ -75,7 +75,12 @@ public class TopListView extends LinearLayout {
         double store_lon = product.getlongitude();
         double distance = getDistance(user_lati, user_lon, store_lati, store_lon);
         int kyori_A = (int)distance;
-      textViewdistance.setText(kyori_A+"m");
+        if(kyori_A>10000) {
+            kyori_A = kyori_A / 1000;
+            textViewdistance.setText(kyori_A + "km");
+        }else {
+            textViewdistance.setText(kyori_A + "m");
+        }
         int stock = keka.getstock();
         textViewstock.setText(stock+"個");
         count++;
