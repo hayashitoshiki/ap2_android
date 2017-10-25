@@ -18,7 +18,7 @@ public class KensakuRoot extends  AppCompatActivity {
 
         TextView title = (TextView)findViewById(R.id.titlebar);
         Intent intent = getIntent();
-        final String title_name = intent.getStringExtra("syohin");
+        final String title_name = intent.getStringExtra("kensaku");
         title.setText(title_name);
 
         LinearLayout layout = (LinearLayout) findViewById(R.id.loop);
@@ -38,6 +38,7 @@ public class KensakuRoot extends  AppCompatActivity {
                     intent.putExtra("product_name",product_name);
                     intent.putExtra("kensaku",title_name);
                     intent.putExtra("bunki",2);
+                    intent.putExtra("syohin",title_name);
                     startActivity(intent);
                 }
             });

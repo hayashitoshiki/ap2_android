@@ -107,9 +107,10 @@ public class kennsakukekaActivity extends AppCompatActivity {
 
     public void modoru_onClick(View v) {
            Intent intent;
+        Intent get = getIntent();
        if(bunki==1) {
            intent = new Intent(this, SyohinItiran.class);
-           Intent get = getIntent();
+
 
            String main_category_name = get.getStringExtra("main_category_name");
            int main_category_id = get.getIntExtra("main_category_id",0);
@@ -131,6 +132,8 @@ public class kennsakukekaActivity extends AppCompatActivity {
            intent.putExtra("product_id",product_id);
        }else{
            intent = new Intent(this, KensakuRoot.class);
+           String kensaku = get.getStringExtra("kensaku");
+           intent.putExtra("kensaku",kensaku);
         }
 
         startActivity(intent);
