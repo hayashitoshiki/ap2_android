@@ -1,51 +1,36 @@
 package com.example.a1521093.ap2_android;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class kennsakukekaActivity extends AppCompatActivity {
-    //データベースlati
-   // double store_lat=(35.605802);
-    //データベースlong
-   // double store_lon=(139.735325);
     public static double user_lat;
     public static double user_lon;
-    public static int stock[] = new int[100];
-
 
     private ApiService ApiService;
     private TopListAdapter topListAdapter;
     ArrayAdapter<Product> adapter;
-    private Product product;
     ListView mListView;
-    String sub_category_name;
     int sub_category_id;
     int product_id;
-    String main_category_name;
     public static int count;
     int bunki;
 
     protected double[] store_lati = new double[100];
     protected double[] store_lon = new double[100];
-    protected String[] scenes=new String[100];
-
-
+    protected String[] store_name=new String[100];
+    public static int stock[] = new int[100];
 
 
     @Override
@@ -56,22 +41,16 @@ public class kennsakukekaActivity extends AppCompatActivity {
         Intent intent = getIntent();
         bunki = intent.getIntExtra("switch",0);
         TextView title = (TextView)findViewById(R.id.procutd_name);
-       String  product_name = intent.getStringExtra("product_name");
-        Log.d("MainActivity", "商品名==="+product_name);
+        String  product_name = intent.getStringExtra("product_name");
+        Log.d("kennsakukekaActivity", "商品名："+product_name);
         title.setText(product_name);
 
-
         user_lon=intent.getDoubleExtra("user_lon",0);
-         user_lat = intent.getDoubleExtra("user_lat",0);
-        double distance = getDistance(user_lat, user_lon, store_lati[0], store_lon[0] );
-        int kyori_A = (int)distance;
-        String kyori_text =(""+kyori_A);
-        final String data = intent.getStringExtra("syohin");
-
+        user_lat = intent.getDoubleExtra("user_lat",0);
 
         sub_category_id = intent.getIntExtra("sub_category_id",0);
         product_id = intent.getIntExtra("product_id",0);
-        Log.d("MainActivity", "メーカーID=aaaaa"+product_id);
+        Log.d("kennsakukekaActivity", "メーカーID："+product_id);
         //ArrayAdapterオブジェクト生成
         adapter=new ArrayAdapter<Product>(kennsakukekaActivity.this, android.R.layout.simple_list_item_1);
         topListAdapter = new TopListAdapter(getApplicationContext());
@@ -88,29 +67,12 @@ public class kennsakukekaActivity extends AppCompatActivity {
         return user_lon;
     }
     public int getstock(){return stock[count];}
-    private double getDistance(double lat1, double lon1, double lat2, double lon2) {
-        double theta = lon1 - lon2;
-        double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) +  Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
-        dist = Math.acos(dist);
-        dist = rad2deg(dist);
-        double miles = dist * 60 * 1.1515;
-        return (miles * 1.609344*1000);
-    }
-
-    private double rad2deg(double radian) {
-        return radian * (180f / Math.PI);
-    }
-
-    public double deg2rad(double degrees) {
-        return degrees * (Math.PI / 180f);
-    }
 
     public void modoru_onClick(View v) {
-           Intent intent;
+        Intent intent;
         Intent get = getIntent();
        if(bunki==1) {
            intent = new Intent(this, SyohinItiran.class);
-
 
            String main_category_name = get.getStringExtra("main_category_name");
            int main_category_id = get.getIntExtra("main_category_id",0);
@@ -135,7 +97,6 @@ public class kennsakukekaActivity extends AppCompatActivity {
            String kensaku = get.getStringExtra("kensaku");
            intent.putExtra("kensaku",kensaku);
         }
-
         startActivity(intent);
         }
 
@@ -155,7 +116,6 @@ public class kennsakukekaActivity extends AppCompatActivity {
         //クエリを投げる
         Call<List<Product>> call = ApiService.items("prices.json?product_id="+product_id);
         try {
-
             call.enqueue(new Callback<List<Product>>() {
                 @Override
                 //取得成功
@@ -195,19 +155,17 @@ public class kennsakukekaActivity extends AppCompatActivity {
             final ArrayList<Product> aList = new ArrayList<>();
             //クエリを投げる
             Call<List<Product>> call = ApiService.items("shops.json?id="+product.getShop_id());
-            Log.d("kennsakukekaActivity", "aaa" + product.getShop_id());
+            Log.d("kennsakukekaActivity", "店舗ID：" + product.getShop_id());
             try {
                 call.enqueue(new Callback<List<Product>>() {
                     @Override
                     //取得成功
                     public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                         aList.addAll(response.body());
-                        Log.d("kennsakukekaActivity", "メーカーID="+ product_id+"商品ID="+product_id);
-                        for (Product product : aList) {
-                            Log.d("kennsakukekaActivity", "aaa" + product.getname()+":"+user_lon);
-                            scenes[count]=(product.getname());
-                            store_lati[count]=(product.getlatitude());
-                            store_lon[count]=(product.getlongitude());
+                       for (Product product : aList) {
+                            store_name[count] = (product.getname());
+                            store_lati[count] = (product.getlatitude());
+                            store_lon[count] = (product.getlongitude());
                             //指定のListViewに格納
                             topListAdapter.setDatas(aList,2);
                             topListAdapter.notifyDataSetChanged();
@@ -221,7 +179,6 @@ public class kennsakukekaActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
     }
 }

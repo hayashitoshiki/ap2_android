@@ -20,33 +20,31 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
     private ApiService ApiService;
     private TopListAdapter topListAdapter;
     ArrayAdapter<Product> adapter;
-    private Product product;
     ListView mListView;
+    String main_category_name;
     int main_category_id;
     String sub_category_name;
     int sub_category_id;
     String maker_name;
     int maker_id;
-    String main_category_name;
 
     protected int[] product_id = new int[100];
-    protected String[] scenes=new String[100];
+    protected String[] product_name = new String[100];
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.syohinnitiran);
+        setContentView(R.layout.kategori);
 
         TextView title = (TextView)findViewById(R.id.kensakugamen);
         Intent intent = getIntent();
         main_category_name = intent.getStringExtra("main_category_name");
         main_category_id = intent.getIntExtra("main_category_id",0);
         sub_category_name = intent.getStringExtra("sub_category_name");
-        maker_name = intent.getStringExtra("maker_name");
         sub_category_id = intent.getIntExtra("sub_category_id",0);
+        maker_name = intent.getStringExtra("maker_name");
         maker_id = intent.getIntExtra("maker_id",0);
         title.setText(maker_name+"の"+sub_category_name);
-
         //ArrayAdapterオブジェクト生成
         adapter=new ArrayAdapter<Product>(SyohinItiran.this, android.R.layout.simple_list_item_1);
         topListAdapter = new TopListAdapter(getApplicationContext());
@@ -57,6 +55,7 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
         mListView.setAdapter(topListAdapter);
         mListView.setOnItemClickListener(this);
     }
+
     public void modoru_onClick(View v) {
         Intent intent=new Intent(getApplication(),maker.class);
         Intent kate_dai = getIntent();
@@ -74,26 +73,19 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
+
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-
         Intent intent = new Intent(this, GPS.class);
-
-        // clickされたpositionのtextとID
-        String Item = scenes[position];
-        int ID = product_id[position];
-        // インテントにセット
         intent.putExtra("main_category_name",main_category_name);
         intent.putExtra("main_category_id",main_category_id );
         intent.putExtra("sub_category_name",sub_category_name);
         intent.putExtra("sub_category_id",sub_category_id );
         intent.putExtra("maker_name",maker_name);
         intent.putExtra("maker_id",maker_id);
-        intent.putExtra("product_name", Item);
-        intent.putExtra("product_id",ID );
+        intent.putExtra("product_name", product_name[position]);
+        intent.putExtra("product_id",product_id[position] );
         intent.putExtra("switch",1);
-
-        // Activity をスイッチする
         startActivity(intent);
     }
 
@@ -104,8 +96,7 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
         Call<List<Product>> call = ApiService.items("products.json?sub_category_id="+sub_category_id+"&maker_id="+maker_id);
         try {
             call.enqueue(new Callback<List<Product>>() {
-                @Override
-                //取得成功
+                @Override                           //取得成功
                 public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                     Log.d("MainActivity", "call onResponse");
                     aProductList.addAll(response.body());
@@ -129,14 +120,14 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
             e.printStackTrace();
         }
     }
+
     //ListViewに値入れるクラス
     private void updateContainer(ArrayList<Product> aProductList) {
-
         int count=0;
         for (Product product : aProductList) {
             Log.d("メーカー", product.getname()+",id"+product.getid());
             //遷移時に投げる用のテキスト取得と格納
-            scenes[count]=(product.getname());
+            product_name[count]=(product.getname());
             product_id[count] = (product.getid());
             adapter.add(product);
             count++;

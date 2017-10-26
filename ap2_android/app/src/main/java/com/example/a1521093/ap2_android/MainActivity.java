@@ -5,19 +5,12 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.TabHost;
-import android.widget.TabHost.TabSpec;
-import android.widget.TabHost.TabContentFactory;
-import android.widget.TabWidget;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,15 +20,13 @@ public class MainActivity extends AppCompatActivity {
 
     String dai;
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if(Build.VERSION.SDK_INT >= 23){
             checkPermission();
         }
-        SendEditTextValue = (Button)findViewById(R.id.kensaku);
-
+        SendEditTextValue = (Button)findViewById(R.id.kensakukekka);
 
         Button kesyo=(Button)findViewById(R.id.kesyouhin);
         kesyo.setOnClickListener(new View.OnClickListener(){
@@ -74,19 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-                 //↓必要なし
-       // ImageButton homes = (ImageButton) findViewById(R.id.homebutton);
-       // homes.setOnClickListener(new View.OnClickListener() {
-            /** ボタンをクリックした時に呼ばれる */
-        //    @Override
-         //   public void onClick(View v) {
-          //      // ここに処理を記述する
-           //     Intent intent=new Intent(getApplication(),MainActivity.class);
-            //    intent.putExtra("dai",dai);
-             //   startActivity(intent);
-           // }
-       // });
-                             //今はなし
+                 //今はなし
         //ImageButton points = (ImageButton) findViewById(R.id.coupon_button);
         //points.setOnClickListener(new View.OnClickListener() {
             /** ボタンをクリックした時に呼ばれる */

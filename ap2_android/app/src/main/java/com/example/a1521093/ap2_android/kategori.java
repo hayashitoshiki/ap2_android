@@ -9,7 +9,6 @@ import android.util.Log;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import com.example.a1521093.ap2_android.Product;
 import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
@@ -20,17 +19,14 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
     private ApiService ApiService;
     private TopListAdapter topListAdapter;
     ArrayAdapter<Product> adapter;
-     Product product;
     ListView mListView;
-    String kategori_name;
+    String main_category_name;
     int main_category_id;
 
-
     protected int[] sub_category_id = new int[100];
-    protected String[] scenes=new String[100];
+    protected String[] sub_category_name=new String[100];
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kategori);
@@ -43,17 +39,15 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
 
         TextView title = (TextView)findViewById(R.id.kensakugamen);
         Intent intent = getIntent();
-        kategori_name = intent.getStringExtra("main_category_name");
+        main_category_name = intent.getStringExtra("main_category_name");
         main_category_id = intent.getIntExtra("main_category_id",0);
-        title.setText(kategori_name);
+        title.setText(main_category_name);
 
         getData();
 
         //サンプルのListViewに独自で造ったListViewの適用
         mListView.setAdapter(topListAdapter);
         mListView.setOnItemClickListener(this);
-
-
         }
 
     public void home_onClick(View v) {
@@ -70,35 +64,26 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
         Intent intent = new Intent(this, maker.class);
-        // clickされたpositionのtextとphotoのID
-        String Item = scenes[position];
-        int ID = sub_category_id[position];
-        // インテントにセット
-        intent.putExtra("main_category_name",kategori_name);
-        intent.putExtra("sub_category_name", Item);
-        intent.putExtra("sub_category_id",ID );
+        intent.putExtra("main_category_name",main_category_name);
+        intent.putExtra("sub_category_name", sub_category_name[position]);
+        intent.putExtra("sub_category_id",sub_category_id[position] );
         intent.putExtra("main_category_id",main_category_id );
-        // Activity をスイッチする
         startActivity(intent);
     }
 
     private void getData() {
-            //仮でint型で１と置く。月曜marge時に変更。
-
         final ArrayList<Product> aProductList = new ArrayList<>();
                                                 //クエリを投げる
         Call<List<Product>> call = ApiService.items("sub_categories.json?main_category_id="+main_category_id);
         try {
             call.enqueue(new Callback<List<Product>>() {
-                @Override
-                                            //取得成功
+                @Override                           //取得成功
                 public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                     Log.d("MainActivity", "call onResponse");
                     aProductList.addAll(response.body());
                     Log.d("MainActivity", aProductList.toString());
                     updateContainer(aProductList);
                 }
-
                 @Override                           //取得失敗
                 public void onFailure(Call<List<Product>> call, Throwable t) {
                     Log.d("MainActivity", "call onFailure");
@@ -121,9 +106,9 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
 
         int count=0;
         for (Product product : aProductList) {
-            Log.d("サブカテゴリ", product.getname()+"カウント="+ product.getid());
+            Log.d("kategori","サブカテゴリ"+ product.getname()+"カウント="+ product.getid());
                     //遷移時に投げる用のテキスト取得と格納
-            scenes[count]=(product.getname());
+            sub_category_name[count]=(product.getname());
             sub_category_id[count]=(product.getid());
             adapter.add(product);
             count++;

@@ -31,13 +31,10 @@ public class GPS extends Activity implements LocationListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // setContentView(R.layout.activity_main);
-
-        // LocationManager インスタンス生成
+         // LocationManager インスタンス生成
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
- // GPS測位開始
+        // GPS測位開始
         startGPS();
-
     }
 
     protected void startGPS() {
@@ -83,7 +80,6 @@ public class GPS extends Activity implements LocationListener {
             }
         } else {
         }
-
         super.onResume();
     }
 
@@ -110,9 +106,7 @@ public class GPS extends Activity implements LocationListener {
             }
             locationManager.removeUpdates(this);
         } else {
-
         }
-
         super.onPause();
     }
 
@@ -153,12 +147,10 @@ public class GPS extends Activity implements LocationListener {
 
     @Override
     public void onProviderDisabled(String provider) {
-
     }
 
     @Override
     public void onProviderEnabled(String provider) {
-
     }
 
     @Override
@@ -192,10 +184,8 @@ public class GPS extends Activity implements LocationListener {
             }
             locationManager.removeUpdates(this);
         } else {
-
         }
     }
-
 
     @Override
     public void onStop() {
