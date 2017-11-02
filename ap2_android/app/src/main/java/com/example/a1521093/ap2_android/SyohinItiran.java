@@ -47,7 +47,7 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
         title.setText(maker_name+"の"+sub_category_name);
         //ArrayAdapterオブジェクト生成
         adapter=new ArrayAdapter<Product>(SyohinItiran.this, android.R.layout.simple_list_item_1);
-        topListAdapter = new TopListAdapter(getApplicationContext());
+        topListAdapter = new TopListAdapter(getApplicationContext(),R.layout.kategori_sub);
         mListView = (ListView) findViewById(R.id.listView);
         ApiService = Provider.provideApiService();
         getData();

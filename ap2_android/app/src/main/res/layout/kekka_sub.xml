@@ -161,7 +161,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="28dp"
                 android:layout_marginTop="8dp"
-                android:onClick="susumu_onClick"
+
                 android:text="地図を見る"
                 android:textColor="@android:color/holo_blue_dark"
                 app:layout_constraintLeft_toLeftOf="parent"

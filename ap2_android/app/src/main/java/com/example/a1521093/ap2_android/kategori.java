@@ -33,7 +33,7 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
 
         //ArrayAdapterオブジェクト生成
         adapter=new ArrayAdapter<Product>(kategori.this, android.R.layout.simple_list_item_1);
-        topListAdapter = new TopListAdapter(getApplicationContext());
+        topListAdapter = new TopListAdapter(getApplicationContext(),R.layout.kategori_sub);
         mListView = (ListView) findViewById(R.id.listView);
         ApiService = Provider.provideApiService();
 
