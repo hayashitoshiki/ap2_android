@@ -24,6 +24,8 @@ public class TopListAdapter extends BaseAdapter {
 
     private static class ViewHolder {
         public Button editButton;
+        public Button susumuButton;
+
         public TextView textViewstock;
         public TextView textViewname;
         public TextView textViewaddress;
@@ -66,6 +68,8 @@ public class TopListAdapter extends BaseAdapter {
                 convertView = inflater.inflate(resourcedId, null);
                 holder = new ViewHolder();
                 holder.editButton = (Button) convertView.findViewById(R.id.tizu);
+                holder.susumuButton = (Button) convertView.findViewById(R.id.susumu);
+
                 holder.textViewname = (TextView)convertView.findViewById(R.id.syouhinmei);
                 holder.textViewstock = (TextView)convertView. findViewById(R.id.kosuu);
                 holder.textViewaddress = (TextView)convertView.findViewById(R.id.zyusyo);
@@ -101,6 +105,13 @@ public class TopListAdapter extends BaseAdapter {
             holder.textViewaddress.setText(store_address);
             holder.textViewstock.setText(stock+"個");
             holder.editButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ((ListView) parent).performItemClick(view, position,R.id.tizu);
+                }
+            });
+
+            holder.susumuButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     ((ListView) parent).performItemClick(view, position,R.id.tizu);

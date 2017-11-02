@@ -29,6 +29,7 @@ public class kennsakukekaActivity extends AppCompatActivity {
     ArrayAdapter<Product> adapter;
     ListView mListView;
     int sub_category_id;
+    String product_name;
     int product_id;
     public static int count;
     int bunki;
@@ -48,7 +49,7 @@ public class kennsakukekaActivity extends AppCompatActivity {
         Intent intent = getIntent();
         bunki = intent.getIntExtra("switch",0);
         TextView title = (TextView)findViewById(R.id.procutd_name);
-        String  product_name = intent.getStringExtra("product_name");
+         product_name = intent.getStringExtra("product_name");
         Log.d("kennsakukekaActivity", "商品名："+product_name);
         title.setText(product_name);
 
@@ -79,6 +80,10 @@ public class kennsakukekaActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.susumu:
+                        Intent in = new Intent(getApplication(), Product_Barcode.class);
+                        in.putExtra("product_name",product_name);
+
+                        startActivity(in);
 
                         break;
 
