@@ -26,6 +26,10 @@ public class Product_Barcode extends AppCompatActivity {
         title.setText(product_name);
 
     }
+    public void code(View v){
+        Intent i =  new Intent(getApplication(),AccountLogin.class);
+        startActivity(i);
+    }
 
     public void home_onClick(View v) {
         Intent i = new Intent(this, MainActivity.class);

@@ -75,6 +75,7 @@
                 android:text="コードを入力"
                 android:textColor="#FF6347"
                 android:textSize="24sp"
+                android:onClick="code"
                 tools:layout_editor_absoluteX="128dp"
                 tools:layout_editor_absoluteY="418dp" />
         </LinearLayout>

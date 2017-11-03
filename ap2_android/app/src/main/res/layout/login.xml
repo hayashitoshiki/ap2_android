@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/kensakugamen"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#D3D3D3"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="ログイン"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        >
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            tools:layout_editor_absoluteX="142dp"
+            tools:layout_editor_absoluteY="25dp" />
+
+        <EditText
+            android:id="@+id/mail"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:background="#D3D3D3"
+            android:inputType="text"
+            android:hint="メールアドレス"
+            tools:layout_editor_absoluteX="32dp"
+            tools:layout_editor_absoluteY="192dp"
+            android:layout_margin="10dp"/>
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:background="#D3D3D3"
+            android:inputType="text"
+            android:hint="パスワード"
+            tools:layout_editor_absoluteX="32dp"
+            tools:layout_editor_absoluteY="239dp"
+            android:layout_margin="10dp"/>
+
+        <Button
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:background="#FFB6C1"
+            android:text="ログイン"
+            android:textColor="#FFFFFF"
+            android:layout_margin="10dp"
+            tools:layout_editor_absoluteX="32dp"
+            tools:layout_editor_absoluteY="301dp"
+            android:onClick="Login"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="アカウントを作成する"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="#6A5ACD"
+            tools:layout_editor_absoluteY="410dp"
+            tools:layout_editor_absoluteX="110dp" />
+    </LinearLayout>
+
+</LinearLayout>

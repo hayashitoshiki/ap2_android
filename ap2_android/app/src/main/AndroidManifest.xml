@@ -40,6 +40,7 @@
         <activity android:name=".KensakuRoot"
             android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:name=".Product_Barcode"/>
+        <activity android:name=".AccountLogin"/>
     </application>
 
 </manifest>
