@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#D3D3D3"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/modoru"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:background="#D3D3D3"
+            android:onClick="modoru_onClick"
+            android:text="＜戻る"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/holo_red_light" />
+
+        <TextView
+            android:id="@+id/kensakugamen"
+            android:layout_width="260dp"
+            android:layout_height="match_parent"
+            android:background="#D3D3D3"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="アカウント作成"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editText7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_margin="20dp"
+            android:ems="10"
+            android:background="#D3D3D3"
+            android:inputType="textPersonName"
+            android:hint="名前" />
+
+        <EditText
+            android:id="@+id/editText8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_margin="20dp"
+            android:ems="10"
+            android:background="#D3D3D3"
+            android:inputType="textEmailAddress"
+            android:hint="メールアドレス" />
+
+        <EditText
+            android:id="@+id/editText9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_margin="20dp"
+            android:ems="10"
+            android:background="#D3D3D3"
+            android:inputType="textPassword"
+            android:hint="パスワード" />
+
+        <EditText
+            android:id="@+id/editText9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_margin="20dp"
+            android:ems="10"
+            android:background="#D3D3D3"
+            android:inputType="textPassword"
+            android:hint="パスワード確認" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_margin="20dp"
+            android:background="#F08080"
+            android:textColor="#FFFFFF"
+            android:text="作成" />
+
+    </LinearLayout>
+
+</LinearLayout>

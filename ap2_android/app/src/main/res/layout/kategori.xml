@@ -69,18 +69,18 @@
                 android:text="home" />
 
             <Button
-                android:id="@+id/coupon_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="coupon" />
-
-            <Button
                 android:id="@+id/account_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="account" />
+
+            <Button
+                android:id="@+id/coupon_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="coupon" />
 
 
         </LinearLayout>
