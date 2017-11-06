@@ -39,6 +39,7 @@
             android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:name=".KensakuRoot"
             android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name=".newacount"/>
     </application>
 
 </manifest>
