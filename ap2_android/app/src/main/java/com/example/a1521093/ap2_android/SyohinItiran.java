@@ -74,6 +74,11 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
         startActivity(i);
     }
 
+    public void accountButton(View v){
+        Intent i = new Intent(this, Account.class);
+        startActivity(i);
+    }
+
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
         Intent intent = new Intent(this, GPS.class);

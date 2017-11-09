@@ -54,10 +54,16 @@ public class maker extends AppCompatActivity implements AdapterView.OnItemClickL
         mListView.setAdapter(topListAdapter);
         mListView.setOnItemClickListener(this);
     }
-    public void home_onClick(View v) {
+    public void homeButton(View v) {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
+
+    public void accountButton(View v){
+        Intent i = new Intent(this,Account.class);
+        startActivity(i);
+    }
+
     public void modoru_onClick(View v) {
         Intent intent=new Intent(getApplication(),kategori.class);
         intent.putExtra("main_category_name",main_category_name);

@@ -149,9 +149,14 @@ public class kennsakukekaActivity extends AppCompatActivity {
         startActivity(intent);
         }
 
-    public void home_onClick(View v) {
+    public void homeButton(View v) {
         Intent i = new Intent(this, MainActivity.class);
-              startActivity(i);
+        startActivity(i);
+    }
+
+    public void accountButton(View v){
+        Intent i = new Intent(this, Account.class);
+        startActivity(i);
     }
 
     public void kensaku_onClick(View v) {

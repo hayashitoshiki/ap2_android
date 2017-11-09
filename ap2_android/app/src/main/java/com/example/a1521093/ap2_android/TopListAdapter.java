@@ -62,7 +62,7 @@ public class TopListAdapter extends BaseAdapter {
         if (convertView == null) {
             Log.d("通るか調査1.5", "店舗ID：" + position);
 
-            if(resourcedId==2130968620) {
+            if(resourcedId==2130968621) {
                 Log.d("通るか調査1.5.5", "店舗ID：" + position);
 
                 convertView = inflater.inflate(resourcedId, null);
@@ -82,7 +82,7 @@ public class TopListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        if(resourcedId==2130968620) {
+        if(resourcedId==2130968621) {
             Log.d("通るか調査２", "店舗ID：" + position);
             kennsakukekaActivity keka= new kennsakukekaActivity();
            int stock = keka.getstock(position);

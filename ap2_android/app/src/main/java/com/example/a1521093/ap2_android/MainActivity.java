@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -78,17 +79,17 @@ public class MainActivity extends AppCompatActivity {
            // }
        // });
 
-      //  ImageButton acounts = (ImageButton) findViewById(R.id.account_button);
-       // acounts.setOnClickListener(new View.OnClickListener() {
+        ImageButton acounts = (ImageButton) findViewById(R.id.account_button);
+        acounts.setOnClickListener(new View.OnClickListener() {
             /** ボタンをクリックした時に呼ばれる */
-         //    @Override
-         //   public void onClick(View v) {
+             @Override
+            public void onClick(View v) {
                 // ここに処理を記述する
-         //       Intent intent=new Intent(getApplication(),kategori.class);
-         //       intent.putExtra("dai",dai);
-         //       startActivity(intent);
-         //   }
-         // });
+                Intent intent=new Intent(getApplication(),Account.class);
+               intent.putExtra("dai",dai);
+                startActivity(intent);
+            }
+          });
 
     }
     // 位置情報許可の確認
