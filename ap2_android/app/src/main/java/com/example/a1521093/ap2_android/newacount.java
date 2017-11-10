@@ -25,7 +25,7 @@ public class newacount extends AppCompatActivity {
     private EditText editText7 = null;
     private EditText editText8 = null;
     private EditText editText9 = null;
-    String dai;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +37,7 @@ public class newacount extends AppCompatActivity {
             @Override
 
             public  void onClick(View v){
-                Intent intent=new Intent(getApplication(),MainActivity.class);
-                intent.putExtra("dai",dai);
+                Intent intent=new Intent(getApplication(),AccountLogin.class);
                 startActivity(intent);
             }
         });
@@ -57,7 +56,9 @@ public class newacount extends AppCompatActivity {
                 if(b1.equals(b2) == false){
                     //不一致の場合の処理
                     Intent intent=new Intent(getApplication(),newacount.class);
-                    intent.putExtra("dai",dai);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(getApplication(),MainActivity.class);
                     startActivity(intent);
                 }
             }

@@ -50,7 +50,7 @@
         <Button
             android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:background="#FFB6C1"
+            android:background="#F08080"
             android:text="ログイン"
             android:textColor="#FFFFFF"
             android:layout_margin="10dp"
@@ -64,7 +64,8 @@
             style="?android:attr/borderlessButtonStyle"
             android:textColor="#6A5ACD"
             tools:layout_editor_absoluteY="410dp"
-            tools:layout_editor_absoluteX="110dp" />
+            tools:layout_editor_absoluteX="110dp"
+            android:onClick="NewAccount"/>
     </LinearLayout>
 
 </LinearLayout>

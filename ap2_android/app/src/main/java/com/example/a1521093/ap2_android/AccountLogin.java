@@ -19,4 +19,9 @@ public class AccountLogin extends AppCompatActivity {
         Intent intent=new Intent(getApplication(),MainActivity.class);
         startActivity(intent);
     }
+
+    public void NewAccount(View v){
+        Intent intent = new Intent(getApplication(),newacount.class);
+        startActivity(intent);
+    }
 }
