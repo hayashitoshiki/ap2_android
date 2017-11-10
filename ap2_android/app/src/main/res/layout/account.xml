@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#D3D3D3"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/kensakugamen"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#D3D3D3"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="アカウント情報"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    </LinearLayout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent" android:layout_height="fill_parent">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:background="#D3D3D3"
+            android:text="ユーザー名"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="2dp" />
+
+        <TextView
+            android:id="@+id/account_email"
+            android:layout_width="395dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center_vertical"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@+id/textView18"
+            tools:layout_editor_absoluteX="8dp" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="395dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center_vertical"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@+id/textView21"
+            tools:layout_editor_absoluteX="8dp" />
+<!--
+        <TextView
+            android:id="@+id/textView24"
+            android:layout_width="395dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center_vertical"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@+id/textView20"
+            tools:layout_editor_absoluteX="8dp" />
+-->
+        <TextView
+            android:id="@+id/account_point"
+            android:layout_width="395dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="0dp"
+            android:gravity="center_vertical"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@+id/textView19"
+            tools:layout_editor_absoluteX="8dp" />
+
+        <TextView
+            android:id="@+id/account_name"
+            android:layout_width="395dp"
+            android:layout_height="35dp"
+            android:gravity="center_vertical"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@+id/textView14"
+            tools:layout_editor_absoluteX="8dp" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#D3D3D3"
+            android:text="メールアドレス"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintTop_toBottomOf="@+id/account_name"
+            tools:layout_editor_absoluteX="8dp" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#D3D3D3"
+            android:text="パスワード"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintTop_toBottomOf="@+id/account_email"
+            tools:layout_editor_absoluteX="8dp" />
+<!--
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="#D3D3D3"
+            android:text="購入履歴"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintTop_toBottomOf="@+id/textView25"
+            tools:layout_editor_absoluteX="8dp" />
+-->
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="395dp"
+            android:layout_height="wrap_content"
+            android:background="#D3D3D3"
+            android:text="ポイント"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintTop_toBottomOf="@+id/textView25"
+
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="252dp" />
+<!--
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="279dp"
+            android:text="アカウント情報を変更する"
+            app:layout_constraintTop_toBottomOf="@+id/textView23"
+            tools:layout_editor_absoluteX="67dp" />
+-->
+        <Button
+            android:id="@+id/button7"
+            android:onClick="Logout"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_red_light"
+            android:text="ログアウト"
+            app:layout_constraintTop_toBottomOf="@+id/account_point"
+
+            tools:layout_editor_absoluteX="67dp"
+            android:layout_marginTop="52dp" />
+
+    </android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#D3D3D3"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        >
+
+        <ImageButton
+            android:id="@+id/homebutton"
+            android:onClick="homeButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
+
+        <ImageButton
+            android:id="@+id/coupon_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_menu_view" />
+
+        <ImageButton
+            android:id="@+id/account_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+
+
+
+    </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

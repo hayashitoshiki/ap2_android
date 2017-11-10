@@ -15,10 +15,13 @@ public class Product {
     private double longitude;
     private double latitude;
     private int count;
+    private String email;
+    private int point;
 
     public Product(int id, int maker_id, int main_category_id, int sub_category_id, int shop_id,
                    String shop_name, String shop_image, String address
-                     ,String name,double longitude,double latitude, int count) {
+                     ,String name,double longitude,double latitude, int count, int point,
+                   String email) {
 
         this.id = id;
         this.maker_id = maker_id;
@@ -32,6 +35,8 @@ public class Product {
         this.latitude = latitude;
         this.name = name;
         this.count = count;
+        this.email = email;
+        this.point = point;
     }
 
     public int getid(){return id;}
@@ -71,6 +76,10 @@ public class Product {
     public double getlatitude(){return latitude;}
 
     public int getcount(){return count;}
+
+    public String getemail(){return email;}
+
+    public int getpoint(){return point;}
 
 
     @Override

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/aaa">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#D3D3D3"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/modoru"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:background="#D3D3D3"
+            android:onClick="modoru_onClick"
+            android:text="＜戻る"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/holo_red_light" />
+
+        <TextView
+            android:id="@+id/kensakugamen"
+            android:layout_width="260dp"
+            android:layout_height="match_parent"
+            android:background="#D3D3D3"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="商品購入"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    </LinearLayout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="142dp"
+                    android:layout_height="match_parent" />
+
+                <TextView
+                    android:id="@+id/product_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:text="商品名"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/a"/>
+
+            <Button
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="コードを入力"
+                android:textColor="#FF6347"
+                android:textSize="24sp"
+                android:onClick="code"
+                tools:layout_editor_absoluteX="128dp"
+                tools:layout_editor_absoluteY="418dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#D3D3D3"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            >
+
+            <Button
+                android:id="@+id/homebutton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="home_onClick"
+                android:text="home" />
+
+            <Button
+                android:id="@+id/coupon_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="coupon" />
+
+            <Button
+                android:id="@+id/account_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="account" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

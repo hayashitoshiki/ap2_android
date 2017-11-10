@@ -39,6 +39,9 @@
             android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:name=".KensakuRoot"
             android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name=".Product_Barcode"/>
+        <activity android:name=".AccountLogin"/>
+        <activity android:name=".Account"/>
         <activity android:name=".newacount"/>
     </application>
 

@@ -64,51 +64,47 @@
             android:layout_height="40dp"
             android:text="カテゴリから絞り込む家電製品" />
 
-
     </LinearLayout>
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent" android:layout_height="fill_parent">
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context="com.example.a1521093.retrofit_server.MainActivity">
-
-    </android.support.constraint.ConstraintLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="#00000"
-        android:orientation="horizontal">
-
-
-
-        <ImageButton
-            android:id="@+id/homebutton"
+        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
+            android:layout_height="wrap_content"
+            tools:context="com.example.a1521093.retrofit_server.MainActivity">
 
-        <ImageButton
-            android:id="@+id/coupon_button"
+        </android.support.constraint.ConstraintLayout>
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:srcCompat="@android:drawable/ic_menu_view" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#000000"
+            android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/account_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+            <ImageButton
+                android:id="@+id/homebutton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
+
+            <ImageButton
+                android:id="@+id/coupon_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@android:drawable/ic_menu_view" />
+
+            <ImageButton
+                android:id="@+id/account_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@android:drawable/ic_menu_my_calendar" />
 
 
-    </LinearLayout>
+        </LinearLayout>
     </RelativeLayout>
 </LinearLayout>
-
 
