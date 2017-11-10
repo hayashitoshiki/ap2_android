@@ -35,8 +35,10 @@ public class KensakuRoot extends  AppCompatActivity {
             btn.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplication(),GPS.class);
-                    intent.putExtra("syohin",product_name);
+                    intent.putExtra("product_name",product_name);
                     intent.putExtra("kensaku",title_name);
+                    intent.putExtra("bunki",2);
+                    intent.putExtra("syohin",title_name);
                     startActivity(intent);
                 }
             });

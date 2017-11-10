@@ -42,11 +42,15 @@ public class TopListAdapter extends BaseAdapter {
         }
     }
                     //データ取得
-    public void setDatas(ArrayList<Product> aProductList) {
+    public void setDatas(ArrayList<Product> aProductList,int i) {
         for (Product product : aProductList) {
-            TopListView view = new TopListView(context);
+            TopListView view = new TopListView(context,i);
+            if(i==1){
             //TopListViewに値を渡してレイアウトセット
-            view.setProduct(product);
+                view.setProduct(product);
+            }else{
+                view.setProduct2(product);
+            }
             this.aProductList.add(view);
         }
     }
