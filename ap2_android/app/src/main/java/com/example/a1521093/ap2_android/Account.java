@@ -14,6 +14,8 @@ import retrofit2.Response;
 
 public class Account extends AppCompatActivity {
     private ApiService ApiService;
+    AccountLogin accountlogin;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +37,7 @@ public class Account extends AppCompatActivity {
     private void getData() {
         final ArrayList<Product> aProductList = new ArrayList<>();
         //クエリを投げる
-        Call<List<Product>> call = ApiService.items("users.json?id=3");
+        Call<List<Product>> call = ApiService.items("users.json?email="+accountlogin.getemail()+"&password="+accountlogin.getpassword());
         try {
             call.enqueue(new Callback<List<Product>>() {
                 @Override                           //取得成功
@@ -64,20 +66,20 @@ public class Account extends AppCompatActivity {
     private void updateContainer(ArrayList<Product> aProductList) {
 
         for (Product product : aProductList) {
-            //遷移時に投げる用のテキスト取得と格納
             String account_name=(product.getname());
             int point = (product.getpoint());
-            String email = (product.getemail());
 
             TextView nameView = (TextView)findViewById(R.id.account_name);
             TextView emailView = (TextView)findViewById(R.id.account_email);
+            TextView passwordView = (TextView)findViewById(R.id.account_password);
             TextView pointView = (TextView)findViewById(R.id.account_point);
+
 
             Log.d("Account", "アカウント名："+account_name);
             nameView.setText(account_name);
-            emailView.setText(email);
+            emailView.setText(accountlogin.getemail());
+            passwordView.setText(accountlogin.getpassword());
             pointView.setText(point+"p");
-
         }
 
     }

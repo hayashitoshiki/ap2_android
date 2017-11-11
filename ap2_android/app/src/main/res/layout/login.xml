@@ -26,7 +26,7 @@
             tools:layout_editor_absoluteY="25dp" />
 
         <EditText
-            android:id="@+id/mail"
+            android:id="@+id/email"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:background="#D3D3D3"
@@ -37,7 +37,7 @@
             android:layout_margin="10dp"/>
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/password"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:background="#D3D3D3"

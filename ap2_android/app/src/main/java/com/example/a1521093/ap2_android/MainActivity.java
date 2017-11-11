@@ -66,30 +66,30 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-                 //今はなし
+        //今はなし
         //ImageButton points = (ImageButton) findViewById(R.id.coupon_button);
         //points.setOnClickListener(new View.OnClickListener() {
-            /** ボタンをクリックした時に呼ばれる */
-          //  @Override
-           // public void onClick(View v) {
-                // ここに処理を記述する
-           //     Intent intent=new Intent(getApplication(),maker.class);
-           //     intent.putExtra("dai",dai);
-           //     startActivity(intent);
-           // }
-       // });
+        /** ボタンをクリックした時に呼ばれる */
+        //  @Override
+        // public void onClick(View v) {
+        // ここに処理を記述する
+        //     Intent intent=new Intent(getApplication(),maker.class);
+        //     intent.putExtra("dai",dai);
+        //     startActivity(intent);
+        // }
+        // });
 
         ImageButton acounts = (ImageButton) findViewById(R.id.account_button);
         acounts.setOnClickListener(new View.OnClickListener() {
             /** ボタンをクリックした時に呼ばれる */
-             @Override
+            @Override
             public void onClick(View v) {
                 // ここに処理を記述する
                 Intent intent=new Intent(getApplication(),Account.class);
-               intent.putExtra("dai",dai);
+                intent.putExtra("dai",dai);
                 startActivity(intent);
             }
-          });
+        });
 
     }
     // 位置情報許可の確認
