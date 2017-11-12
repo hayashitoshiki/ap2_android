@@ -17,6 +17,7 @@ public class Account extends AppCompatActivity {
     AccountLogin accountlogin;
 
 
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.account);

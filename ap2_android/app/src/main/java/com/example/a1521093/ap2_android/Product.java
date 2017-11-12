@@ -17,11 +17,12 @@ public class Product {
     private int count;
     private String email;
     private int point;
+    private String image;
 
     public Product(int id, int maker_id, int main_category_id, int sub_category_id, int shop_id,
                    String shop_name, String shop_image, String address
                      ,String name,double longitude,double latitude, int count, int point,
-                   String email) {
+                   String email, String image) {
 
         this.id = id;
         this.maker_id = maker_id;
@@ -37,6 +38,7 @@ public class Product {
         this.count = count;
         this.email = email;
         this.point = point;
+        this.image = image;
     }
 
     public int getid(){return id;}
@@ -81,6 +83,7 @@ public class Product {
 
     public int getpoint(){return point;}
 
+    public String getimage(){return image;}
 
     @Override
     public String toString() {

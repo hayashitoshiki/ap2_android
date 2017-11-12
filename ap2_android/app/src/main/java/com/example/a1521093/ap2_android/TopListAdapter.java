@@ -1,15 +1,23 @@
 package com.example.a1521093.ap2_android;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 
@@ -18,7 +26,7 @@ import java.util.ArrayList;
 public class TopListAdapter extends BaseAdapter {
 
     private ArrayList<TopListView> aProductList;
-    private Context context;
+    public static  Context context;
     private LayoutInflater inflater;
     private int resourcedId;
 
@@ -30,6 +38,8 @@ public class TopListAdapter extends BaseAdapter {
         public TextView textViewname;
         public TextView textViewaddress;
         public TextView textViewdistance;
+
+        public ImageView imageViewstore;
     }
     public TopListAdapter(Context context, int resourcedId) {
         this.context = context;
@@ -53,6 +63,8 @@ public class TopListAdapter extends BaseAdapter {
         return 0;
     }
 
+    public static Context getcontext(){return context;}
+
     @Override
     public View getView(final int position, View convertView, final ViewGroup parent) {
         ViewHolder holder;
@@ -74,6 +86,8 @@ public class TopListAdapter extends BaseAdapter {
                 holder.textViewstock = (TextView)convertView. findViewById(R.id.kosuu);
                 holder.textViewaddress = (TextView)convertView.findViewById(R.id.zyusyo);
                 holder.textViewdistance = (TextView)convertView.findViewById(R.id.kyori);
+
+                holder.imageViewstore = (ImageView)convertView.findViewById(R.id.store_image);
                 convertView.setTag(holder);
             }else{
                   return aProductList.get(position);
@@ -88,6 +102,7 @@ public class TopListAdapter extends BaseAdapter {
            int stock = keka.getstock(position);
             String store_name = keka.getstore_name(position);
             String store_address = keka.getaddress(position);
+            String store_image = keka.getstore_image(position);
 
             double user_lon  = keka.getuser_lon();
             double user_lati = keka.getuser_lati();
@@ -101,9 +116,13 @@ public class TopListAdapter extends BaseAdapter {
             }else {
                 holder.textViewdistance.setText(kyori_A + "m");
             }
-             holder.textViewname.setText(store_name);
+            holder.textViewname.setText(store_name);
             holder.textViewaddress.setText(store_address);
             holder.textViewstock.setText(stock+"個");
+
+
+            Picasso.with(context).load(store_image).into(holder.imageViewstore);
+
             holder.editButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -146,6 +165,8 @@ public class TopListAdapter extends BaseAdapter {
             if(i==1){
             //TopListViewに値を渡してレイアウトセット
                 view.setProduct(product);
+            }else if(i==2){
+                view.setProduct2(product);
             }
             this.aProductList.add(view);
         }

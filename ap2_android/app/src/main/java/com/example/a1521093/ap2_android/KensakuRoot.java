@@ -25,7 +25,7 @@ public class KensakuRoot extends  AppCompatActivity {
         for(int i=0;i<8;i++) {
             View view = getLayoutInflater().inflate(R.layout.kategori_sub, null);
             layout.addView(view);
-            TextView text = (TextView) view.findViewById(R.id.loop_name);
+            TextView text = (TextView) view.findViewById(R.id.product_name);
             final String product_name =("商品"+(i+1));
             text.setText(product_name);
 

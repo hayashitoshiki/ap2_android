@@ -34,11 +34,12 @@ public class kennsakukekaActivity extends AppCompatActivity {
     public static int count;
     int bunki;
 
-   public static double[] store_lati = new double[100];
+    public static double[] store_lati = new double[100];
     public static double[] store_lon = new double[100];
-   public static String[] store_name=new String[100];
+    public static String[] store_name=new String[100];
     public static int stock[] = new int[100];
     public static String[] store_address = new String[100];
+    public static String[] store_image = new String[100];
 
 
     @Override
@@ -102,13 +103,12 @@ public class kennsakukekaActivity extends AppCompatActivity {
         return store_lati[i];
     }
 
-    public double getstore_lon(int i){
-        return store_lon[i];
-    }
+    public double getstore_lon(int i){return store_lon[i];}
 
     public int getstock(int i){
         return stock[i];
     }
+
     public String getaddress(int i){
         return store_address[i];
     }
@@ -116,6 +116,8 @@ public class kennsakukekaActivity extends AppCompatActivity {
     public String getstore_name(int i){
         return store_name[i];
     }
+
+    public String getstore_image(int i){return store_image[i];}
 
     public void modoru_onClick(View v) {
         Intent intent;
@@ -217,12 +219,13 @@ public class kennsakukekaActivity extends AppCompatActivity {
                     public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                         aList.addAll(response.body());
                        for (Product product : aList) {
-                            store_name[count] = (product.getname());
-                            store_lati[count] = (product.getlatitude());
-                            store_lon[count] = (product.getlongitude());
+                           store_name[count] = (product.getname());
+                           store_lati[count] = (product.getlatitude());
+                           store_lon[count] = (product.getlongitude());
                            store_address[count]=(product.getAddress());
+                           store_image[count] = (product.getimage());
                             //指定のListViewに格納
-                            topListAdapter.setDatas(aList,2);
+                            topListAdapter.setDatas(aList,3);
                             topListAdapter.notifyDataSetChanged();
                             count++;
                         }

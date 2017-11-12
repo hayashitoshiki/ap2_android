@@ -30,6 +30,7 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
 
     protected int[] product_id = new int[100];
     protected String[] product_name = new String[100];
+    public static String[] product_image = new String[100];
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -69,7 +70,7 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
         startActivity(intent);
     }
 
-    public void home_onClick(View v) {
+    public void homeButton(View v) {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
@@ -78,6 +79,8 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
         Intent i = new Intent(this, Account.class);
         startActivity(i);
     }
+
+    public static String getproductimage(int i){return product_image[i];}
 
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
@@ -134,11 +137,12 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
             //遷移時に投げる用のテキスト取得と格納
             product_name[count]=(product.getname());
             product_id[count] = (product.getid());
+            product_image[count] = (product.getimage());
             adapter.add(product);
             count++;
         }
         //指定のListViewに格納
-        topListAdapter.setDatas(aProductList,1);
+        topListAdapter.setDatas(aProductList,2);
         topListAdapter.notifyDataSetChanged();
     }
 }
