@@ -14,6 +14,9 @@ public interface ApiService {
     //GET単品のため
     Call<List<Product>> items(@Url String url);
 
+    @GET
+    Call<List<User>> account(@Url String url);
+
     @POST("users.json")
     Call<List<User>> user( @Body User user);
 }

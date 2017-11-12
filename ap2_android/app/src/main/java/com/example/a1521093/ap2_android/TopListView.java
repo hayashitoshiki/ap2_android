@@ -37,8 +37,6 @@ public class TopListView extends LinearLayout {
             textViewProductName = (TextView) findViewById(R.id.product_name);
             imageView = (ImageView) findViewById(R.id.product_image);
         }
-
-      //
     }
 
             //Viewに値セット

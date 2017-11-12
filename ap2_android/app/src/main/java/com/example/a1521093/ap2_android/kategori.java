@@ -100,11 +100,6 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
         } catch (Exception e) {
             e.printStackTrace();
         }
-        try {
-            updateContainer(aProductList);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
                             //ListViewに値入れるクラス
     private void updateContainer(ArrayList<Product> aProductList) {

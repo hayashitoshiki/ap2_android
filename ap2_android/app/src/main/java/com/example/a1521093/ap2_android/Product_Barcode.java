@@ -7,35 +7,28 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.squareup.picasso.Picasso;
-
-/**
- * Created by 1521093 on 2017/11/02.
- */
 
 public class Product_Barcode extends AppCompatActivity {
     public  double user_lat;
     public  double user_lon;
-    int sub_category_id;
-    int product_id;
+    public int sub_category_id;
+    public int product_id;
     public static int count;
-    int bunki;
-    String main_category_name;
-    int main_category_id;
-    String maker_name;
-    int maker_id;
-    String sub_category_name;
-    String product_name;
-    String product_image;
+    public int bunki;
+    public String main_category_name;
+    public int main_category_id;
+    public String maker_name;
+    public int maker_id;
+    public String sub_category_name;
+    public String product_name;
+    public String product_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product_barcode);
         Intent intent = getIntent();
-        TextView title = (TextView)findViewById(R.id.product_name);
-        ImageView image = (ImageView)findViewById(R.id.product_image);
         product_name = intent.getStringExtra("product_name");
         product_image = intent.getStringExtra("image");
         main_category_name = intent.getStringExtra("main_category_name");
@@ -50,9 +43,11 @@ public class Product_Barcode extends AppCompatActivity {
         user_lon=intent.getDoubleExtra("user_lon",0);
         user_lat = intent.getDoubleExtra("user_lat",0);
 
+        TextView title = (TextView)findViewById(R.id.product_name);
+        ImageView image = (ImageView)findViewById(R.id.product_image);
 
         Picasso.with(this).load(product_image).into(image);
-        Log.d("kennsakukekaActivity", "商品名："+product_name+"画像"+product_image);
+        Log.d("Product_Barcode", "商品名："+product_name+"、画像:"+product_image);
         title.setText(product_name);
 
     }

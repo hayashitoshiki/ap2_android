@@ -109,11 +109,6 @@ public class maker extends AppCompatActivity implements AdapterView.OnItemClickL
         } catch (Exception e) {
             e.printStackTrace();
         }
-        try {
-            updateContainer(aProductList);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
     //ListViewに値入れるクラス
     private void updateContainer(ArrayList<Product> aProductList) {

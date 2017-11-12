@@ -6,11 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -22,8 +19,6 @@ public class AccountLogin extends AppCompatActivity {
     public static String email;
     public static String password;
 
-
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
@@ -34,8 +29,6 @@ public class AccountLogin extends AppCompatActivity {
     }
     public void Login(View v){
         getData();
-        Intent intent=new Intent(getApplication(),AccountLogin.class);
-        startActivity(intent);
     }
 
     public void NewAccount(View v){
@@ -52,50 +45,46 @@ public class AccountLogin extends AppCompatActivity {
     public static String getpassword(){return password;}
 
     private void getData() {
-        final ArrayList<Product> aProductList = new ArrayList<>();
+        final ArrayList<User> UserList = new ArrayList<>();
         email = emailEdit.getText().toString();
         password = passwordEdit.getText().toString();
 
         //クエリを投げる
-        Call<List<Product>> call = ApiService.items("users.json?email="+email+"&password="+password);
+        Call<List<User>> call = ApiService.account("users.json?email="+email+"&password="+password);
         Log.d("AccountLogin","email："+email+"password："+password);
         try {
-            call.enqueue(new Callback<List<Product>>() {
+            call.enqueue(new Callback<List<User>>() {
                 @Override                           //取得成功
-                public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                     Log.d("AccountLogin", "call onResponse");
-                    aProductList.addAll(response.body());
-                    Log.d("AccountLogin", aProductList.toString());
-
-                    updateContainer(aProductList);
+                    UserList.addAll(response.body());
+                    updateContainer(UserList);
                 }
                 @Override                           //取得失敗
-                public void onFailure(Call<List<Product>> call, Throwable t) {
+                public void onFailure(Call<List<User>> call, Throwable t) {
                     Log.d("Account", "call onFailure");
-                    updateContainer(aProductList);
+                    updateContainer(UserList);
                 }
             });
         } catch (Exception e) {
             e.printStackTrace();
         }
-        try {
-            updateContainer(aProductList);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
-    private void updateContainer(ArrayList<Product> aProductList) {
+    private void updateContainer(ArrayList<User> UserList) {
 
-        for (Product product : aProductList) {
-            String account_name=(product.getname());
+        int count=0;
+        for (User user : UserList) {
+            String account_name=(user.name);
             Log.d("AccountLogin", "アカウント名："+account_name);
-            if(account_name!=null){
-                Intent intent=new Intent(getApplication(),MainActivity.class);
-                startActivity(intent);
-            }
+            Intent intent=new Intent(getApplication(),MainActivity.class);
+            startActivity(intent);
 
+            count+=1;
         }
-
+        if(count==0){
+            emailEdit.getEditableText().clear();
+            passwordEdit.getEditableText().clear();
+        }
     }
 }

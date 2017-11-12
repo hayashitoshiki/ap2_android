@@ -21,6 +21,4 @@ public class User {
     @SerializedName("point")
     public int point;
 
-
-
 }

@@ -123,11 +123,6 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
         } catch (Exception e) {
             e.printStackTrace();
         }
-        try {
-            updateContainer(aProductList);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     //ListViewに値入れるクラス

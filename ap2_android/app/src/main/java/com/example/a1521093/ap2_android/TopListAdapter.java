@@ -33,12 +33,10 @@ public class TopListAdapter extends BaseAdapter {
     private static class ViewHolder {
         public Button editButton;
         public Button susumuButton;
-
         public TextView textViewstock;
         public TextView textViewname;
         public TextView textViewaddress;
         public TextView textViewdistance;
-
         public ImageView imageViewstore;
     }
     public TopListAdapter(Context context, int resourcedId) {
@@ -69,24 +67,17 @@ public class TopListAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, final ViewGroup parent) {
         ViewHolder holder;
 
-        Log.d("通るか調査", "店舗ID：" + position+"レイアウトID"+resourcedId+"グループ"+parent);
-
         if (convertView == null) {
-            Log.d("通るか調査1.5", "店舗ID：" + position);
 
             if(resourcedId==2130968621) {
-                Log.d("通るか調査1.5.5", "店舗ID：" + position);
-
-                convertView = inflater.inflate(resourcedId, null);
+                 convertView = inflater.inflate(resourcedId, null);
                 holder = new ViewHolder();
                 holder.editButton = (Button) convertView.findViewById(R.id.tizu);
                 holder.susumuButton = (Button) convertView.findViewById(R.id.susumu);
-
                 holder.textViewname = (TextView)convertView.findViewById(R.id.syouhinmei);
                 holder.textViewstock = (TextView)convertView. findViewById(R.id.kosuu);
                 holder.textViewaddress = (TextView)convertView.findViewById(R.id.zyusyo);
                 holder.textViewdistance = (TextView)convertView.findViewById(R.id.kyori);
-
                 holder.imageViewstore = (ImageView)convertView.findViewById(R.id.store_image);
                 convertView.setTag(holder);
             }else{
@@ -97,7 +88,6 @@ public class TopListAdapter extends BaseAdapter {
         }
 
         if(resourcedId==2130968621) {
-            Log.d("通るか調査２", "店舗ID：" + position);
             kennsakukekaActivity keka= new kennsakukekaActivity();
            int stock = keka.getstock(position);
             String store_name = keka.getstore_name(position);
@@ -139,7 +129,6 @@ public class TopListAdapter extends BaseAdapter {
         }
         return convertView;
     }
-
 
     private double getDistance(double lat1, double lon1, double lat2, double lon2) {
         double theta = lon1 - lon2;

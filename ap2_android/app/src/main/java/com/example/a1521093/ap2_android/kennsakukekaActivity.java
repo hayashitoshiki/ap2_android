@@ -10,8 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
@@ -53,8 +51,6 @@ public class kennsakukekaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kensakukeka);
 
-        TextView title = (TextView)findViewById(R.id.procutd_name);
-
         Intent intent = getIntent();
         main_category_name = intent.getStringExtra("main_category_name");
         main_category_id = intent.getIntExtra("main_category_id",0);
@@ -70,8 +66,8 @@ public class kennsakukekaActivity extends AppCompatActivity {
         user_lon=intent.getDoubleExtra("user_lon",0);
         user_lat = intent.getDoubleExtra("user_lat",0);
 
+        TextView title = (TextView)findViewById(R.id.procutd_name);
         title.setText(product_name);
-
 
         Log.d("kennsakukekaActivity", "メーカーID："+product_id);
         //ArrayAdapterオブジェクト生成
@@ -112,7 +108,6 @@ public class kennsakukekaActivity extends AppCompatActivity {
                         startActivity(in);
 
                         break;
-
                 }
             }
         });
@@ -120,6 +115,7 @@ public class kennsakukekaActivity extends AppCompatActivity {
     public double getuser_lati(){
         return user_lat;
     }
+
     public double getuser_lon(){
         return user_lon;
     }
@@ -217,11 +213,6 @@ public class kennsakukekaActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        try {
-            updateContainer(aProductList);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     //ListViewに値入れるクラス
@@ -250,9 +241,9 @@ public class kennsakukekaActivity extends AppCompatActivity {
                            store_address[count]=(product.getAddress());
                            store_image[count] = (product.getimage());
                             //指定のListViewに格納
-                            topListAdapter.setDatas(aList,3);
-                            topListAdapter.notifyDataSetChanged();
-                            count++;
+                           topListAdapter.setDatas(aList,3);
+                           topListAdapter.notifyDataSetChanged();
+                           count++;
                         }
                     }
                     @Override                           //取得失敗

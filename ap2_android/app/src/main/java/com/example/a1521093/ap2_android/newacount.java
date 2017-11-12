@@ -14,12 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class newacount extends AppCompatActivity {
-    private AccountLogin accountlogin;
-    private ApiService ApiService;
-    private Button button2 =null;
-    private EditText name = null;
-    private EditText email = null;
-    private EditText password1 = null;
+     private ApiService ApiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +81,8 @@ public class newacount extends AppCompatActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        accountlogin.setemail(user.email);
-                        accountlogin.setpassword(user.password);
+                        AccountLogin.setemail(user.email);
+                        AccountLogin.setpassword(user.password);
                         Log.d("NewAccount", "ユーザー名："+user.name+"、メール："+user.email+"、パスワード："+user.password+"、ポイント："+user.point);
 
                         Intent intent = new Intent(getApplication(), MainActivity.class);
