@@ -33,6 +33,12 @@ public class kennsakukekaActivity extends AppCompatActivity {
     int product_id;
     public static int count;
     int bunki;
+    String main_category_name;
+    int main_category_id;
+    String maker_name;
+    int maker_id;
+    String sub_category_name;
+    String product_image;
 
     public static double[] store_lati = new double[100];
     public static double[] store_lon = new double[100];
@@ -47,18 +53,26 @@ public class kennsakukekaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kensakukeka);
 
-        Intent intent = getIntent();
-        bunki = intent.getIntExtra("switch",0);
         TextView title = (TextView)findViewById(R.id.procutd_name);
-         product_name = intent.getStringExtra("product_name");
-        Log.d("kennsakukekaActivity", "商品名："+product_name);
-        title.setText(product_name);
 
+        Intent intent = getIntent();
+        main_category_name = intent.getStringExtra("main_category_name");
+        main_category_id = intent.getIntExtra("main_category_id",0);
+        maker_name = intent.getStringExtra("maker_name");
+        maker_id = intent.getIntExtra("maker_id",0);
+        sub_category_name = intent.getStringExtra("sub_category_name");
+        sub_category_id = intent.getIntExtra("sub_category_id",0);
+        product_name = intent.getStringExtra("product_name");
+        product_id = intent.getIntExtra("product_id",0);
+        bunki = intent.getIntExtra("switch",0);
+        product_image = intent.getStringExtra("image");
+        product_name = intent.getStringExtra("product_name");
         user_lon=intent.getDoubleExtra("user_lon",0);
         user_lat = intent.getDoubleExtra("user_lat",0);
 
-        sub_category_id = intent.getIntExtra("sub_category_id",0);
-        product_id = intent.getIntExtra("product_id",0);
+        title.setText(product_name);
+
+
         Log.d("kennsakukekaActivity", "メーカーID："+product_id);
         //ArrayAdapterオブジェクト生成
         adapter=new ArrayAdapter<Product>(kennsakukekaActivity.this, android.R.layout.simple_list_item_1);
@@ -82,8 +96,19 @@ public class kennsakukekaActivity extends AppCompatActivity {
                         break;
                     case R.id.susumu:
                         Intent in = new Intent(getApplication(), Product_Barcode.class);
+                        in.putExtra("main_category_name",main_category_name);
+                        in.putExtra("main_category_id",main_category_id );
+                        in.putExtra("maker_name",maker_name);
+                        in.putExtra("maker_id",maker_id );
+                        in.putExtra("sub_category_name",sub_category_name);
+                        in.putExtra("sub_category_id",sub_category_id );
                         in.putExtra("product_name",product_name);
-
+                        in.putExtra("product_id",product_id);
+                        in.putExtra("product_name",product_name);
+                        in.putExtra("image",product_image);
+                        in.putExtra("user_lon",user_lon);
+                        in.putExtra("user_lat",user_lat);
+                        in.putExtra("switch",bunki);
                         startActivity(in);
 
                         break;

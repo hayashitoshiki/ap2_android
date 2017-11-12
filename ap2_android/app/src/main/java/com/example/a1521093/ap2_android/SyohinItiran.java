@@ -94,6 +94,7 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
         intent.putExtra("product_name", product_name[position]);
         intent.putExtra("product_id",product_id[position] );
         intent.putExtra("switch",1);
+        intent.putExtra("image",product_image[position]);
         startActivity(intent);
     }
 

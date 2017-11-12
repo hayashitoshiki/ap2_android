@@ -127,6 +127,7 @@ public class GPS extends Activity implements LocationListener {
         int product_id = get.getIntExtra("product_id",0);
         int bunki = get.getIntExtra("switch",0);
         String kensaku = get.getStringExtra("kensaku");
+        String product_image = get.getStringExtra("image");
         Log.d("GPS", "main"+main_category_name+":"+main_category_id+"sub"+sub_category_name+":"+sub_category_id+"maker"+maker_name+":"+maker_id);
 
         intent.putExtra("main_category_name",main_category_name);
@@ -141,6 +142,7 @@ public class GPS extends Activity implements LocationListener {
         intent.putExtra("user_lat",user_latitude);
         intent.putExtra("user_lon",user_longitude);
         intent.putExtra("kensaku",kensaku);
+        intent.putExtra("image",product_image);
 
         startActivity(intent);
     }
