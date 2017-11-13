@@ -2,88 +2,51 @@ package com.example.a1521093.ap2_android;
 
 //mono-chika(json)取得時の格納クラス
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class Product {
-    private int id;
-    private int maker_id;
-    private int  main_category_id;
-    private int sub_category_id;
-    private int shop_id;
-    private String shop_name;
-    private String shop_image;
-    private String address;
-    private String name;
-    private double longitude;
-    private double latitude;
-    private int count;
-    private String email;
-    private int point;
-    private String image;
+    @Expose
+    @SerializedName("id")
+    public int id;
 
-    public Product(int id, int maker_id, int main_category_id, int sub_category_id, int shop_id,
-                   String shop_name, String shop_image, String address
-                     ,String name,double longitude,double latitude, int count, int point,
-                   String email, String image) {
+    @Expose
+    @SerializedName("shop_id")
+    public int shop_id;
 
-        this.id = id;
-        this.maker_id = maker_id;
-        this.main_category_id = main_category_id;
-        this.sub_category_id = sub_category_id;
-        this.shop_id = shop_id;
-        this.shop_name = shop_name;
-        this.shop_image = shop_image;
-        this.address = address;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.name = name;
-        this.count = count;
-        this.email = email;
-        this.point = point;
-        this.image = image;
-    }
+    @Expose
+    @SerializedName("address")
+    public String address;
 
-    public int getid(){return id;}
+    @Expose
+    @SerializedName("name")
+    public String name;
 
-    public int getmain_category_id(){return main_category_id;}
+    @Expose
+    @SerializedName("longitude")
+    public double longitude;
 
-    public int setmain_category_id(){return main_category_id;}
+    @Expose
+    @SerializedName("latitude")
+   public double latitude;
 
-    public int getsub_category_id(){return sub_category_id;}
+    @Expose
+    @SerializedName("count")
+    public int count;
 
-    public void setsub_category_id(int sub_category_Id) {
-        sub_category_id = sub_category_Id;
-    }
+    @Expose
+    @SerializedName("image")
+    public String image;
 
-    public int getShop_id() {
-        return shop_id;
-    }
-
-    public String getShop_name() {
-        return shop_name;
-    }
-
-    public String getname() {
-        return name;
-    }
-
-    public String getShop_image() {
-        return shop_image;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public double getlongitude(){return longitude;}
-
-    public double getlatitude(){return latitude;}
-
-    public int getcount(){return count;}
-
-    public String getemail(){return email;}
-
-    public int getpoint(){return point;}
-
-    public String getimage(){return image;}
+    public static int maker_id;
+    public static String maker_name;
+    public static int  main_category_id;
+    public static String main_category_name;
+    public static int sub_category_id;
+    public static String sub_category_name;
+    public static int product_id;
+    public static String product_name;
+    public static String product_image;
 
     @Override
     public String toString() {

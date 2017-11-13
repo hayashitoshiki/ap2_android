@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
             public  void onClick(View v){
                 Intent intent=new Intent(getApplication(),kategori.class);
                 dai="カテゴリ：化粧品";
-                intent.putExtra("main_category_name",dai);
                 int id=2;
-                intent.putExtra("main_category_id",id);
+                Product.main_category_id  = id;
+                Product.main_category_name = dai;
                 startActivity(intent);
             }
         });
@@ -60,9 +60,9 @@ public class MainActivity extends AppCompatActivity {
             public  void onClick(View v){
                 Intent intent=new Intent(getApplication(),kategori.class);
                 dai="カテゴリ：家電製品";
-                intent.putExtra("main_category_name",dai);
                 int id=1;
-                intent.putExtra("main_category_id",id);
+                Product.main_category_id  = id;
+                Product.main_category_name = dai;
                 startActivity(intent);
             }
         });

@@ -81,8 +81,8 @@ public class newacount extends AppCompatActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        AccountLogin.setemail(user.email);
-                        AccountLogin.setpassword(user.password);
+                        AccountLogin.email = user.email;
+                        AccountLogin.password = user.password;
                         Log.d("NewAccount", "ユーザー名："+user.name+"、メール："+user.email+"、パスワード："+user.password+"、ポイント："+user.point);
 
                         Intent intent = new Intent(getApplication(), MainActivity.class);

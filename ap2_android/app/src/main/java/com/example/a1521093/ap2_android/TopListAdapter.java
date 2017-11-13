@@ -89,15 +89,15 @@ public class TopListAdapter extends BaseAdapter {
 
         if(resourcedId==2130968621) {
             kennsakukekaActivity keka= new kennsakukekaActivity();
-           int stock = keka.getstock(position);
-            String store_name = keka.getstore_name(position);
-            String store_address = keka.getaddress(position);
-            String store_image = keka.getstore_image(position);
+           int stock = keka.stock[position];
+            String store_name = keka.store_name[position];
+            String store_address = keka.store_address[position];
+            String store_image = keka.store_image[position];
 
-            double user_lon  = keka.getuser_lon();
-            double user_lati = keka.getuser_lati();
-            double store_lati = keka.getstore_lati(position);
-            double store_lon = keka.getstore_lon(position);
+            double user_lon  = keka.user_lon;
+            double user_lati = keka.user_lat;
+            double store_lati = keka.store_lati[position];
+            double store_lon = keka.store_lon[position];
             double distance = getDistance(user_lati, user_lon, store_lati, store_lon);
             int kyori_A = (int)distance;
             if(kyori_A>10000) {

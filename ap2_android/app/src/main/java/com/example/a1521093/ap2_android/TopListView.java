@@ -41,12 +41,12 @@ public class TopListView extends LinearLayout {
 
             //Viewに値セット
     public void setProduct(final Product product) {
-        textViewShopName.setText(product.getname());
+        textViewShopName.setText(product.name);
     }
 
     public void setProduct2(final Product product){
-        String store_image = product.getimage();
-        textViewProductName.setText(product.getname());
+        String store_image = product.image;
+        textViewProductName.setText(product.name);
         Picasso.with(TopListAdapter.getcontext()).load(store_image).into(imageView);
 
     }

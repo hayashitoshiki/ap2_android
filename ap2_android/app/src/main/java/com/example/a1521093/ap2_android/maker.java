@@ -36,11 +36,9 @@ public class maker extends AppCompatActivity implements AdapterView.OnItemClickL
 
         TextView title = (TextView)findViewById(R.id.kensakugamen);
         Intent intent = getIntent();
-        sub_category_name = intent.getStringExtra("sub_category_name");
-        sub_category_id = intent.getIntExtra("sub_category_id",0);
-        main_category_name = intent.getStringExtra("main_category_name");
-        main_category_id = intent.getIntExtra("main_category_id",0);
-        Log.d("maker", "メインカテゴリ名："+main_category_name);
+        sub_category_name = Product.sub_category_name;
+        sub_category_id = Product.sub_category_id;
+        Log.d("maker", "メインカテゴリ名："+sub_category_name);
         title.setText(sub_category_name+"のメーカー");
 
         //ArrayAdapterオブジェクト生成
@@ -66,20 +64,14 @@ public class maker extends AppCompatActivity implements AdapterView.OnItemClickL
 
     public void modoru_onClick(View v) {
         Intent intent=new Intent(getApplication(),kategori.class);
-        intent.putExtra("main_category_name",main_category_name);
-        intent.putExtra("main_category_id",main_category_id );
         startActivity(intent);
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
         Intent intent = new Intent(this, SyohinItiran.class);
-        intent.putExtra("main_category_name",main_category_name);
-        intent.putExtra("main_category_id",main_category_id );
-        intent.putExtra("sub_category_name",sub_category_name);
-        intent.putExtra("sub_category_id",sub_category_id );
-        intent.putExtra("maker_name", maker_name[position]);
-        intent.putExtra("maker_id",maker_id[position] );
+        Product.maker_id  = maker_id[position];
+        Product.maker_name = maker_name[position];
         startActivity(intent);
     }
 
@@ -115,10 +107,10 @@ public class maker extends AppCompatActivity implements AdapterView.OnItemClickL
 
         int count=0;
         for (Product product : aProductList) {
-            Log.d("maker","メーカー："+product.getname()+",id："+product.getid());
+            Log.d("maker","メーカー："+product.name+",id："+product.id);
             //遷移時に投げる用のテキスト取得と格納
-            maker_name[count]=(product.getname());
-            maker_id[count] = (product.getid());
+            maker_name[count]  = product.name;
+            maker_id[count] = product.id;
             adapter.add(product);
             count++;
         }

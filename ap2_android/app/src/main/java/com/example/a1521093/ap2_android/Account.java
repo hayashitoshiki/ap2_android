@@ -35,8 +35,10 @@ public class Account extends AppCompatActivity {
         ApiService = Provider.provideApiService();
         final ArrayList<User> UserList = new ArrayList<>();
         //クエリを投げる
-        Call<List<User>> call = ApiService.account("users.json?email="+AccountLogin.getemail()+"&password="+AccountLogin.getpassword());
-         try {
+        Call<List<User>> call = ApiService.account("users.json?email="+AccountLogin.email+"&password="+AccountLogin.password);
+        Log.d("Account","email："+AccountLogin.email+"、password："+AccountLogin.password);
+
+        try {
             call.enqueue(new Callback<List<User>>() {
                 @Override                           //取得成功
                 public void onResponse(Call<List<User>> call, Response<List<User>> response) {

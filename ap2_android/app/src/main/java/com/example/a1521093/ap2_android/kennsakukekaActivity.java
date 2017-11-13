@@ -19,24 +19,16 @@ import retrofit2.Response;
 import static com.example.a1521093.ap2_android.R.id.listView;
 
 public class kennsakukekaActivity extends AppCompatActivity {
+    private String product_name;
+    private int product_id;
+    private  static int count;
+    private int bunki;
     public static double user_lat;
     public static double user_lon;
-
-    private ApiService ApiService;
-    private TopListAdapter topListAdapter;
     ArrayAdapter<Product> adapter;
     ListView mListView;
-    int sub_category_id;
-    String product_name;
-    int product_id;
-    public static int count;
-    int bunki;
-    String main_category_name;
-    int main_category_id;
-    String maker_name;
-    int maker_id;
-    String sub_category_name;
-    String product_image;
+    ApiService ApiService;
+    TopListAdapter topListAdapter;
 
     public static double[] store_lati = new double[100];
     public static double[] store_lon = new double[100];
@@ -45,26 +37,17 @@ public class kennsakukekaActivity extends AppCompatActivity {
     public static String[] store_address = new String[100];
     public static String[] store_image = new String[100];
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kensakukeka);
 
         Intent intent = getIntent();
-        main_category_name = intent.getStringExtra("main_category_name");
-        main_category_id = intent.getIntExtra("main_category_id",0);
-        maker_name = intent.getStringExtra("maker_name");
-        maker_id = intent.getIntExtra("maker_id",0);
-        sub_category_name = intent.getStringExtra("sub_category_name");
-        sub_category_id = intent.getIntExtra("sub_category_id",0);
-        product_name = intent.getStringExtra("product_name");
-        product_id = intent.getIntExtra("product_id",0);
         bunki = intent.getIntExtra("switch",0);
-        product_image = intent.getStringExtra("image");
-        product_name = intent.getStringExtra("product_name");
-        user_lon=intent.getDoubleExtra("user_lon",0);
-        user_lat = intent.getDoubleExtra("user_lat",0);
+        product_name = Product.product_name;
+        product_id = Product.product_id;
+        user_lon = User.user_longitude;
+        user_lat = User.user_latitude;
 
         TextView title = (TextView)findViewById(R.id.procutd_name);
         title.setText(product_name);
@@ -92,18 +75,6 @@ public class kennsakukekaActivity extends AppCompatActivity {
                         break;
                     case R.id.susumu:
                         Intent in = new Intent(getApplication(), Product_Barcode.class);
-                        in.putExtra("main_category_name",main_category_name);
-                        in.putExtra("main_category_id",main_category_id );
-                        in.putExtra("maker_name",maker_name);
-                        in.putExtra("maker_id",maker_id );
-                        in.putExtra("sub_category_name",sub_category_name);
-                        in.putExtra("sub_category_id",sub_category_id );
-                        in.putExtra("product_name",product_name);
-                        in.putExtra("product_id",product_id);
-                        in.putExtra("product_name",product_name);
-                        in.putExtra("image",product_image);
-                        in.putExtra("user_lon",user_lon);
-                        in.putExtra("user_lat",user_lat);
                         in.putExtra("switch",bunki);
                         startActivity(in);
 
@@ -112,65 +83,19 @@ public class kennsakukekaActivity extends AppCompatActivity {
             }
         });
   }
-    public double getuser_lati(){
-        return user_lat;
-    }
-
-    public double getuser_lon(){
-        return user_lon;
-    }
-
-    public double getstore_lati(int i){
-        return store_lati[i];
-    }
-
-    public double getstore_lon(int i){return store_lon[i];}
-
-    public int getstock(int i){
-        return stock[i];
-    }
-
-    public String getaddress(int i){
-        return store_address[i];
-    }
-
-    public String getstore_name(int i){
-        return store_name[i];
-    }
-
-    public String getstore_image(int i){return store_image[i];}
 
     public void modoru_onClick(View v) {
         Intent intent;
         Intent get = getIntent();
        if(bunki==1) {
            intent = new Intent(this, SyohinItiran.class);
-
-           String main_category_name = get.getStringExtra("main_category_name");
-           int main_category_id = get.getIntExtra("main_category_id",0);
-           String maker_name = get.getStringExtra("maker_name");
-           int maker_id = get.getIntExtra("maker_id",0);
-           String sub_category_name = get.getStringExtra("sub_category_name");
-           int sub_category_id = get.getIntExtra("sub_category_id",0);
-           String product_name = get.getStringExtra("product_name");
-           int product_id = get.getIntExtra("product_id",0);
-           Log.d("店舗", "main"+main_category_name+":"+main_category_id+"：：sub"+sub_category_name+":"+sub_category_id+"：：maker"+maker_name+":"+maker_id);
-
-           intent.putExtra("main_category_name",main_category_name);
-           intent.putExtra("main_category_id",main_category_id );
-           intent.putExtra("maker_name",maker_name);
-           intent.putExtra("maker_id",maker_id );
-           intent.putExtra("sub_category_name",sub_category_name);
-           intent.putExtra("sub_category_id",sub_category_id );
-           intent.putExtra("product_name",product_name);
-           intent.putExtra("product_id",product_id);
        }else{
            intent = new Intent(this, KensakuRoot.class);
            String kensaku = get.getStringExtra("kensaku");
            intent.putExtra("kensaku",kensaku);
         }
         startActivity(intent);
-        }
+    }
 
     public void homeButton(View v) {
         Intent i = new Intent(this, MainActivity.class);
@@ -220,14 +145,14 @@ public class kennsakukekaActivity extends AppCompatActivity {
         count=0;
         int i=0;
         for (Product product : aProductList) {
-            Log.d("サブカテゴリ", product.getShop_id()+"カウント="+ i);
-             stock[i] = product.getcount();
+            Log.d("サブカテゴリ", product.shop_id+"カウント="+ i);
+             stock[i] = product.count;
             i++;
             //遷移時に投げる用のテキスト取得と格納
             final ArrayList<Product> aList = new ArrayList<>();
             //クエリを投げる
-            Call<List<Product>> call = ApiService.items("shops.json?id="+product.getShop_id());
-            Log.d("kennsakukekaActivity", "店舗ID：" + product.getShop_id());
+            Call<List<Product>> call = ApiService.items("shops.json?id="+product.shop_id);
+            Log.d("kennsakukekaActivity", "店舗ID：" + product.shop_id);
             try {
                 call.enqueue(new Callback<List<Product>>() {
                     @Override
@@ -235,11 +160,11 @@ public class kennsakukekaActivity extends AppCompatActivity {
                     public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                         aList.addAll(response.body());
                        for (Product product : aList) {
-                           store_name[count] = (product.getname());
-                           store_lati[count] = (product.getlatitude());
-                           store_lon[count] = (product.getlongitude());
-                           store_address[count]=(product.getAddress());
-                           store_image[count] = (product.getimage());
+                           store_name[count] = (product.name);
+                           store_lati[count] = (product.latitude);
+                           store_lon[count] = (product.longitude);
+                           store_address[count]=(product.address);
+                           store_image[count] = (product.image);
                             //指定のListViewに格納
                            topListAdapter.setDatas(aList,3);
                            topListAdapter.notifyDataSetChanged();

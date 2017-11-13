@@ -16,6 +16,7 @@ public class AccountLogin extends AppCompatActivity {
     private ApiService ApiService;
     private EditText emailEdit;
     private EditText passwordEdit;
+
     public static String email;
     public static String password;
 
@@ -35,14 +36,6 @@ public class AccountLogin extends AppCompatActivity {
         Intent intent = new Intent(getApplication(),newacount.class);
         startActivity(intent);
     }
-
-    public static void setemail(String user_email){email = user_email;}
-
-    public static void setpassword(String user_password){password = user_password;}
-
-    public static  String getemail(){return email;}
-
-    public static String getpassword(){return password;}
 
     private void getData() {
         final ArrayList<User> UserList = new ArrayList<>();
