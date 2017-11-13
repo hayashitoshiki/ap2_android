@@ -19,12 +19,8 @@ import retrofit2.Response;
 import static com.example.a1521093.ap2_android.R.id.listView;
 
 public class kennsakukekaActivity extends AppCompatActivity {
-    private String product_name;
-    private int product_id;
     private  static int count;
     private int bunki;
-    public static double user_lat;
-    public static double user_lon;
     ArrayAdapter<Product> adapter;
     ListView mListView;
     ApiService ApiService;
@@ -44,15 +40,11 @@ public class kennsakukekaActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         bunki = intent.getIntExtra("switch",0);
-        product_name = Product.product_name;
-        product_id = Product.product_id;
-        user_lon = User.user_longitude;
-        user_lat = User.user_latitude;
 
         TextView title = (TextView)findViewById(R.id.procutd_name);
-        title.setText(product_name);
+        title.setText(Product.product_name);
 
-        Log.d("kennsakukekaActivity", "メーカーID："+product_id);
+        Log.d("kennsakukekaActivity", "メーカーID："+Product.product_id);
         //ArrayAdapterオブジェクト生成
         adapter=new ArrayAdapter<Product>(kennsakukekaActivity.this, android.R.layout.simple_list_item_1);
         topListAdapter = new TopListAdapter(getApplicationContext(), R.layout.kekka_sub);
@@ -70,7 +62,7 @@ public class kennsakukekaActivity extends AppCompatActivity {
                         Intent intent = new Intent();
                         intent.setAction(Intent.ACTION_VIEW);
                         intent.setClassName("com.google.android.apps.maps","com.google.android.maps.MapsActivity");
-                        intent.setData(Uri.parse("http://maps.google.com/maps?saddr="+user_lat+","+user_lon+"&daddr="+store_lati[position]+","+store_lon[position]));
+                        intent.setData(Uri.parse("http://maps.google.com/maps?saddr="+User.user_latitude+","+User.user_longitude+"&daddr="+store_lati[position]+","+store_lon[position]));
                         startActivity(intent);
                         break;
                     case R.id.susumu:
@@ -116,22 +108,18 @@ public class kennsakukekaActivity extends AppCompatActivity {
         final ArrayList<Product> aProductList = new ArrayList<>();
 
         //クエリを投げる
-        Call<List<Product>> call = ApiService.items("prices.json?product_id="+product_id);
+        Call<List<Product>> call = ApiService.items("prices.json?product_id="+Product.product_id);
         try {
             call.enqueue(new Callback<List<Product>>() {
-                @Override
-                //取得成功
+                @Override                             //取得成功
                 public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                     Log.d("MainActivity", "call onResponse");
                     aProductList.addAll(response.body());
-                    Log.d("MainActivity", aProductList.toString());
                     updateContainer(aProductList);
                 }
                 @Override                           //取得失敗
                 public void onFailure(Call<List<Product>> call, Throwable t) {
                     Log.d("MainActivity", "call onFailure");
-                    Log.d("MainActivity", t.getMessage());
-                    Log.d("MainActivity", aProductList.toString());
                     updateContainer(aProductList);
                 }
             });

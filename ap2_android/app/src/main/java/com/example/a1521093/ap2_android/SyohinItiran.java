@@ -21,10 +21,6 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
     TopListAdapter topListAdapter;
     ArrayAdapter<Product> adapter;
     ListView mListView;
-    private  String sub_category_name;
-    private int sub_category_id;
-    private String maker_name;
-    private int maker_id;
 
     private int[] product_id = new int[100];
     private String[] product_name = new String[100];
@@ -36,11 +32,8 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
         setContentView(R.layout.kategori);
 
         TextView title = (TextView)findViewById(R.id.kensakugamen);
-        sub_category_name = Product.sub_category_name;
-        sub_category_id = Product.sub_category_id;
-        maker_name = Product.maker_name;
-        maker_id = Product.maker_id;
-        title.setText(maker_name+"の"+sub_category_name);
+        title.setText(Product.maker_name+"の"+Product.sub_category_name);
+
         //ArrayAdapterオブジェクト生成
         adapter=new ArrayAdapter<Product>(SyohinItiran.this, android.R.layout.simple_list_item_1);
         topListAdapter = new TopListAdapter(getApplicationContext(),R.layout.kategori_sub);
@@ -80,23 +73,21 @@ public class SyohinItiran extends  AppCompatActivity implements AdapterView.OnIt
 
     private void getData() {
         final ArrayList<Product> aProductList = new ArrayList<>();
-        Log.d("MainActivity", sub_category_name+"メーカーID="+ maker_id+"サブカテゴリID="+sub_category_id);
+        Log.d("MainActivity", Product.sub_category_name+"メーカーID="+ Product.maker_id+"サブカテゴリID="+Product.sub_category_id);
                                                                         //クエリを投げる
-        Call<List<Product>> call = ApiService.items("products.json?sub_category_id="+sub_category_id+"&maker_id="+maker_id);
+        Call<List<Product>> call = ApiService.items("products.json?sub_category_id="+Product.sub_category_id+"&maker_id="+Product.maker_id);
         try {
             call.enqueue(new Callback<List<Product>>() {
                 @Override                           //取得成功
                 public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                     Log.d("MainActivity", "call onResponse");
                     aProductList.addAll(response.body());
-                    Log.d("MainActivity", aProductList.toString());
-                    updateContainer(aProductList);
+                     updateContainer(aProductList);
                 }
                 @Override                           //取得失敗
                 public void onFailure(Call<List<Product>> call, Throwable t) {
                     Log.d("MainActivity", "call onFailure");
                     Log.d("MainActivity", t.getMessage());
-                    Log.d("MainActivity", aProductList.toString());
                     updateContainer(aProductList);
                 }
             });

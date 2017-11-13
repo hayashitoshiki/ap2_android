@@ -3,14 +3,10 @@ package com.example.a1521093.ap2_android;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import java.io.InputStream;
-import java.net.URL;
-import com.example.a1521093.ap2_android.kennsakukekaActivity;
 import com.squareup.picasso.Picasso;
 //独自のListViewのレイアウト生成クラス
 

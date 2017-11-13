@@ -88,30 +88,23 @@ public class TopListAdapter extends BaseAdapter {
         }
 
         if(resourcedId==2130968621) {
-            kennsakukekaActivity keka= new kennsakukekaActivity();
-           int stock = keka.stock[position];
-            String store_name = keka.store_name[position];
-            String store_address = keka.store_address[position];
-            String store_image = keka.store_image[position];
+            kennsakukekaActivity kekka= new kennsakukekaActivity();
+            int stock = kekka.stock[position];
+            String store_name = kekka.store_name[position];
+            String store_address = kekka.store_address[position];
+            String store_image = kekka.store_image[position];
+            int distance = (int)getDistance(User.user_latitude, User.user_longitude, kekka.store_lati[position],  kekka.store_lon[position]);
 
-            double user_lon  = keka.user_lon;
-            double user_lati = keka.user_lat;
-            double store_lati = keka.store_lati[position];
-            double store_lon = keka.store_lon[position];
-            double distance = getDistance(user_lati, user_lon, store_lati, store_lon);
-            int kyori_A = (int)distance;
-            if(kyori_A>10000) {
-                kyori_A = kyori_A / 1000;
-                holder.textViewdistance.setText(kyori_A + "km");
-            }else {
-                holder.textViewdistance.setText(kyori_A + "m");
-            }
             holder.textViewname.setText(store_name);
             holder.textViewaddress.setText(store_address);
             holder.textViewstock.setText(stock+"個");
-
-
             Picasso.with(context).load(store_image).into(holder.imageViewstore);
+            if(distance>10000) {
+                distance = distance / 1000;
+                holder.textViewdistance.setText(distance + "km");
+            }else {
+                holder.textViewdistance.setText(distance + "m");
+            }
 
             holder.editButton.setOnClickListener(new View.OnClickListener() {
                 @Override

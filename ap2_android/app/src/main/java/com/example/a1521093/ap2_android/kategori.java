@@ -20,8 +20,6 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
     TopListAdapter topListAdapter;
     ArrayAdapter<Product> adapter;
     ListView mListView;
-    private String main_category_name;
-    private int main_category_id;
 
     private int[] sub_category_id = new int[100];
     private  String[] sub_category_name = new String[100];
@@ -38,9 +36,7 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
         ApiService = Provider.provideApiService();
 
         TextView title = (TextView)findViewById(R.id.kensakugamen);
-        main_category_name = Product.main_category_name;
-        main_category_id = Product.main_category_id;
-        title.setText(main_category_name);
+        title.setText(Product.main_category_name);
 
         getData();
 
@@ -76,7 +72,7 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
     private void getData() {
         final ArrayList<Product> aProductList = new ArrayList<>();
                                                 //クエリを投げる
-        Call<List<Product>> call = ApiService.items("sub_categories.json?main_category_id="+main_category_id);
+        Call<List<Product>> call = ApiService.items("sub_categories.json?main_category_id="+Product.main_category_id);
         try {
             call.enqueue(new Callback<List<Product>>() {
                 @Override                           //取得成功

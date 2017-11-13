@@ -11,8 +11,6 @@ import com.squareup.picasso.Picasso;
 
 public class Product_Barcode extends AppCompatActivity {
     public int bunki;
-    public String product_name;
-    public String product_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,15 +18,12 @@ public class Product_Barcode extends AppCompatActivity {
         setContentView(R.layout.product_barcode);
         Intent intent = getIntent();
         bunki = intent.getIntExtra("switch",0);
-        product_name = Product.product_name;
-        product_image = Product.product_image;
 
         TextView title = (TextView)findViewById(R.id.product_name);
         ImageView image = (ImageView)findViewById(R.id.product_image);
 
-        Picasso.with(this).load(product_image).into(image);
-        Log.d("Product_Barcode", "商品名："+product_name+"、画像:"+product_image);
-        title.setText(product_name);
+        Picasso.with(this).load(Product.product_image).into(image);
+        title.setText(Product.product_name);
     }
 
     public void code(View v){
