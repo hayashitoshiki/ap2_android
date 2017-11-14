@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
             public  void onClick(View v){
                 Intent intent=new Intent(getApplication(),kategori.class);
                 dai="カテゴリ：化粧品";
-                intent.putExtra("main_category_name",dai);
                 int id=2;
-                intent.putExtra("main_category_id",id);
+                Product.main_category_id  = id;
+                Product.main_category_name = dai;
                 startActivity(intent);
             }
         });
@@ -60,36 +60,36 @@ public class MainActivity extends AppCompatActivity {
             public  void onClick(View v){
                 Intent intent=new Intent(getApplication(),kategori.class);
                 dai="カテゴリ：家電製品";
-                intent.putExtra("main_category_name",dai);
                 int id=1;
-                intent.putExtra("main_category_id",id);
+                Product.main_category_id  = id;
+                Product.main_category_name = dai;
                 startActivity(intent);
             }
         });
-                 //今はなし
+        //今はなし
         //ImageButton points = (ImageButton) findViewById(R.id.coupon_button);
         //points.setOnClickListener(new View.OnClickListener() {
-            /** ボタンをクリックした時に呼ばれる */
-          //  @Override
-           // public void onClick(View v) {
-                // ここに処理を記述する
-           //     Intent intent=new Intent(getApplication(),maker.class);
-           //     intent.putExtra("dai",dai);
-           //     startActivity(intent);
-           // }
-       // });
+        /** ボタンをクリックした時に呼ばれる */
+        //  @Override
+        // public void onClick(View v) {
+        // ここに処理を記述する
+        //     Intent intent=new Intent(getApplication(),maker.class);
+        //     intent.putExtra("dai",dai);
+        //     startActivity(intent);
+        // }
+        // });
 
         ImageButton acounts = (ImageButton) findViewById(R.id.account_button);
         acounts.setOnClickListener(new View.OnClickListener() {
             /** ボタンをクリックした時に呼ばれる */
-             @Override
+            @Override
             public void onClick(View v) {
                 // ここに処理を記述する
                 Intent intent=new Intent(getApplication(),Account.class);
-               intent.putExtra("dai",dai);
+                intent.putExtra("dai",dai);
                 startActivity(intent);
             }
-          });
+        });
 
     }
     // 位置情報許可の確認

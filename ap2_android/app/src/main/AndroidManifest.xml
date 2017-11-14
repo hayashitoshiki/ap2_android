@@ -20,7 +20,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAXhx_Yjgbv4kL3BFi1Ku6pjWtU162Dd_E" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".AccountLogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,7 +40,7 @@
         <activity android:name=".KensakuRoot"
             android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:name=".Product_Barcode"/>
-        <activity android:name=".AccountLogin"/>
+        <activity android:name=".MainActivity"/>
         <activity android:name=".Account"/>
         <activity android:name=".newacount"/>
     </application>

@@ -1,15 +1,23 @@
 package com.example.a1521093.ap2_android;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 
@@ -18,18 +26,18 @@ import java.util.ArrayList;
 public class TopListAdapter extends BaseAdapter {
 
     private ArrayList<TopListView> aProductList;
-    private Context context;
+    public static  Context context;
     private LayoutInflater inflater;
     private int resourcedId;
 
     private static class ViewHolder {
         public Button editButton;
         public Button susumuButton;
-
         public TextView textViewstock;
         public TextView textViewname;
         public TextView textViewaddress;
         public TextView textViewdistance;
+        public ImageView imageViewstore;
     }
     public TopListAdapter(Context context, int resourcedId) {
         this.context = context;
@@ -53,27 +61,24 @@ public class TopListAdapter extends BaseAdapter {
         return 0;
     }
 
+    public static Context getcontext(){return context;}
+
     @Override
     public View getView(final int position, View convertView, final ViewGroup parent) {
         ViewHolder holder;
 
-        Log.d("通るか調査", "店舗ID：" + position+"レイアウトID"+resourcedId+"グループ"+parent);
-
         if (convertView == null) {
-            Log.d("通るか調査1.5", "店舗ID：" + position);
 
             if(resourcedId==2130968621) {
-                Log.d("通るか調査1.5.5", "店舗ID：" + position);
-
-                convertView = inflater.inflate(resourcedId, null);
+                 convertView = inflater.inflate(resourcedId, null);
                 holder = new ViewHolder();
                 holder.editButton = (Button) convertView.findViewById(R.id.tizu);
                 holder.susumuButton = (Button) convertView.findViewById(R.id.susumu);
-
                 holder.textViewname = (TextView)convertView.findViewById(R.id.syouhinmei);
                 holder.textViewstock = (TextView)convertView. findViewById(R.id.kosuu);
                 holder.textViewaddress = (TextView)convertView.findViewById(R.id.zyusyo);
                 holder.textViewdistance = (TextView)convertView.findViewById(R.id.kyori);
+                holder.imageViewstore = (ImageView)convertView.findViewById(R.id.store_image);
                 convertView.setTag(holder);
             }else{
                   return aProductList.get(position);
@@ -83,27 +88,24 @@ public class TopListAdapter extends BaseAdapter {
         }
 
         if(resourcedId==2130968621) {
-            Log.d("通るか調査２", "店舗ID：" + position);
-            kennsakukekaActivity keka= new kennsakukekaActivity();
-           int stock = keka.getstock(position);
-            String store_name = keka.getstore_name(position);
-            String store_address = keka.getaddress(position);
+            kennsakukekaActivity kekka= new kennsakukekaActivity();
+            int stock = kekka.stock[position];
+            String store_name = kekka.store_name[position];
+            String store_address = kekka.store_address[position];
+            String store_image = kekka.store_image[position];
+            int distance = (int)getDistance(User.user_latitude, User.user_longitude, kekka.store_lati[position],  kekka.store_lon[position]);
 
-            double user_lon  = keka.getuser_lon();
-            double user_lati = keka.getuser_lati();
-            double store_lati = keka.getstore_lati(position);
-            double store_lon = keka.getstore_lon(position);
-            double distance = getDistance(user_lati, user_lon, store_lati, store_lon);
-            int kyori_A = (int)distance;
-            if(kyori_A>10000) {
-                kyori_A = kyori_A / 1000;
-                holder.textViewdistance.setText(kyori_A + "km");
-            }else {
-                holder.textViewdistance.setText(kyori_A + "m");
-            }
-             holder.textViewname.setText(store_name);
+            holder.textViewname.setText(store_name);
             holder.textViewaddress.setText(store_address);
             holder.textViewstock.setText(stock+"個");
+            Picasso.with(context).load(store_image).into(holder.imageViewstore);
+            if(distance>10000) {
+                distance = distance / 1000;
+                holder.textViewdistance.setText(distance + "km");
+            }else {
+                holder.textViewdistance.setText(distance + "m");
+            }
+
             holder.editButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -120,7 +122,6 @@ public class TopListAdapter extends BaseAdapter {
         }
         return convertView;
     }
-
 
     private double getDistance(double lat1, double lon1, double lat2, double lon2) {
         double theta = lon1 - lon2;
@@ -146,6 +147,8 @@ public class TopListAdapter extends BaseAdapter {
             if(i==1){
             //TopListViewに値を渡してレイアウトセット
                 view.setProduct(product);
+            }else if(i==2){
+                view.setProduct2(product);
             }
             this.aProductList.add(view);
         }

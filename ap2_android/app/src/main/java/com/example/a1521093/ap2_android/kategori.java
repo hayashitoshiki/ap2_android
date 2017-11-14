@@ -16,15 +16,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class kategori extends  AppCompatActivity implements AdapterView.OnItemClickListener{
-    private ApiService ApiService;
-    private TopListAdapter topListAdapter;
+    ApiService ApiService;
+    TopListAdapter topListAdapter;
     ArrayAdapter<Product> adapter;
     ListView mListView;
-    String main_category_name;
-    int main_category_id;
 
-    protected int[] sub_category_id = new int[100];
-    protected String[] sub_category_name=new String[100];
+    private int[] sub_category_id = new int[100];
+    private  String[] sub_category_name = new String[100];
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -38,10 +36,7 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
         ApiService = Provider.provideApiService();
 
         TextView title = (TextView)findViewById(R.id.kensakugamen);
-        Intent intent = getIntent();
-        main_category_name = intent.getStringExtra("main_category_name");
-        main_category_id = intent.getIntExtra("main_category_id",0);
-        title.setText(main_category_name);
+        title.setText(Product.main_category_name);
 
         getData();
 
@@ -68,18 +63,16 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
+        Product.sub_category_id  = sub_category_id[position];
+        Product.sub_category_name = sub_category_name[position];
         Intent intent = new Intent(this, maker.class);
-        intent.putExtra("main_category_name",main_category_name);
-        intent.putExtra("sub_category_name", sub_category_name[position]);
-        intent.putExtra("sub_category_id",sub_category_id[position] );
-        intent.putExtra("main_category_id",main_category_id );
         startActivity(intent);
     }
 
     private void getData() {
         final ArrayList<Product> aProductList = new ArrayList<>();
                                                 //クエリを投げる
-        Call<List<Product>> call = ApiService.items("sub_categories.json?main_category_id="+main_category_id);
+        Call<List<Product>> call = ApiService.items("sub_categories.json?main_category_id="+Product.main_category_id);
         try {
             call.enqueue(new Callback<List<Product>>() {
                 @Override                           //取得成功
@@ -100,21 +93,16 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
         } catch (Exception e) {
             e.printStackTrace();
         }
-        try {
-            updateContainer(aProductList);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
                             //ListViewに値入れるクラス
     private void updateContainer(ArrayList<Product> aProductList) {
 
         int count=0;
         for (Product product : aProductList) {
-            Log.d("kategori","サブカテゴリ"+ product.getname()+"カウント="+ product.getid());
+            Log.d("kategori","サブカテゴリ"+ product.name+"カウント="+ product.id);
                     //遷移時に投げる用のテキスト取得と格納
-            sub_category_name[count]=(product.getname());
-            sub_category_id[count]=(product.getid());
+            sub_category_name[count] = product.name;
+            sub_category_id[count] = product.id;
             adapter.add(product);
             count++;
         }

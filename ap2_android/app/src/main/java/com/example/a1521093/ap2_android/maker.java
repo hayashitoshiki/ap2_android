@@ -21,10 +21,6 @@ public class maker extends AppCompatActivity implements AdapterView.OnItemClickL
     private TopListAdapter topListAdapter;
     ArrayAdapter<Product> adapter;
     ListView mListView;
-    String main_category_name;
-    int main_category_id;
-    String sub_category_name;
-    int sub_category_id;
 
     protected int[] maker_id = new int[100];
     protected String[] maker_name=new String[100];
@@ -35,13 +31,7 @@ public class maker extends AppCompatActivity implements AdapterView.OnItemClickL
         setContentView(R.layout.kategori);
 
         TextView title = (TextView)findViewById(R.id.kensakugamen);
-        Intent intent = getIntent();
-        sub_category_name = intent.getStringExtra("sub_category_name");
-        sub_category_id = intent.getIntExtra("sub_category_id",0);
-        main_category_name = intent.getStringExtra("main_category_name");
-        main_category_id = intent.getIntExtra("main_category_id",0);
-        Log.d("maker", "メインカテゴリ名："+main_category_name);
-        title.setText(sub_category_name+"のメーカー");
+        title.setText(Product.sub_category_name+"のメーカー");
 
         //ArrayAdapterオブジェクト生成
         adapter = new ArrayAdapter<Product>(maker.this, android.R.layout.simple_list_item_1);
@@ -66,51 +56,37 @@ public class maker extends AppCompatActivity implements AdapterView.OnItemClickL
 
     public void modoru_onClick(View v) {
         Intent intent=new Intent(getApplication(),kategori.class);
-        intent.putExtra("main_category_name",main_category_name);
-        intent.putExtra("main_category_id",main_category_id );
         startActivity(intent);
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
         Intent intent = new Intent(this, SyohinItiran.class);
-        intent.putExtra("main_category_name",main_category_name);
-        intent.putExtra("main_category_id",main_category_id );
-        intent.putExtra("sub_category_name",sub_category_name);
-        intent.putExtra("sub_category_id",sub_category_id );
-        intent.putExtra("maker_name", maker_name[position]);
-        intent.putExtra("maker_id",maker_id[position] );
+        Product.maker_id  = maker_id[position];
+        Product.maker_name = maker_name[position];
         startActivity(intent);
     }
 
     private void getData() {
 
         final ArrayList<Product> aProductList = new ArrayList<>();
-        Log.d("make","メーカー"+ sub_category_name+"カウント="+ sub_category_id);
+        Log.d("make","メーカー"+ Product.sub_category_name+"カウント="+ Product.sub_category_id);
                                                                  //クエリを投げる
-        Call<List<Product>> call = ApiService.items("makers.json?sub_category_id="+sub_category_id);
+        Call<List<Product>> call = ApiService.items("makers.json?sub_category_id="+Product.sub_category_id);
         try {
             call.enqueue(new Callback<List<Product>>() {
                 @Override                           //取得成功
                 public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                     Log.d("MainActivity", "call onResponse");
                     aProductList.addAll(response.body());
-                    Log.d("MainActivity", aProductList.toString());
                     updateContainer(aProductList);
                 }
                 @Override                           //取得失敗
                 public void onFailure(Call<List<Product>> call, Throwable t) {
                     Log.d("MainActivity", "call onFailure");
-                    Log.d("MainActivity", t.getMessage());
-                    Log.d("MainActivity", aProductList.toString());
                     updateContainer(aProductList);
                 }
             });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            updateContainer(aProductList);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -120,10 +96,10 @@ public class maker extends AppCompatActivity implements AdapterView.OnItemClickL
 
         int count=0;
         for (Product product : aProductList) {
-            Log.d("maker","メーカー："+product.getname()+",id："+product.getid());
+            Log.d("maker","メーカー："+product.name+",id："+product.id);
             //遷移時に投げる用のテキスト取得と格納
-            maker_name[count]=(product.getname());
-            maker_id[count] = (product.getid());
+            maker_name[count]  = product.name;
+            maker_id[count] = product.id;
             adapter.add(product);
             count++;
         }

@@ -18,7 +18,6 @@ public class Account extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.account);
-        ApiService = Provider.provideApiService();
         getData();
     }
 
@@ -33,52 +32,43 @@ public class Account extends AppCompatActivity {
     }
 
     private void getData() {
-        final ArrayList<Product> aProductList = new ArrayList<>();
+        ApiService = Provider.provideApiService();
+        final ArrayList<User> UserList = new ArrayList<>();
         //クエリを投げる
-        Call<List<Product>> call = ApiService.items("users.json?id=3");
+        Call<List<User>> call = ApiService.account("users.json?email="+AccountLogin.email+"&password="+AccountLogin.password);
+        Log.d("Account","email："+AccountLogin.email+"、password："+AccountLogin.password);
+
         try {
-            call.enqueue(new Callback<List<Product>>() {
+            call.enqueue(new Callback<List<User>>() {
                 @Override                           //取得成功
-                public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                     Log.d("Account", "call onResponse");
-                    aProductList.addAll(response.body());
-                    Log.d("Account", aProductList.toString());
-                    updateContainer(aProductList);
+                    UserList.addAll(response.body());
+                    updateContainer(UserList);
                 }
                 @Override                           //取得失敗
-                public void onFailure(Call<List<Product>> call, Throwable t) {
+                public void onFailure(Call<List<User>> call, Throwable t) {
                     Log.d("Account", "call onFailure");
-                    updateContainer(aProductList);
+                    updateContainer(UserList);
                 }
             });
         } catch (Exception e) {
             e.printStackTrace();
         }
-        try {
-            updateContainer(aProductList);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
-    private void updateContainer(ArrayList<Product> aProductList) {
+    private void updateContainer(ArrayList<User> UserList) {
 
-        for (Product product : aProductList) {
-            //遷移時に投げる用のテキスト取得と格納
-            String account_name=(product.getname());
-            int point = (product.getpoint());
-            String email = (product.getemail());
-
+        for (User user : UserList) {
             TextView nameView = (TextView)findViewById(R.id.account_name);
             TextView emailView = (TextView)findViewById(R.id.account_email);
+            TextView passwordView = (TextView)findViewById(R.id.account_password);
             TextView pointView = (TextView)findViewById(R.id.account_point);
 
-            Log.d("Account", "アカウント名："+account_name);
-            nameView.setText(account_name);
-            emailView.setText(email);
-            pointView.setText(point+"p");
-
+            nameView.setText(user.name);
+            emailView.setText(user.email);
+            passwordView.setText(user.password);
+            pointView.setText(user.point+"p");
         }
-
     }
 }
