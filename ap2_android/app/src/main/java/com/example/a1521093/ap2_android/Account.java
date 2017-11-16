@@ -26,7 +26,7 @@ public class Account extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void homeButton(View v){
+    public void home_button(View v){
         Intent intent = new Intent(getApplication(),MainActivity.class);
         startActivity(intent);
     }

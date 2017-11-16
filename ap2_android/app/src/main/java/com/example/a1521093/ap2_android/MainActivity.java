@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         }
         SendEditTextValue = (Button)findViewById(R.id.kensakukekka);
 
-        Button kesyo=(Button)findViewById(R.id.kesyouhin);
+        ImageButton kesyo=(ImageButton)findViewById(R.id.kesyouhin);
         kesyo.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button ken=(Button)findViewById(R.id.kaden);
+        ImageButton ken=(ImageButton)findViewById(R.id.kaden);
         ken.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){

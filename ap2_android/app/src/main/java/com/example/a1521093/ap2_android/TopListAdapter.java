@@ -153,4 +153,6 @@ public class TopListAdapter extends BaseAdapter {
             this.aProductList.add(view);
         }
     }
+
+
 }

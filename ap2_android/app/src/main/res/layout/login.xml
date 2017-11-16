@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
     <TextView
         android:id="@+id/kensakugamen"
@@ -18,10 +19,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        >
+        android:weightSum="1">
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="150dp"
+            android:layout_width="216dp"
+            android:layout_height="158dp"
+            android:background="#00000000"
+            android:src="@drawable/rogo"
             tools:layout_editor_absoluteX="142dp"
             tools:layout_editor_absoluteY="25dp" />
 
