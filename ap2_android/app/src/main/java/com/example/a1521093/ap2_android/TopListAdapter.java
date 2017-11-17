@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -32,7 +33,7 @@ public class TopListAdapter extends BaseAdapter {
 
     private static class ViewHolder {
         public Button editButton;
-        public Button susumuButton;
+        public ImageButton susumuButton;
         public TextView textViewstock;
         public TextView textViewname;
         public TextView textViewaddress;
@@ -73,7 +74,7 @@ public class TopListAdapter extends BaseAdapter {
                  convertView = inflater.inflate(resourcedId, null);
                 holder = new ViewHolder();
                 holder.editButton = (Button) convertView.findViewById(R.id.tizu);
-                holder.susumuButton = (Button) convertView.findViewById(R.id.susumu);
+                holder.susumuButton = (ImageButton) convertView.findViewById(R.id.susumu);
                 holder.textViewname = (TextView)convertView.findViewById(R.id.syouhinmei);
                 holder.textViewstock = (TextView)convertView. findViewById(R.id.kosuu);
                 holder.textViewaddress = (TextView)convertView.findViewById(R.id.zyusyo);

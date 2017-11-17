@@ -23,25 +23,13 @@ public class KensakuRoot extends  AppCompatActivity {
 
         LinearLayout layout = (LinearLayout) findViewById(R.id.loop);
         for(int i=0;i<8;i++) {
-            View view = getLayoutInflater().inflate(R.layout.kategori_sub, null);
+            View view = getLayoutInflater().inflate(R.layout.list_top_adapter, null);
             layout.addView(view);
-            TextView text = (TextView) view.findViewById(R.id.product_name);
+            TextView text = (TextView) view.findViewById(R.id.shopNameText);
             final String product_name =("商品"+(i+1));
             text.setText(product_name);
 
-            Button btn = (Button)findViewById(R.id.susumu);
-            btn.setId(i);
 
-            btn.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    Intent intent = new Intent(getApplication(),GPS.class);
-                    intent.putExtra("product_name",product_name);
-                    intent.putExtra("kensaku",title_name);
-                    intent.putExtra("bunki",2);
-                    intent.putExtra("syohin",title_name);
-                    startActivity(intent);
-                }
-            });
         }
 
         Button sendButton=(Button)findViewById(R.id.modoru);
