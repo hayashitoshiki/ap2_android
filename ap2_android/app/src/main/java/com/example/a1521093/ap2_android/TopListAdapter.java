@@ -149,9 +149,22 @@ public class TopListAdapter extends BaseAdapter {
             //TopListViewに値を渡してレイアウトセット
                 view.setProduct(product);
             }else if(i==2){
+
                 view.setProduct2(product);
             }
             this.aProductList.add(view);
+        }
+    }
+
+    public void setData(ArrayList<Product> aProductList,String name,int i) {
+        for (Product product : aProductList) {
+
+            if (product.name.contains(name)) {
+                Log.d("ループ処理","商品名＝"+product.name+"：比較値＝"+name);
+                TopListView view = new TopListView(context, i);
+                view.setProduct2(product);
+                this.aProductList.add(view);
+            }
         }
     }
 

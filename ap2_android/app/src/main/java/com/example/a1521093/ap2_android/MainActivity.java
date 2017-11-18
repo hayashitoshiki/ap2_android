@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplication(),KensakuRoot.class);
                     EditText  SendValue = (EditText)findViewById(R.id.edittext);
                     String syohin = SendValue.getText().toString();
-                    intent.putExtra("kensaku",syohin);
+                   Product.product_name2 = syohin;
                     startActivity(intent);
                 }
                 return true;
