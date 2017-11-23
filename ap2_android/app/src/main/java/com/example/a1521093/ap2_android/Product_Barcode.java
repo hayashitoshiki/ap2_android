@@ -31,12 +31,12 @@ public class Product_Barcode extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void homeButton(View v) {
+    public void home_button(View v) {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
 
-    public void accountButton(View v){
+    public void account_button(View v){
         Intent i = new Intent(this,Account.class);
         startActivity(i);
     }

@@ -20,4 +20,5 @@ public class Product {
     public static int product_id;
     public static String product_name;
     public static String product_image;
+    public static String product_name2;
 }

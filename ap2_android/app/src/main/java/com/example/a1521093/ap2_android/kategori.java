@@ -45,7 +45,7 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
         mListView.setOnItemClickListener(this);
         }
 
-    public void homeButton(View v) {
+    public void home_button(View v) {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
@@ -55,7 +55,7 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
         startActivity(i);
     }
 
-    public void accountButton(View v){
+    public void account_button(View v){
         Intent i = new Intent(this,Account.class);
         startActivity(i);
     }

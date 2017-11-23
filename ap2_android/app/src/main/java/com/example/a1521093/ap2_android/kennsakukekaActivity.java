@@ -40,6 +40,7 @@ public class kennsakukekaActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         bunki = intent.getIntExtra("switch",0);
+        Log.d("分岐確認","スイッチ："+bunki);
 
         TextView title = (TextView)findViewById(R.id.procutd_name);
         title.setText(Product.product_name);

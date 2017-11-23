@@ -8,10 +8,14 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,9 +31,26 @@ public class MainActivity extends AppCompatActivity {
         if(Build.VERSION.SDK_INT >= 23){
             checkPermission();
         }
-        SendEditTextValue = (Button)findViewById(R.id.kensakukekka);
 
-        Button kesyo=(Button)findViewById(R.id.kesyouhin);
+        EditText editText1 = (EditText) findViewById(R.id.edittext);
+        editText1.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                Log.d("onEditorAction", "actionId = " + actionId + " event = " + (event == null ? "null" : event));
+
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    Log.d("onEditorAction", "check");
+                    Intent intent = new Intent(getApplication(),KensakuRoot.class);
+                    EditText  SendValue = (EditText)findViewById(R.id.edittext);
+                    String syohin = SendValue.getText().toString();
+                   Product.product_name2 = syohin;
+                    startActivity(intent);
+                }
+                return true;
+            }
+        });
+
+        ImageButton kesyo=(ImageButton)findViewById(R.id.kesyouhin);
         kesyo.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
@@ -42,19 +63,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button sendButton=(Button)findViewById(R.id.kensakukekka);
-        sendButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public  void onClick(View v){
-                Intent intent=new Intent(getApplication(),KensakuRoot.class);
-                EditText  SendValue = (EditText)findViewById(R.id.edittext);
-                String syohin = SendValue.getText().toString();
-                intent.putExtra("kensaku",syohin);
-                startActivity(intent);
-            }
-        });
-
-        Button ken=(Button)findViewById(R.id.kaden);
+        ImageButton ken=(ImageButton)findViewById(R.id.kaden);
         ken.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
