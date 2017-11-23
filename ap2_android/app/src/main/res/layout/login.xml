@@ -32,23 +32,25 @@
             android:id="@+id/email"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:background="#D3D3D3"
-            android:inputType="text"
             android:hint="メールアドレス"
+            android:inputType="text"
+            android:textSize="24sp"
             tools:layout_editor_absoluteX="32dp"
-            tools:layout_editor_absoluteY="192dp"
-            android:layout_margin="10dp"/>
+            tools:layout_editor_absoluteY="192dp" />
 
         <EditText
             android:id="@+id/password"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:background="#D3D3D3"
-            android:inputType="text"
             android:hint="パスワード"
+            android:inputType="text"
+            android:textSize="24sp"
             tools:layout_editor_absoluteX="32dp"
-            tools:layout_editor_absoluteY="239dp"
-            android:layout_margin="10dp"/>
+            tools:layout_editor_absoluteY="239dp" />
 
         <Button
             android:layout_width="320dp"

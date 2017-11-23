@@ -57,11 +57,15 @@ public class KensakuRoot extends  AppCompatActivity implements AdapterView.OnIte
         });
 
     }
-    public void home_onClick(View v) {
+    public void home_button(View v) {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
 
+    public void account_button(View v){
+        Intent i = new Intent(this,Account.class);
+        startActivity(i);
+    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
