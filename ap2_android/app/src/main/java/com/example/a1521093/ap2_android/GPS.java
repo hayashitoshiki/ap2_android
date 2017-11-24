@@ -2,6 +2,7 @@ package com.example.a1521093.ap2_android;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -18,7 +19,7 @@ import android.widget.Toast;
 
 
 public class GPS extends Activity implements LocationListener {
-
+    private ProgressDialog progressDialog;
     private LocationManager locationManager;
     private TextView textView;
     private String text = "start\n";
@@ -33,6 +34,13 @@ public class GPS extends Activity implements LocationListener {
         super.onCreate(savedInstanceState);
          // LocationManager インスタンス生成
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+        //ダイアログメッセージ表示
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Loading...");
+        progressDialog.show();
+
         // GPS測位開始
         startGPS();
     }
@@ -112,6 +120,8 @@ public class GPS extends Activity implements LocationListener {
 
     @Override
     public void onLocationChanged(Location location) {
+        progressDialog.dismiss();
+
         double user_latitude = location.getLatitude();
         double user_longitude =location.getLongitude();
         Intent intent=new Intent(getApplication(),kennsakukekaActivity.class);
