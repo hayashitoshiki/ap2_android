@@ -50,31 +50,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ImageButton kesyo=(ImageButton)findViewById(R.id.kesyouhin);
-        kesyo.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public  void onClick(View v){
-                Intent intent=new Intent(getApplication(),kategori.class);
-                dai="カテゴリ：化粧品";
-                int id=2;
-                Product.main_category_id  = id;
-                Product.main_category_name = dai;
-                startActivity(intent);
-            }
-        });
-
-        ImageButton ken=(ImageButton)findViewById(R.id.kaden);
-        ken.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public  void onClick(View v){
-                Intent intent=new Intent(getApplication(),kategori.class);
-                dai="カテゴリ：家電製品";
-                int id=1;
-                Product.main_category_id  = id;
-                Product.main_category_name = dai;
-                startActivity(intent);
-            }
-        });
         //今はなし
         //ImageButton points = (ImageButton) findViewById(R.id.coupon_button);
         //points.setOnClickListener(new View.OnClickListener() {

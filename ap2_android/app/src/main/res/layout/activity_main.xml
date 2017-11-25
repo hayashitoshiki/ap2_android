@@ -34,24 +34,7 @@
         android:weightSum="1"
         android:gravity="center">
 
-        <EditText
-            android:id="@+id/edittext"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:hint="検索"
-            android:inputType="text" />
 
-        <ImageButton
-            android:id="@+id/kesyouhin"
-            android:layout_width="331dp"
-            android:layout_height="106dp"
-            android:src="@drawable/kesyohin" />
-
-        <ImageButton
-            android:id="@+id/kaden"
-            android:layout_width="326dp"
-            android:layout_height="109dp"
-            android:src="@drawable/kaden2" />
 
     </LinearLayout>
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -63,6 +46,31 @@
             android:layout_height="wrap_content"
             tools:context="com.example.a1521093.retrofit_server.MainActivity">
 
+            <ImageView
+                android:layout_width="216dp"
+                android:layout_height="158dp"
+                android:background="#00000000"
+                android:src="@drawable/rogo"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="62dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintLeft_toLeftOf="parent" />
+
+            <EditText
+                android:id="@+id/edittext"
+                android:layout_width="329dp"
+                android:layout_height="44dp"
+                android:hint="検索"
+                android:inputType="text"
+                android:layout_marginLeft="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginRight="8dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="268dp"
+                app:layout_constraintHorizontal_bias="0.512" />
         </android.support.constraint.ConstraintLayout>
         <LinearLayout
             android:layout_width="match_parent"

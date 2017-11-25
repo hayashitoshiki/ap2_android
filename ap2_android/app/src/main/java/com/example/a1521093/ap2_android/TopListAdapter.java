@@ -34,7 +34,7 @@ public class TopListAdapter extends BaseAdapter {
     private static class ViewHolder {
         public Button editButton;
         public ImageButton susumuButton;
-        public TextView textViewstock;
+
         public TextView textViewname;
         public TextView textViewaddress;
         public TextView textViewdistance;
@@ -76,7 +76,7 @@ public class TopListAdapter extends BaseAdapter {
                 holder.editButton = (Button) convertView.findViewById(R.id.tizu);
                 holder.susumuButton = (ImageButton) convertView.findViewById(R.id.susumu);
                 holder.textViewname = (TextView)convertView.findViewById(R.id.syouhinmei);
-                holder.textViewstock = (TextView)convertView. findViewById(R.id.kosuu);
+
                 holder.textViewaddress = (TextView)convertView.findViewById(R.id.zyusyo);
                 holder.textViewdistance = (TextView)convertView.findViewById(R.id.kyori);
                 holder.imageViewstore = (ImageView)convertView.findViewById(R.id.store_image);
@@ -98,7 +98,7 @@ public class TopListAdapter extends BaseAdapter {
 
             holder.textViewname.setText(store_name);
             holder.textViewaddress.setText(store_address);
-            holder.textViewstock.setText(stock+"個");
+
             Picasso.with(context).load(store_image).into(holder.imageViewstore);
             if(distance>10000) {
                 distance = distance / 1000;
