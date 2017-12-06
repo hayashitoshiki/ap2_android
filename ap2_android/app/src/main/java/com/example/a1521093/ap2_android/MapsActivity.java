@@ -51,8 +51,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
-        Button map=(Button)findViewById(R.id.go_map);
-        map.setOnClickListener(new View.OnClickListener(){
+       // Button map=(Button)findViewById(R.id.go_map);
+       /* map.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
                 Intent intent = new Intent();
@@ -63,7 +63,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
             }
-        });
+        }); */
     }
 
     @Override
