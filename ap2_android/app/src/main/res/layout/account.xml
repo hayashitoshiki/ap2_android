@@ -97,28 +97,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView21"
                 tools:layout_editor_absoluteX="8dp" />
 
-            <TextView
-                android:id="@+id/textView19"
-                android:layout_width="395dp"
-                android:layout_height="wrap_content"
-                android:background="#D3D3D3"
-                android:text="ポイント"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                app:layout_constraintTop_toBottomOf="@+id/account_password"
-                tools:layout_editor_absoluteX="8dp"
-                tools:layout_editor_absoluteY="252dp" />
 
-            <TextView
-                android:id="@+id/account_point"
-                android:layout_width="395dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="0dp"
-                android:gravity="center_vertical"
-                android:text="ポイント取得"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@android:color/black"
-                app:layout_constraintTop_toBottomOf="@+id/textView19"
-                tools:layout_editor_absoluteX="8dp" />
 
             <Button
                 android:id="@+id/button7"
@@ -127,7 +106,7 @@
                 android:layout_height="50dp"
                 android:background="@android:color/holo_red_light"
                 android:text="ログアウト"
-                app:layout_constraintTop_toBottomOf="@+id/account_point"
+                app:layout_constraintTop_toBottomOf="@+id/account_password"
                 android:layout_marginTop="52dp"
                 android:layout_marginLeft="8dp"
                 app:layout_constraintLeft_toLeftOf="parent"

@@ -32,23 +32,8 @@ public class MainActivity extends AppCompatActivity {
             checkPermission();
         }
 
-        EditText editText1 = (EditText) findViewById(R.id.edittext);
-        editText1.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                Log.d("onEditorAction", "actionId = " + actionId + " event = " + (event == null ? "null" : event));
 
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    Log.d("onEditorAction", "check");
-                    Intent intent = new Intent(getApplication(),KensakuRoot.class);
-                    EditText  SendValue = (EditText)findViewById(R.id.edittext);
-                    String syohin = SendValue.getText().toString();
-                   Product.product_name2 = syohin;
-                    startActivity(intent);
-                }
-                return true;
-            }
-        });
+
 
         //今はなし
         //ImageButton points = (ImageButton) findViewById(R.id.coupon_button);
@@ -75,6 +60,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+    public void kensaku_button(View v){
+        Intent intent = new Intent(getApplication(),KensakuRoot.class);
+        EditText  SendValue = (EditText)findViewById(R.id.edittext);
+        String syohin = SendValue.getText().toString();
+        Product.product_name2 = syohin;
+        startActivity(intent);
     }
     // 位置情報許可の確認
     public void checkPermission() {

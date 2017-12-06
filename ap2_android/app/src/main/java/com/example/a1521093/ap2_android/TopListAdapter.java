@@ -74,7 +74,7 @@ public class TopListAdapter extends BaseAdapter {
                  convertView = inflater.inflate(resourcedId, null);
                 holder = new ViewHolder();
                 holder.editButton = (Button) convertView.findViewById(R.id.tizu);
-                holder.susumuButton = (ImageButton) convertView.findViewById(R.id.susumu);
+
                 holder.textViewname = (TextView)convertView.findViewById(R.id.syouhinmei);
 
                 holder.textViewaddress = (TextView)convertView.findViewById(R.id.zyusyo);
@@ -114,12 +114,6 @@ public class TopListAdapter extends BaseAdapter {
                 }
             });
 
-            holder.susumuButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    ((ListView) parent).performItemClick(view, position,R.id.tizu);
-                }
-            });
         }
         return convertView;
     }

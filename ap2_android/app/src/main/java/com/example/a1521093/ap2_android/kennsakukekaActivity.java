@@ -66,12 +66,7 @@ public class kennsakukekaActivity extends AppCompatActivity {
                         intent.setData(Uri.parse("http://maps.google.com/maps?saddr="+User.user_latitude+","+User.user_longitude+"&daddr="+store_lati[position]+","+store_lon[position]));
                         startActivity(intent);
                         break;
-                    case R.id.susumu:
-                        Intent in = new Intent(getApplication(), Product_Barcode.class);
-                        in.putExtra("switch",bunki);
-                        startActivity(in);
 
-                        break;
                 }
             }
         });
