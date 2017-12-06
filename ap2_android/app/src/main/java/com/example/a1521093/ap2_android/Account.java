@@ -63,12 +63,10 @@ public class Account extends AppCompatActivity {
             TextView nameView = (TextView)findViewById(R.id.account_name);
             TextView emailView = (TextView)findViewById(R.id.account_email);
             TextView passwordView = (TextView)findViewById(R.id.account_password);
-            TextView pointView = (TextView)findViewById(R.id.account_point);
 
             nameView.setText(user.name);
             emailView.setText(user.email);
             passwordView.setText(user.password);
-            pointView.setText(user.point+"p");
         }
     }
 }
