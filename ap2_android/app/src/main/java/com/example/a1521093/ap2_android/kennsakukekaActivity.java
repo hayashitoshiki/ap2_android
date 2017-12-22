@@ -90,6 +90,11 @@ public class kennsakukekaActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void coupon(View v){
+        Intent i = new Intent(this, Favorite.class);
+        startActivity(i);
+    }
+
     public void accountButton(View v){
         Intent i = new Intent(this, Account.class);
         startActivity(i);

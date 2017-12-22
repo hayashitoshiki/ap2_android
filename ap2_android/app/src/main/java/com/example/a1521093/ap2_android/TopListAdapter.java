@@ -70,7 +70,7 @@ public class TopListAdapter extends BaseAdapter {
 
         if (convertView == null) {
 
-            if(resourcedId==2130968621) {
+            if(resourcedId==2130968622) {
                  convertView = inflater.inflate(resourcedId, null);
                 holder = new ViewHolder();
                 holder.editButton = (Button) convertView.findViewById(R.id.tizu);
@@ -88,7 +88,7 @@ public class TopListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        if(resourcedId==2130968621) {
+        if(resourcedId==2130968622) {
             kennsakukekaActivity kekka= new kennsakukekaActivity();
             int stock = kekka.stock[position];
             String store_name = kekka.store_name[position];

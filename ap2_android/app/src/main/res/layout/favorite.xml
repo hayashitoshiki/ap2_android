@@ -46,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/cuupon2" />
+                android:src="@drawable/cuupon" />
 
             <ImageButton
                 android:id="@+id/account_button"
@@ -55,7 +55,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#00000000"
-                android:src="@drawable/account" />
+                android:src="@drawable/account2" />
 
         </LinearLayout>
     </RelativeLayout>

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.util.Log;
 import android.widget.AdapterView;
@@ -43,6 +44,8 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
         //サンプルのListViewに独自で造ったListViewの適用
         mListView.setAdapter(topListAdapter);
         mListView.setOnItemClickListener(this);
+
+
         }
 
     public void home_button(View v) {
@@ -50,10 +53,17 @@ public class kategori extends  AppCompatActivity implements AdapterView.OnItemCl
         startActivity(i);
     }
 
+    public void coupon(View v) {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+    }
+
+
     public void modoru_onClick(View v) {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
+
 
     public void account_button(View v){
         Intent i = new Intent(this,Account.class);
