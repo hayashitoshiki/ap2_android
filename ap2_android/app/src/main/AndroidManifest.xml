@@ -43,6 +43,7 @@
         <activity android:name=".MainActivity"/>
         <activity android:name=".Account"/>
         <activity android:name=".newacount"/>
+        <activity android:name=".Favorite"/>
     </application>
 
 </manifest>

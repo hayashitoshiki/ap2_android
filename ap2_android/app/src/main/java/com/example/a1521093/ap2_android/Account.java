@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,17 @@ public class Account extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.account);
         getData();
+
+        ImageButton points = (ImageButton) findViewById(R.id.coupon_button);
+        points.setOnClickListener(new View.OnClickListener() {
+            /* ボタンをクリックした時に呼ばれる */
+            @Override
+            public void onClick(View v) {
+                //ここに処理を記述する
+                Intent intent=new Intent(getApplication(),Favorite.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void Logout(View v){
