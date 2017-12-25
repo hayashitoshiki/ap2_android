@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,17 +19,6 @@ public class Account extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.account);
         getData();
-
-        ImageButton points = (ImageButton) findViewById(R.id.coupon_button);
-        points.setOnClickListener(new View.OnClickListener() {
-            /* ボタンをクリックした時に呼ばれる */
-            @Override
-            public void onClick(View v) {
-                //ここに処理を記述する
-                Intent intent=new Intent(getApplication(),Favorite.class);
-                startActivity(intent);
-            }
-        });
     }
 
     public void Logout(View v){
@@ -41,6 +29,11 @@ public class Account extends AppCompatActivity {
     public void home_button(View v){
         Intent intent = new Intent(getApplication(),MainActivity.class);
         startActivity(intent);
+    }
+
+    public void favorite_Button(View v){
+        Intent i =new Intent(this,Favorite.class);
+        startActivity(i);
     }
 
     private void getData() {
@@ -70,7 +63,6 @@ public class Account extends AppCompatActivity {
     }
 
     private void updateContainer(ArrayList<User> UserList) {
-
         for (User user : UserList) {
             TextView nameView = (TextView)findViewById(R.id.account_name);
             TextView emailView = (TextView)findViewById(R.id.account_email);

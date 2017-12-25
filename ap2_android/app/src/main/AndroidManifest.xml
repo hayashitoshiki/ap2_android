@@ -29,17 +29,9 @@
         </activity>
         <activity android:name=".kennsakukekaActivity"
             android:windowSoftInputMode="stateAlwaysHidden"/>
-        <activity android:name=".kategori"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
-        <activity android:name="maker"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:name=".GPS"/>
-        <activity android:name=".MapsActivity"/>
-        <activity android:name=".SyohinItiran"
-            android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:name=".KensakuRoot"
             android:windowSoftInputMode="stateAlwaysHidden"/>
-        <activity android:name=".Product_Barcode"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".Account"/>
         <activity android:name=".newacount"/>

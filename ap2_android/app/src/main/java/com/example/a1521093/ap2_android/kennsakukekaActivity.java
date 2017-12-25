@@ -20,7 +20,6 @@ import static com.example.a1521093.ap2_android.R.id.listView;
 
 public class kennsakukekaActivity extends AppCompatActivity {
     private  static int count;
-    private int bunki;
     ArrayAdapter<Product> adapter;
     ListView mListView;
     ApiService ApiService;
@@ -37,10 +36,6 @@ public class kennsakukekaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kensakukeka);
-
-        Intent intent = getIntent();
-        bunki = intent.getIntExtra("switch",0);
-        Log.d("分岐確認","スイッチ："+bunki);
 
         TextView title = (TextView)findViewById(R.id.procutd_name);
         title.setText(Product.product_name);
@@ -62,11 +57,9 @@ public class kennsakukekaActivity extends AppCompatActivity {
                     case R.id.tizu:
                         Intent intent = new Intent();
                         intent.setAction(Intent.ACTION_VIEW);
-                        intent.setClassName("com.google.android.apps.maps","com.google.android.maps.MapsActivity");
                         intent.setData(Uri.parse("http://maps.google.com/maps?saddr="+User.user_latitude+","+User.user_longitude+"&daddr="+store_lati[position]+","+store_lon[position]));
                         startActivity(intent);
                         break;
-
                 }
             }
         });
@@ -75,13 +68,10 @@ public class kennsakukekaActivity extends AppCompatActivity {
     public void modoru_onClick(View v) {
         Intent intent;
         Intent get = getIntent();
-       if(bunki==1) {
-           intent = new Intent(this, SyohinItiran.class);
-       }else{
-           intent = new Intent(this, KensakuRoot.class);
-           String kensaku = get.getStringExtra("kensaku");
-           intent.putExtra("kensaku",kensaku);
-        }
+
+        intent = new Intent(this, KensakuRoot.class);
+        String kensaku = get.getStringExtra("kensaku");
+        intent.putExtra("kensaku",kensaku);
         startActivity(intent);
     }
 
@@ -100,10 +90,6 @@ public class kennsakukekaActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void kensaku_onClick(View v) {
-        Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
-    }
 
     private void getData() {
         final ArrayList<Product> aProductList = new ArrayList<>();

@@ -57,12 +57,18 @@ public class KensakuRoot extends  AppCompatActivity implements AdapterView.OnIte
         });
 
     }
-    public void home_button(View v) {
+    public void home_Button(View v) {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
 
-    public void account_button(View v){
+    public void favorite_Button(View v) {
+        Intent i = new Intent(this, Favorite.class);
+        startActivity(i);
+    }
+
+
+    public void account_Button(View v){
         Intent i = new Intent(this,Account.class);
         startActivity(i);
     }
@@ -117,7 +123,7 @@ public class KensakuRoot extends  AppCompatActivity implements AdapterView.OnIte
             }
         }
         //指定のListViewに格納
-        topListAdapter.setData(aProductList,title_name,2);
+        topListAdapter.setData(aProductList,title_name);
         topListAdapter.notifyDataSetChanged();
     }
 }

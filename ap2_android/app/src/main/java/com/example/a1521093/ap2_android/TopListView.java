@@ -15,24 +15,20 @@ public class TopListView extends LinearLayout {
     private TextView textViewShopName;
     private TextView textViewProductName;
 
-    public TopListView(Context context,int i) {
-        this(context, null,i);
+    public TopListView(Context context) {
+        this(context, null);
     }
 
-    public TopListView(Context context, @Nullable AttributeSet attrs,int i) {
-        this(context, attrs, 0, i);
+    public TopListView(Context context, @Nullable AttributeSet attrs) {
+        this(context, attrs, 0);
     }
             //View生成
-    public TopListView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int i) {
+    public TopListView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        if(i==1){
-            LayoutInflater.from(context).inflate(R.layout.list_top_adapter, this);
-            textViewShopName = (TextView) findViewById(R.id.shopNameText);
-        }else if(i==2){
+
             LayoutInflater.from(context).inflate(R.layout.kategori_sub, this);
             textViewProductName = (TextView) findViewById(R.id.product_name);
             imageView = (ImageView) findViewById(R.id.product_image);
-        }
     }
 
             //Viewに値セット
@@ -44,7 +40,6 @@ public class TopListView extends LinearLayout {
         String store_image = product.image;
         textViewProductName.setText(product.name);
         Picasso.with(TopListAdapter.getcontext()).load(store_image).into(imageView);
-
     }
 }
 

@@ -8,22 +8,14 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button SendEditTextValue;
     private final int REQUEST_PERMISSION = 1000;
 
-    String dai;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,35 +23,8 @@ public class MainActivity extends AppCompatActivity {
         if(Build.VERSION.SDK_INT >= 23){
             checkPermission();
         }
-
-
-
-
-
-        ImageButton points = (ImageButton) findViewById(R.id.coupon_button);
-        points.setOnClickListener(new View.OnClickListener() {
-        /* ボタンをクリックした時に呼ばれる */
-          @Override
-         public void onClick(View v) {
-         //ここに処理を記述する
-             Intent intent=new Intent(getApplication(),Favorite.class);
-             intent.putExtra("dai",dai);
-             startActivity(intent);
-         }
-         });
-
-        ImageButton acounts = (ImageButton) findViewById(R.id.account_button);
-        acounts.setOnClickListener(new View.OnClickListener() {
-            /** ボタンをクリックした時に呼ばれる */
-            @Override
-            public void onClick(View v) {
-                // ここに処理を記述する
-                Intent intent=new Intent(getApplication(),Account.class);
-                startActivity(intent);
-            }
-        });
-
     }
+
     public void kensaku_button(View v){
         Intent intent = new Intent(getApplication(),KensakuRoot.class);
         EditText  SendValue = (EditText)findViewById(R.id.edittext);
@@ -67,6 +32,17 @@ public class MainActivity extends AppCompatActivity {
         Product.product_name2 = syohin;
         startActivity(intent);
     }
+
+    public void favorite_Button(View v){
+        Intent i = new Intent(this,Favorite.class);
+        startActivity(i);
+    }
+
+    public void account_Button(View v){
+        Intent i = new Intent(this,Account.class);
+        startActivity(i);
+    }
+
     // 位置情報許可の確認
     public void checkPermission() {
         // 既に許可している
@@ -86,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
                 Manifest.permission.ACCESS_FINE_LOCATION)) {
             ActivityCompat.requestPermissions(MainActivity.this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_PERMISSION);
-
         } else {
             Toast toast = Toast.makeText(this, "許可されないとアプリが実行できません", Toast.LENGTH_SHORT);
             toast.show();

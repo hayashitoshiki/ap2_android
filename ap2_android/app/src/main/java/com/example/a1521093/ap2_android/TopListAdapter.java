@@ -33,7 +33,6 @@ public class TopListAdapter extends BaseAdapter {
 
     private static class ViewHolder {
         public Button editButton;
-        public ImageButton susumuButton;
 
         public TextView textViewname;
         public TextView textViewaddress;
@@ -69,14 +68,11 @@ public class TopListAdapter extends BaseAdapter {
         ViewHolder holder;
 
         if (convertView == null) {
-
             if(resourcedId==2130968622) {
                  convertView = inflater.inflate(resourcedId, null);
                 holder = new ViewHolder();
                 holder.editButton = (Button) convertView.findViewById(R.id.tizu);
-
                 holder.textViewname = (TextView)convertView.findViewById(R.id.syouhinmei);
-
                 holder.textViewaddress = (TextView)convertView.findViewById(R.id.zyusyo);
                 holder.textViewdistance = (TextView)convertView.findViewById(R.id.kyori);
                 holder.imageViewstore = (ImageView)convertView.findViewById(R.id.store_image);
@@ -113,7 +109,6 @@ public class TopListAdapter extends BaseAdapter {
                     ((ListView) parent).performItemClick(view, position,R.id.tizu);
                 }
             });
-
         }
         return convertView;
     }
@@ -138,29 +133,26 @@ public class TopListAdapter extends BaseAdapter {
     //データ取得
     public void setDatas(ArrayList<Product> aProductList,int i) {
         for (Product product : aProductList) {
-            TopListView view = new TopListView(context,i);
+            TopListView view = new TopListView(context);
             if(i==1){
             //TopListViewに値を渡してレイアウトセット
                 view.setProduct(product);
             }else if(i==2){
-
                 view.setProduct2(product);
             }
             this.aProductList.add(view);
         }
     }
 
-    public void setData(ArrayList<Product> aProductList,String name,int i) {
+    public void setData(ArrayList<Product> aProductList,String name) {
         for (Product product : aProductList) {
-
             if (product.name.contains(name)) {
                 Log.d("ループ処理","商品名＝"+product.name+"：比較値＝"+name);
-                TopListView view = new TopListView(context, i);
+                TopListView view = new TopListView(context);
                 view.setProduct2(product);
                 this.aProductList.add(view);
             }
         }
     }
-
 
 }
