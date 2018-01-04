@@ -39,50 +39,92 @@
     </LinearLayout>
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent" android:layout_height="fill_parent">
+
         <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             tools:context="com.example.a1521093.retrofit_server.MainActivity">
 
             <ImageView
                 android:layout_width="216dp"
                 android:layout_height="158dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="-14dp"
                 android:background="#00000000"
                 android:src="@drawable/rogo"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="62dp"
-                android:layout_marginRight="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                android:layout_marginLeft="8dp"
-                app:layout_constraintLeft_toLeftOf="parent" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/edittext"
                 android:layout_width="329dp"
                 android:layout_height="44dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="158dp"
                 android:hint="検索"
                 android:inputType="text"
-                android:layout_marginLeft="8dp"
+                app:layout_constraintHorizontal_bias="0.512"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:layout_marginRight="8dp"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="268dp"
-                app:layout_constraintHorizontal_bias="0.512" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="検索"
-                android:onClick="kensaku_button"
                 android:layout_marginLeft="8dp"
-                app:layout_constraintLeft_toLeftOf="parent"
                 android:layout_marginRight="8dp"
-                app:layout_constraintRight_toRightOf="parent"
                 android:layout_marginTop="8dp"
+                android:onClick="kensaku_button"
+                android:text="検索"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edittext" />
+
+            <ImageView
+                android:id="@+id/advertisement1"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="258dp"
+                android:text="広告１"
+                app:layout_constraintHorizontal_bias="0.25"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/advertisement2"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:text="広告2"
+                tools:layout_editor_absoluteX="190dp"
+                tools:layout_editor_absoluteY="258dp" />
+
+            <ImageView
+                android:id="@+id/advertisement3"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="広告3"
+                app:layout_constraintHorizontal_bias="0.25"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:layout_editor_absoluteY="378dp" />
+
+            <ImageView
+                android:id="@+id/advertisement4"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:text="広告4"
+                tools:layout_editor_absoluteX="190dp"
+                tools:layout_editor_absoluteY="378dp" />
         </android.support.constraint.ConstraintLayout>
         <LinearLayout
             android:layout_width="match_parent"
