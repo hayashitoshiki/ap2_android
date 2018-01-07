@@ -5,7 +5,11 @@ android {
     buildToolsVersion "25.0.3"
     defaultConfig {
         applicationId "com.example.a1521093.ap2_android"
+<<<<<<< Updated upstream
         minSdkVersion 23
+=======
+        minSdkVersion 25
+>>>>>>> Stashed changes
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
