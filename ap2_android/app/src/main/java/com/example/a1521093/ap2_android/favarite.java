@@ -15,6 +15,10 @@ import android.widget.ImageButton;
 import static com.example.a1521093.ap2_android.R.id.listView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.app.Activity;
+
 /**
  * Created by 1521077 on 2018/01/05.
  */
@@ -29,6 +33,22 @@ public class favarite  extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.favarite);
+
+        AlertDialog.Builder alertDlg = new AlertDialog.Builder(this);
+        alertDlg.setTitle("”この商品”をお気に入り登録しますか？");
+        alertDlg.setMessage("”この店舗”でのこの商品がお気に入りに登録されます");
+        alertDlg.setPositiveButton("はい", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        alertDlg.setNegativeButton("いいえ",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+
+        alertDlg.create().show();
+
 
         ImageButton acounts = (ImageButton) findViewById(R.id.account_button);
         acounts.setOnClickListener(new View.OnClickListener() {

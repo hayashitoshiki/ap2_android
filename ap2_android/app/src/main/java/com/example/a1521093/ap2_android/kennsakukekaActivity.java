@@ -1,5 +1,7 @@
 package com.example.a1521093.ap2_android;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -84,6 +86,24 @@ public class kennsakukekaActivity extends AppCompatActivity {
         }
         startActivity(intent);
     }
+
+    public void tizu(View v) {
+        AlertDialog.Builder alertDlg = new AlertDialog.Builder(this);
+        alertDlg.setTitle("”この商品”をお気に入り登録しますか？");
+        alertDlg.setMessage("”この店舗”でのこの商品がお気に入りに登録されます");
+        alertDlg.setPositiveButton("はい", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+        alertDlg.setNegativeButton("いいえ",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+
+        alertDlg.create().show();
+    }
+
 
     public void homeButton(View v) {
         Intent i = new Intent(this, MainActivity.class);
