@@ -32,9 +32,6 @@ public class MainActivity extends AppCompatActivity {
             checkPermission();
         }
 
-
-
-
         //今はなし
         //ImageButton points = (ImageButton) findViewById(R.id.coupon_button);
         //points.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +57,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        ImageButton favarite = (ImageButton) findViewById(R.id.favarite_button);
+        favarite.setOnClickListener(new View.OnClickListener() {
+            /** ボタンをクリックした時に呼ばれる */
+            @Override
+            public void onClick(View v) {
+                // ここに処理を記述する
+                Intent intent=new Intent(getApplication(),favarite.class);
+                intent.putExtra("dai",dai);
+                startActivity(intent);
+            }
+        });
     }
     public void kensaku_button(View v){
         Intent intent = new Intent(getApplication(),KensakuRoot.class);
