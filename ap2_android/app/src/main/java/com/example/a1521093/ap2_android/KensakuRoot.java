@@ -1,5 +1,6 @@
 package com.example.a1521093.ap2_android;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,6 +24,8 @@ public class KensakuRoot extends  AppCompatActivity implements AdapterView.OnIte
     ListView mListView;
     private String title_name;
     public static int count;
+    private ProgressDialog progressDialog;
+
 
     private int[] product_id = new int[100];
     private static String[] product_name = new String[100];
@@ -75,12 +78,30 @@ public class KensakuRoot extends  AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-        Intent intent = new Intent(this, GPS.class);
-        Product.product_id  = product_id[position];
+        Product.product_id = product_id[position];
         Product.product_name = product_name[position];
         Product.product_image = product_image[position];
-        intent.putExtra("switch",2);
-        startActivity(intent);
+
+        if(User.user_latitude==0){
+            //ダイアログメッセージ表示
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setIndeterminate(true);
+            progressDialog.setMessage("位置情報取得中...");
+            progressDialog.show();
+
+            for(int i=0;i<10000000;i++){
+
+                if(User.user_latitude>0.0) {
+                    Log.d("遷移","OK");
+                    Intent intent = new Intent(this, kennsakukekaActivity.class);
+                    startActivity(intent);
+                }
+            }
+
+        }else {
+            Intent intent = new Intent(this, kennsakukekaActivity.class);
+            startActivity(intent);
+        }
     }
 
     private void getData() {

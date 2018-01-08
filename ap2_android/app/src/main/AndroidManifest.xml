@@ -29,13 +29,13 @@
         </activity>
         <activity android:name=".kennsakukekaActivity"
             android:windowSoftInputMode="stateAlwaysHidden"/>
-        <activity android:name=".GPS"/>
         <activity android:name=".KensakuRoot"
             android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".Account"/>
         <activity android:name=".newacount"/>
         <activity android:name=".Favorite"/>
+        <service android:name=".GPS" />
     </application>
 
 </manifest>
