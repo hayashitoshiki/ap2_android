@@ -23,14 +23,13 @@
                 android:id="@+id/store_image"
                 android:layout_width="95dp"
                 android:layout_height="89dp"
-                android:layout_marginLeft="16dp"
+                android:layout_marginLeft="-3dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="30dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@mipmap/ic_launcher"
-                tools:layout_editor_absoluteY="35dp" />
+                app:srcCompat="@mipmap/ic_launcher" />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline"
