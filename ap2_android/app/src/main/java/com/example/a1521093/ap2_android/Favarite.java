@@ -12,13 +12,13 @@ public class Favarite extends AppCompatActivity {
     }
 
 
-    public void home_button(View v){
-        Intent intent = new Intent(getApplication(),MainActivity.class);
-        startActivity(intent);
+    public void homebutton2(View v){
+        Intent i = new Intent(this,MainActivity.class);
+        startActivity(i);
     }
 
-    public void account(View v){
-        Intent intent = new Intent(getApplication(),Account.class);
-        startActivity(intent);
+    public void account_button2(View v){
+        Intent i = new Intent(this,Account.class);
+        startActivity(i);
     }
 }
