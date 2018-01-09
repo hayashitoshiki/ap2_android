@@ -9,4 +9,5 @@ public class User {
     public int point;
     public static double user_latitude;
     public static double user_longitude;
+
 }

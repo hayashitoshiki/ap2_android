@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 public class GPS extends Activity implements LocationListener {
     private ProgressDialog progressDialog;
     private LocationManager locationManager;

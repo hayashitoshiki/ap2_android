@@ -1,5 +1,9 @@
 package com.example.a1521093.ap2_android;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.app.Activity;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +21,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.a1521093.ap2_android.R.id.listView;
+import static com.example.a1521093.ap2_android.R.id.tizu;
 
 public class kennsakukekaActivity extends AppCompatActivity {
     private  static int count;
@@ -24,6 +29,7 @@ public class kennsakukekaActivity extends AppCompatActivity {
     ListView mListView;
     ApiService ApiService;
     TopListAdapter topListAdapter;
+
 
     public static double[] store_lati = new double[100];
     public static double[] store_lon = new double[100];
@@ -55,6 +61,21 @@ public class kennsakukekaActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (view.getId()) {
                     case R.id.tizu:
+                        AlertDialog.Builder alertDlg = new AlertDialog.Builder(kennsakukekaActivity.this);
+                        alertDlg.setTitle("”この商品”をお気に入り登録しますか？");
+                        alertDlg.setMessage("”この店舗”でのこの商品がお気に入りに登録されます");
+                        alertDlg.setPositiveButton("はい", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                        alertDlg.setNegativeButton("いいえ",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                    }
+                                });
+                        alertDlg.create().show();
                         Intent intent = new Intent();
                         intent.setAction(Intent.ACTION_VIEW);
                         intent.setData(Uri.parse("http://maps.google.com/maps?saddr="+User.user_latitude+","+User.user_longitude+"&daddr="+store_lati[position]+","+store_lon[position]));
@@ -89,7 +110,6 @@ public class kennsakukekaActivity extends AppCompatActivity {
         Intent i = new Intent(this, Account.class);
         startActivity(i);
     }
-
 
     private void getData() {
         final ArrayList<Product> aProductList = new ArrayList<>();
@@ -134,6 +154,7 @@ public class kennsakukekaActivity extends AppCompatActivity {
                     //取得成功
                     public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
                         aList.addAll(response.body());
+
                        for (Product product : aList) {
                            store_name[count] = (product.name);
                            store_lati[count] = (product.latitude);
@@ -145,6 +166,7 @@ public class kennsakukekaActivity extends AppCompatActivity {
                            topListAdapter.notifyDataSetChanged();
                            count++;
                         }
+
                     }
                     @Override                           //取得失敗
                     public void onFailure(Call<List<Product>> call, Throwable t) {
