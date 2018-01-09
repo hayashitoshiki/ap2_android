@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/kensakugamen"
+            android:id="@+id/okiniirigamen"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#D3D3D3"
@@ -36,7 +36,7 @@
             android:layout_weight="0.15">
 
             <ImageView
-                android:id="@+id/store_image"
+                android:id="@+id/store_image2"
                 android:layout_width="92dp"
                 android:layout_height="90dp"
                 android:layout_marginLeft="16dp"
@@ -59,7 +59,7 @@
                 tools:layout_editor_absoluteY="65dp" />
 
             <TextView
-                android:id="@+id/syouhinmei"
+                android:id="@+id/syouhinmei2"
                 android:layout_width="165dp"
                 android:layout_height="65dp"
                 android:layout_marginTop="16dp"
@@ -69,22 +69,22 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="#000000"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/store_image"
+                app:layout_constraintLeft_toRightOf="@+id/store_image2"
                 android:layout_marginLeft="8dp" />
 
             <TextView
-                android:id="@+id/zyusyo"
+                android:id="@+id/zyusyo2"
                 android:layout_width="166dp"
                 android:layout_height="64dp"
                 android:layout_marginTop="7dp"
                 android:text="店の名前"
                 android:textColor="#000000"
-                app:layout_constraintTop_toBottomOf="@+id/syouhinmei"
-                app:layout_constraintLeft_toRightOf="@+id/store_image"
+                app:layout_constraintTop_toBottomOf="@+id/syouhinmei2"
+                app:layout_constraintLeft_toRightOf="@+id/store_image2"
                 android:layout_marginLeft="8dp" />
 
             <Button
-                android:id="@+id/imageButton4"
+                android:id="@+id/sakujoButton2"
                 android:layout_width="51dp"
                 android:layout_height="99dp"
                 android:layout_marginEnd="8dp"
@@ -96,7 +96,7 @@
                 android:background="#FA8072"
                 android:drawableTop="@drawable/dust"
                 app:layout_constraintHorizontal_bias="0.888"
-                app:layout_constraintLeft_toRightOf="@+id/syouhinmei"
+                app:layout_constraintLeft_toRightOf="@+id/syouhinmei2"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                  />
@@ -112,7 +112,7 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/homebutton"
+                android:id="@+id/homebutton2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -120,7 +120,7 @@
                 android:src="@drawable/home" />
 
             <ImageButton
-                android:id="@+id/favarite_button"
+                android:id="@+id/favarite_button2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -128,7 +128,7 @@
                 android:src="@drawable/cuupon2" />
 
             <ImageButton
-                android:id="@+id/account_button"
+                android:id="@+id/account_button2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
