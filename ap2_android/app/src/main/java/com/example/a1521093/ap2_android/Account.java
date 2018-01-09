@@ -31,6 +31,11 @@ public class Account extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void favorite_Button(View v){
+        Intent i =new Intent(this,Favarite.class);
+        startActivity(i);
+    }
+
     private void getData() {
         ApiService = Provider.provideApiService();
         final ArrayList<User> UserList = new ArrayList<>();
@@ -58,7 +63,6 @@ public class Account extends AppCompatActivity {
     }
 
     private void updateContainer(ArrayList<User> UserList) {
-
         for (User user : UserList) {
             TextView nameView = (TextView)findViewById(R.id.account_name);
             TextView emailView = (TextView)findViewById(R.id.account_email);

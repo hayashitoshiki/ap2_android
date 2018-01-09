@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // ここに処理を記述する
-                Intent intent=new Intent(getApplication(),Account.class);
+                Intent intent=new Intent(getApplication(),Favarite.class);
                 intent.putExtra("dai",dai);
                 startActivity(intent);
             }
