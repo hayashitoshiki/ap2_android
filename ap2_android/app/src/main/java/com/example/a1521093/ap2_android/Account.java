@@ -26,13 +26,13 @@ public class Account extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void home_Button(View v){
+    public void home_button(View v){
         Intent intent = new Intent(getApplication(),MainActivity.class);
         startActivity(intent);
     }
 
     public void favorite_Button(View v){
-        Intent i =new Intent(this,Favorite.class);
+        Intent i =new Intent(this,Favarite.class);
         startActivity(i);
     }
 
@@ -67,6 +67,7 @@ public class Account extends AppCompatActivity {
             TextView nameView = (TextView)findViewById(R.id.account_name);
             TextView emailView = (TextView)findViewById(R.id.account_email);
             TextView passwordView = (TextView)findViewById(R.id.account_password);
+
             nameView.setText(user.name);
             emailView.setText(user.email);
             passwordView.setText(user.password);
