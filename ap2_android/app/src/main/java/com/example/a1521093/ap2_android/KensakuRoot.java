@@ -6,7 +6,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.widget.ListView;
@@ -23,20 +22,18 @@ public class KensakuRoot extends  AppCompatActivity implements AdapterView.OnIte
     ArrayAdapter<Product> adapter;
     ListView mListView;
     private String title_name;
-    public static int count;
     private ProgressDialog progressDialog;
-
-
     private int[] product_id = new int[100];
     private static String[] product_name = new String[100];
     public static String[] product_image = new String[100];
+    public static int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kategori);
 
-        TextView title = (TextView)findViewById(R.id.kensakugamen);
+        TextView title = (TextView)findViewById(R.id.title);
         title_name = Product.product_name2;
         Log.d("検索ルート",title_name);
         title.setText(title_name);
@@ -50,16 +47,13 @@ public class KensakuRoot extends  AppCompatActivity implements AdapterView.OnIte
         mListView.setAdapter(topListAdapter);
         mListView.setOnItemClickListener(this);
 
-        Button sendButton=(Button)findViewById(R.id.modoru);
-        sendButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public  void onClick(View v){
-                Intent intent=new Intent(getApplication(),MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
     }
+
+    public void back_Button(View v){
+        Intent intent=new Intent(getApplication(),MainActivity.class);
+        startActivity(intent);
+    }
+
     public void home_Button(View v) {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
@@ -69,7 +63,6 @@ public class KensakuRoot extends  AppCompatActivity implements AdapterView.OnIte
         Intent i = new Intent(this, Favorite.class);
         startActivity(i);
     }
-
 
     public void account_Button(View v){
         Intent i = new Intent(this,Account.class);
@@ -90,14 +83,12 @@ public class KensakuRoot extends  AppCompatActivity implements AdapterView.OnIte
             progressDialog.show();
 
             for(int i=0;i<10000000;i++){
-
                 if(User.user_latitude>0.0) {
                     Log.d("遷移","OK");
                     Intent intent = new Intent(this, kennsakukekaActivity.class);
                     startActivity(intent);
                 }
             }
-
         }else {
             Intent intent = new Intent(this, kennsakukekaActivity.class);
             startActivity(intent);

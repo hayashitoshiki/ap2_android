@@ -19,20 +19,13 @@ import java.util.TimerTask;
 
 
 public class GPS extends Service implements LocationListener {
-    private ProgressDialog progressDialog;
 
-    private static final int MinTime = 1000;
-    private static final float MinDistance = 50;
-        //ダイアログメッセージ表示
-       // progressDialog = new ProgressDialog(this);
-        //progressDialog.setIndeterminate(true);
-        //progressDialog.setMessage("Loading...");
-        //progressDialog.show();
     LocationManager locationManager;
     private Timer timer = null;
     private int count = 0;
     double user_latitude;
     double user_longitude;
+
     // Serviceに接続するためのBinderクラスを実装する
     public class LocalBinder extends Binder {
         //Serviceの取得

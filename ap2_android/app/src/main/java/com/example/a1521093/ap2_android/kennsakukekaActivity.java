@@ -24,7 +24,6 @@ public class kennsakukekaActivity extends AppCompatActivity {
     ListView mListView;
     ApiService ApiService;
     TopListAdapter topListAdapter;
-
     public static double[] store_lati = new double[100];
     public static double[] store_lon = new double[100];
     public static String[] store_name=new String[100];
@@ -65,27 +64,26 @@ public class kennsakukekaActivity extends AppCompatActivity {
         });
   }
 
-    public void modoru_onClick(View v) {
+    public void back_Button(View v) {
         Intent intent;
         Intent get = getIntent();
-
         intent = new Intent(this, KensakuRoot.class);
         String kensaku = get.getStringExtra("kensaku");
         intent.putExtra("kensaku",kensaku);
         startActivity(intent);
     }
 
-    public void homeButton(View v) {
+    public void home_Button(View v) {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
 
-    public void coupon(View v){
+    public void coupon_Button(View v){
         Intent i = new Intent(this, Favorite.class);
         startActivity(i);
     }
 
-    public void accountButton(View v){
+    public void account_Button(View v){
         Intent i = new Intent(this, Account.class);
         startActivity(i);
     }

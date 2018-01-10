@@ -21,21 +21,9 @@ public class newacount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newacount);
 
-        //戻るボタン
-        Button modorou=(Button)findViewById(R.id.modoru);
-        modorou.setOnClickListener(new View.OnClickListener(){
-            @Override
-
-            public  void onClick(View v){
-                Intent intent=new Intent(getApplication(),AccountLogin.class);
-                startActivity(intent);
-            }
-        });
-
         Button sousin=(Button)findViewById(R.id.button2);
         sousin.setOnClickListener(new View.OnClickListener(){
             @Override
-
             //パスワード比較
             public  void onClick(View v) {
                 EditText name = (EditText) findViewById(R.id.name);
@@ -94,6 +82,11 @@ public class newacount extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void back_Button(View v){
+        Intent intent=new Intent(getApplication(),AccountLogin.class);
+        startActivity(intent);
     }
 }
 

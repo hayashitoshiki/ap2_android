@@ -15,11 +15,10 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/modoru"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:background="#D3D3D3"
-                android:onClick="modoru_onClick"
+                android:onClick="back_Button"
                 android:text="＜戻る"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@android:color/holo_red_light" />
@@ -79,17 +78,17 @@
             android:id="@+id/linearLayout3">
 
             <ImageButton
-                android:id="@+id/homebutton"
+                android:id="@+id/home_Button"
                 android:background="#00000000"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="homeButton"
+                android:onClick="home_Button"
                 android:src="@drawable/home" />
 
             <ImageButton
                 android:id="@+id/coupon_button"
-                android:onClick="coupon"
+                android:onClick="coupon_Button"
                 android:background="#00000000"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -102,7 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="accountButton"
+                android:onClick="account_Button"
                 android:src="@drawable/account2" />
 
         </LinearLayout>

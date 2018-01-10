@@ -1,29 +1,19 @@
 package com.example.a1521093.ap2_android;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.squareup.picasso.Picasso;
-
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 
-
 //独自のListViewレイアウト生成クラス
-
 public class TopListAdapter extends BaseAdapter {
 
     private ArrayList<TopListView> aProductList;
@@ -33,7 +23,6 @@ public class TopListAdapter extends BaseAdapter {
 
     private static class ViewHolder {
         public Button editButton;
-
         public TextView textViewname;
         public TextView textViewaddress;
         public TextView textViewdistance;
@@ -154,5 +143,4 @@ public class TopListAdapter extends BaseAdapter {
             }
         }
     }
-
 }

@@ -16,7 +16,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
@@ -27,22 +26,16 @@ public class AccountLogin extends AppCompatActivity {
     private ApiService ApiService;
     private EditText emailEdit;
     private EditText passwordEdit;
-
+    private final int REQUEST_PERMISSION = 1000;
     public static String email;
     public static String password;
-
-
-    private final int REQUEST_PERMISSION = 1000;
 
     // Serviceとのインターフェースクラス
     static public ServiceConnection mConnection = new ServiceConnection() {
         GPS mBindService;
         public void onServiceConnected(ComponentName className, IBinder service) {
             // Serviceとの接続確立時に呼び出される。
-
-            // service引数には、Onbind()で返却したBinderが渡される
             mBindService = ((GPS.LocalBinder)service).getService();
-            //必要であればmBoundServiceを使ってバインドしたServiceへの制御を行う
         }
         public void onServiceDisconnected(ComponentName className) {
             // Serviceとの切断時に呼び出される。
@@ -63,11 +56,12 @@ public class AccountLogin extends AppCompatActivity {
         Intent intent = new Intent(getApplication(), GPS.class);
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
     }
-    public void Login(View v){
+
+    public void Login_Button(View v){
         getData();
     }
 
-    public void NewAccount(View v){
+    public void NewAccount_Button(View v){
         Intent intent = new Intent(getApplication(),newacount.class);
         startActivity(intent);
     }
@@ -107,7 +101,6 @@ public class AccountLogin extends AppCompatActivity {
             Log.d("AccountLogin", "アカウント名："+account_name);
             Intent intent=new Intent(getApplication(),MainActivity.class);
             startActivity(intent);
-
             count+=1;
         }
         if(count==0){

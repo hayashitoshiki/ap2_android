@@ -14,17 +14,16 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/modoru"
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:background="#D3D3D3"
-            android:onClick="modoru_onClick"
+            android:onClick="back_Button"
             android:text="＜戻る"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@android:color/holo_red_light" />
 
         <TextView
-            android:id="@+id/kensakugamen"
+            android:id="@+id/title"
             android:layout_width="260dp"
             android:layout_height="match_parent"
             android:background="#D3D3D3"

@@ -12,17 +12,14 @@
         android:layout_height="40dp"
         android:background="#D3D3D3"
         android:orientation="horizontal">
-
         <Button
-            android:id="@+id/modoru"
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:background="#D3D3D3"
-            android:onClick="modoru_onClick"
+            android:onClick="back_Button"
             android:text="＜戻る"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@android:color/holo_red_light" />
-
         <TextView
             android:id="@+id/kensakugamen"
             android:layout_width="260dp"
@@ -31,7 +28,6 @@
             android:gravity="center_vertical|center_horizontal"
             android:text="アカウント作成"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -39,43 +35,36 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical">
-
         <EditText
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_margin="10dp"
             android:background="#D3D3D3"
             android:ems="10"
             android:hint="名前"
             android:inputType="textPersonName"
             android:textSize="24sp" />
-
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_margin="10dp"
             android:background="#D3D3D3"
             android:ems="10"
             android:hint="メールアドレス"
             android:inputType="textEmailAddress"
             android:textSize="24sp" />
-
         <EditText
             android:id="@+id/password1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_margin="10dp"
             android:background="#D3D3D3"
             android:ems="10"
             android:hint="パスワード"
             android:inputType="textPassword"
             android:textSize="24sp" />
-
         <EditText
             android:id="@+id/password2"
             android:layout_width="match_parent"
@@ -86,17 +75,14 @@
             android:hint="パスワード確認"
             android:inputType="textPassword"
             android:textSize="24sp" />
-
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_margin="10dp"
             android:background="#F08080"
             android:textColor="#FFFFFF"
             android:text="作成" />
-
     </LinearLayout>
 
 </LinearLayout>

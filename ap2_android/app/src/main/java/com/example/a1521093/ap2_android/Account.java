@@ -26,7 +26,7 @@ public class Account extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void home_button(View v){
+    public void home_Button(View v){
         Intent intent = new Intent(getApplication(),MainActivity.class);
         startActivity(intent);
     }
@@ -67,7 +67,6 @@ public class Account extends AppCompatActivity {
             TextView nameView = (TextView)findViewById(R.id.account_name);
             TextView emailView = (TextView)findViewById(R.id.account_email);
             TextView passwordView = (TextView)findViewById(R.id.account_password);
-
             nameView.setText(user.name);
             emailView.setText(user.email);
             passwordView.setText(user.password);
