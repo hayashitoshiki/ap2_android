@@ -49,11 +49,6 @@ public class KensakuRoot extends  AppCompatActivity implements AdapterView.OnIte
 
     }
 
-    public void back_Button(View v){
-        Intent intent=new Intent(getApplication(),MainActivity.class);
-        startActivity(intent);
-    }
-
     public void home_Button(View v) {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);

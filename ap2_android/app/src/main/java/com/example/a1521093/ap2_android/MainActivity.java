@@ -17,17 +17,16 @@ public class MainActivity extends AppCompatActivity {
     public void Search_Button(View v){
         Intent intent = new Intent(getApplication(),KensakuRoot.class);
         EditText  SendValue = (EditText)findViewById(R.id.edittext);
-        String syohin = SendValue.getText().toString();
-        Product.product_name2 = syohin;
+        Product.product_name2 = SendValue.getText().toString();
         startActivity(intent);
     }
 
-    public void favorite_Button(View v){
+    public void Favorite_Button(View v){
         Intent i = new Intent(this,Favorite.class);
         startActivity(i);
     }
 
-    public void account_Button(View v){
+    public void Account_Button(View v){
         Intent i = new Intent(this,Account.class);
         startActivity(i);
     }

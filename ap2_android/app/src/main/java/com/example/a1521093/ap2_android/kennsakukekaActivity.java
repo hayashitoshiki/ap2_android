@@ -1,8 +1,10 @@
 package com.example.a1521093.ap2_android;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -51,43 +53,50 @@ public class kennsakukekaActivity extends AppCompatActivity {
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 switch (view.getId()) {
                     case R.id.tizu:
-                        Intent intent = new Intent();
-                        intent.setAction(Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse("http://maps.google.com/maps?saddr="+User.user_latitude+","+User.user_longitude+"&daddr="+store_lati[position]+","+store_lon[position]));
-                        startActivity(intent);
-                        break;
+                        AlertDialog.Builder alertDlg = new AlertDialog.Builder(kennsakukekaActivity.this);
+                        alertDlg.setTitle("”この商品”をお気に入り登録しますか？");
+                        alertDlg.setMessage("”この店舗”でのこの商品がお気に入りに登録されます");
+                        alertDlg.setPositiveButton("はい", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent();
+                                intent.setAction(Intent.ACTION_VIEW);
+                                intent.setData(Uri.parse("http://maps.google.com/maps?saddr="+User.user_latitude+","+User.user_longitude+"&daddr="+store_lati[position]+","+store_lon[position]));
+                                startActivity(intent);
+                            }
+                        });
+                        alertDlg.setNegativeButton("いいえ",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent = new Intent();
+                                        intent.setAction(Intent.ACTION_VIEW);
+                                        intent.setData(Uri.parse("http://maps.google.com/maps?saddr="+User.user_latitude+","+User.user_longitude+"&daddr="+store_lati[position]+","+store_lon[position]));
+                                        startActivity(intent);
+                                    }
+                                });
+                        alertDlg.create().show();
                 }
             }
         });
   }
 
-    public void back_Button(View v) {
-        Intent intent;
-        Intent get = getIntent();
-        intent = new Intent(this, KensakuRoot.class);
-        String kensaku = get.getStringExtra("kensaku");
-        intent.putExtra("kensaku",kensaku);
-        startActivity(intent);
-    }
 
-    public void home_Button(View v) {
+    public void Home_Button(View v) {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
 
-    public void coupon_Button(View v){
+    public void Favorite_Button(View v){
         Intent i = new Intent(this, Favorite.class);
         startActivity(i);
     }
 
-    public void account_Button(View v){
+    public void Account_Button(View v){
         Intent i = new Intent(this, Account.class);
         startActivity(i);
     }
-
 
     private void getData() {
         final ArrayList<Product> aProductList = new ArrayList<>();

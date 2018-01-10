@@ -11,17 +11,12 @@ public class Favorite extends AppCompatActivity {
         setContentView(R.layout.favorite);
     }
 
-    public void Logout(View v){
-        Intent intent=new Intent(getApplication(),AccountLogin.class);
-        startActivity(intent);
-    }
-
-    public void home_button(View v){
+    public void home_Button(View v){
         Intent intent = new Intent(getApplication(),MainActivity.class);
         startActivity(intent);
     }
 
-    public void account(View v){
+    public void account_Button(View v){
         Intent intent = new Intent(getApplication(),Account.class);
         startActivity(intent);
     }
