@@ -35,6 +35,10 @@
         <activity android:name=".Account"/>
         <activity android:name=".newacount"/>
         <activity android:name=".Favorite"/>
+        <activity
+            android:name="GPSsetting"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:launchMode="singleInstance"/>
         <service android:name=".GPS" />
     </application>
 

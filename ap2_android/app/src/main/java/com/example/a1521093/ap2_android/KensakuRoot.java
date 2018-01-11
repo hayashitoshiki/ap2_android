@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
@@ -46,7 +48,6 @@ public class KensakuRoot extends  AppCompatActivity implements AdapterView.OnIte
         //サンプルのListViewに独自で造ったListViewの適用
         mListView.setAdapter(topListAdapter);
         mListView.setOnItemClickListener(this);
-
     }
 
     public void home_Button(View v) {
@@ -128,6 +129,10 @@ public class KensakuRoot extends  AppCompatActivity implements AdapterView.OnIte
                 product_image[count] = (product.image);
                 count++;
             }
+        }
+        if(count==0){
+            TextView a = (TextView)findViewById(R.id.No);
+            a.setText("該当する商品は見つかりませんでした。");
         }
         //指定のListViewに格納
         topListAdapter.setData(aProductList,title_name);

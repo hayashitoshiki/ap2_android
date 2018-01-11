@@ -1,7 +1,6 @@
 package com.example.a1521093.ap2_android;
 
 import android.Manifest;
-import android.app.ProgressDialog;
 import android.app.Service;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -11,9 +10,9 @@ import android.location.LocationManager;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.widget.Toast;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -46,8 +45,10 @@ public class GPS extends Service implements LocationListener {
             Log.d("debug", "location manager Enabled");
         } else {
             // GPSを設定するように促す
-            Intent settingsIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-            startActivity(settingsIntent);
+            Intent in = new Intent(getApplicationContext(),GPSsetting.class);
+            in.setFlags( Intent.FLAG_ACTIVITY_NEW_TASK );
+            startActivity(in);
+            Toast.makeText(this, "位置情報をONにしてください" , Toast.LENGTH_SHORT).show();
             Log.d("debug", "not gpsEnable, startActivity");
         }
 
@@ -97,7 +98,7 @@ public class GPS extends Service implements LocationListener {
     @Override
     public void onLocationChanged(Location location) {
         user_latitude = location.getLatitude();
-       user_longitude =location.getLongitude();
+        user_longitude =location.getLongitude();
         User.user_latitude = user_latitude;
         User.user_longitude = user_longitude;
     }
