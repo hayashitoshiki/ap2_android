@@ -9,7 +9,6 @@ public class Product {
     public String address;
     public double longitude;
     public double latitude;
-    public int count;
     public String image;
     public static int product_id;
     public static String product_name;
