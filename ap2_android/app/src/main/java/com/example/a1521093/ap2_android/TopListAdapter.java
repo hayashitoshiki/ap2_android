@@ -57,8 +57,9 @@ public class TopListAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, final ViewGroup parent) {
         ViewHolder holder;
 
+        Log.d("TopListView","resourcedId："+resourcedId);
         if (convertView == null) {
-            if(resourcedId==2130968622) {
+            if(resourcedId==2130968623) {
                  convertView = inflater.inflate(resourcedId, null);
                 holder = new ViewHolder();
                 holder.editButton = (Button) convertView.findViewById(R.id.tizu);
@@ -78,7 +79,7 @@ public class TopListAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        if(resourcedId==2130968622) {
+        if(resourcedId==2130968623) {
             Product product = (Product) getItem(position);
             String store_name = product.name;
             String store_address = product.address;
