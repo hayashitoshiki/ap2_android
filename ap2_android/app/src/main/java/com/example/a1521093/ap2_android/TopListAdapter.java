@@ -1,47 +1,37 @@
 package com.example.a1521093.ap2_android;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.squareup.picasso.Picasso;
-
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 
-
 //独自のListViewレイアウト生成クラス
-
 public class TopListAdapter extends BaseAdapter {
 
-    private ArrayList<TopListView> aProductList;
+    private ArrayList<Product> aProductList;
     public static  Context context;
     private LayoutInflater inflater;
     private int resourcedId;
 
     private static class ViewHolder {
-        public Button editButton;
-
-        public TextView textViewname;
-        public TextView textViewaddress;
-        public TextView textViewdistance;
-        public ImageView imageViewstore;
+        Button editButton;
+        TextView textViewname;
+        TextView textViewaddress;
+        TextView textViewdistance;
+        ImageView imageView;
     }
-    public TopListAdapter(Context context, int resourcedId) {
+
+    public TopListAdapter(Context context, int resourcedId, ArrayList<Product> list) {
         this.context = context;
-        this.aProductList = new ArrayList<>();
+        this.aProductList = list;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.resourcedId = resourcedId;
     }
@@ -75,27 +65,29 @@ public class TopListAdapter extends BaseAdapter {
                 holder.textViewname = (TextView)convertView.findViewById(R.id.syouhinmei);
                 holder.textViewaddress = (TextView)convertView.findViewById(R.id.zyusyo);
                 holder.textViewdistance = (TextView)convertView.findViewById(R.id.kyori);
-                holder.imageViewstore = (ImageView)convertView.findViewById(R.id.store_image);
+                holder.imageView = (ImageView)convertView.findViewById(R.id.store_image);
                 convertView.setTag(holder);
             }else{
-                  return aProductList.get(position);
+                convertView = inflater.inflate(resourcedId, null);
+                holder = new ViewHolder();
+                holder.textViewname = (TextView) convertView.findViewById(R.id.product_name);
+                holder.imageView = (ImageView) convertView.findViewById(R.id.product_image);
+                convertView.setTag(holder);
             }
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
         if(resourcedId==2130968622) {
-            kennsakukekaActivity kekka= new kennsakukekaActivity();
-            int stock = kekka.stock[position];
-            String store_name = kekka.store_name[position];
-            String store_address = kekka.store_address[position];
-            String store_image = kekka.store_image[position];
-            int distance = (int)getDistance(User.user_latitude, User.user_longitude, kekka.store_lati[position],  kekka.store_lon[position]);
+            Product product = (Product) getItem(position);
+            String store_name = product.name;
+            String store_address = product.address;
+            String store_image = product.image;
+            int distance = (int)getDistance(User.user_latitude, User.user_longitude, product.latitude,  product.longitude);
 
             holder.textViewname.setText(store_name);
             holder.textViewaddress.setText(store_address);
-
-            Picasso.with(context).load(store_image).into(holder.imageViewstore);
+            Picasso.with(context).load(store_image).into(holder.imageView);
             if(distance>10000) {
                 distance = distance / 1000;
                 holder.textViewdistance.setText(distance + "km");
@@ -109,6 +101,11 @@ public class TopListAdapter extends BaseAdapter {
                     ((ListView) parent).performItemClick(view, position,R.id.tizu);
                 }
             });
+        }else{
+            Product product = (Product) getItem(position);
+            String store_image = product.image;
+            holder.textViewname.setText(product.name);
+            Picasso.with(TopListAdapter.getcontext()).load(store_image).into(holder.imageView);
         }
         return convertView;
     }
@@ -129,30 +126,4 @@ public class TopListAdapter extends BaseAdapter {
     public double deg2rad(double degrees) {
         return degrees * (Math.PI / 180f);
     }
-
-    //データ取得
-    public void setDatas(ArrayList<Product> aProductList,int i) {
-        for (Product product : aProductList) {
-            TopListView view = new TopListView(context);
-            if(i==1){
-            //TopListViewに値を渡してレイアウトセット
-                view.setProduct(product);
-            }else if(i==2){
-                view.setProduct2(product);
-            }
-            this.aProductList.add(view);
-        }
-    }
-
-    public void setData(ArrayList<Product> aProductList,String name) {
-        for (Product product : aProductList) {
-            if (product.name.contains(name)) {
-                Log.d("ループ処理","商品名＝"+product.name+"：比較値＝"+name);
-                TopListView view = new TopListView(context);
-                view.setProduct2(product);
-                this.aProductList.add(view);
-            }
-        }
-    }
-
 }

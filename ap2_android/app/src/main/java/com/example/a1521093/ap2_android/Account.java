@@ -21,17 +21,17 @@ public class Account extends AppCompatActivity {
         getData();
     }
 
-    public void Logout(View v){
+    public void Logout_Button(View v){
         Intent intent=new Intent(getApplication(),AccountLogin.class);
         startActivity(intent);
     }
 
-    public void home_button(View v){
+    public void Home_Button(View v){
         Intent intent = new Intent(getApplication(),MainActivity.class);
         startActivity(intent);
     }
 
-    public void favorite_Button(View v){
+    public void Favorite_Button(View v){
         Intent i =new Intent(this,Favorite.class);
         startActivity(i);
     }
@@ -67,7 +67,6 @@ public class Account extends AppCompatActivity {
             TextView nameView = (TextView)findViewById(R.id.account_name);
             TextView emailView = (TextView)findViewById(R.id.account_email);
             TextView passwordView = (TextView)findViewById(R.id.account_password);
-
             nameView.setText(user.name);
             emailView.setText(user.email);
             passwordView.setText(user.password);
